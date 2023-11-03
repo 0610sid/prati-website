@@ -1,0 +1,127 @@
+.events-home {
+  background: black;
+  background-image: url(../assets/events_bg2.jpg);
+  min-height: auto;
+  background-color: black;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding-bottom: 4rem;
+}
+
+.events-home .gradient {
+  width: 100%;
+  height: 100px;
+  background: black;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(35%, black), to(rgba(0, 0, 0, 0)));
+  background: linear-gradient(180deg, black 35%, rgba(0, 0, 0, 0) 100%);
+}
+
+@media only screen and (max-width: 900px) {
+  .events-home {
+    min-height: 70vh;
+    padding-bottom: 3rem;
+  }
+}
+
+.events-home .content {
+  text-align: center;
+}
+
+.events-home .content h2 {
+  letter-spacing: 3px;
+  font-family: "Playfair Display", serif;
+  font-size: 60px;
+  font-weight: lighter;
+  padding: 4rem 2rem 2rem 2rem;
+  color: #e9e9e9;
+}
+
+.events-home .content p {
+  padding: 0 2rem;
+  line-height: 2rem;
+  color: #e9e9e9;
+  font-weight: lighter;
+}
+
+@media only screen and (max-width: 900px) {
+  .events-home .content h2 {
+    font-size: 40px;
+    line-height: 40px;
+  }
+  .events-home .content p {
+    padding: 0rem;
+    line-height: 2rem;
+  }
+}
+
+.neon-ill {
+  margin: 0 2rem;
+}
+
+@media only screen and (max-width: 900px) {
+  .neon-ill {
+    margin: 0rem;
+  }
+}
+
+.carousel {
+  overflow: hidden;
+  margin: 2rem;
+}
+
+.inner {
+  white-space: nowrap;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+
+.carousel-item {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: transparent;
+  width: 300px;
+  color: #fff;
+  opacity: 0.9;
+}
+
+.indicators button {
+  outline: none;
+  background-color: transparent;
+  border: 0;
+}
+
+.indicators button:focus {
+  outline: none;
+}
+
+.indicators {
+  font-size: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 2rem;
+  cursor: pointer;
+}
+
+.indicators > button {
+  font-size: 20px;
+  margin: 7.5px;
+}
+
+.indicators > button.active {
+  color: #d43d5e;
+}
+/*# sourceMappingURL=events.css.map */

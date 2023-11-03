@@ -1,0 +1,95 @@
+.hall-of-fame {
+  background-color: black;
+  padding: 3rem;
+}
+
+.hall-of-fame .glimpses {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem 0;
+}
+
+.hall-of-fame .glimpses h2 {
+  letter-spacing: 2px;
+  font-family: "Playfair Display", serif;
+  font-size: 50px;
+  margin-bottom: 1rem;
+  color: #e9e9e9;
+  font-weight: lighter;
+}
+
+@media only screen and (max-width: 900px) {
+  .hall-of-fame {
+    padding: 2rem;
+  }
+  .hall-of-fame .glimpses {
+    padding: 1rem 0;
+  }
+  .hall-of-fame .glimpses h2 {
+    font-size: 30px;
+    text-align: center;
+  }
+}
+
+.celeb-wrapper {
+  height: 170px;
+  width: 140px;
+  margin: 5px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.celeb-wrapper img {
+  height: 140px;
+  width: 140px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border: 3px solid #e5abff;
+  -webkit-transition: 5ms linear;
+  transition: 5ms linear;
+  overflow: clip;
+}
+
+.celeb-wrapper img:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  -webkit-filter: brightness(120%);
+          filter: brightness(120%);
+}
+
+.celeb-wrapper p {
+  line-height: 1rem;
+  text-align: center;
+}
+
+@media only screen and (max-width: 700px) {
+  .celeb-wrapper {
+    height: 130px;
+    width: 100px;
+    margin: 5px;
+  }
+  .celeb-wrapper p {
+    font-size: 14px;
+  }
+  .celeb-wrapper img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border: 2px solid #cd60ff;
+  }
+}
+/*# sourceMappingURL=hof.css.map */

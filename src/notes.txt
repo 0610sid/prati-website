@@ -1,0 +1,9 @@
+1. Put all content to map over in 'content' folder in json format.
+2. 'components' folder has all individual components like Footer, Hero Section etc.
+3. Use functional components preferably.
+4. 'assets' has all the required images videos etc
+5. 'sass' has all the scss files. Make a new file for each page or section and compile it using 'sass compiler plugin'. All these small files have to be imported in 'index.scss'
+6. Common elemts such as variables, certain layouts etc can be kept in separte sass files too which will be imported in all other files.
+7. There is an image of our basic webiste layout in the 'src' folder to take inspo from.
+8. Add comments as and when necesarry.
+9. Keep updating this notes file too.

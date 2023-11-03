@@ -1,0 +1,98 @@
+.upcoming-events-table {
+  background-color: black;
+  padding: 4rem 1rem;
+  padding-top: 0;
+}
+
+.upcoming-events-table a:hover {
+  color: #5f6ffd;
+  -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+}
+
+.upcoming-events-table h1 {
+  letter-spacing: 2px;
+  font-family: "Playfair Display", serif;
+  font-size: 40px;
+  font-weight: lighter;
+  color: #e9e9e9;
+  text-align: center;
+}
+
+@media only screen and (max-width: 900px) {
+  .upcoming-events-table h1 {
+    font-size: 30px;
+  }
+}
+
+.events-list {
+  background-color: black;
+  padding-top: 1rem;
+  margin: auto;
+  width: 400px;
+  font-size: 0.9em;
+}
+
+@media only screen and (max-width: 450px) {
+  .events-list {
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .events-list {
+    width: 250px;
+  }
+}
+
+.events-list tbody {
+  width: 100%;
+}
+
+.events-list tr td {
+  padding: 5px 20px 5px 0;
+}
+
+.events-list tr td:last-child {
+  padding: 5px 0;
+  text-align: right;
+}
+
+.events-list tr:hover .event-date {
+  border-left: 5px solid #5f6ffd;
+  color: #5f6ffd;
+}
+
+.events-list tr:hover .event-date .event-day {
+  color: #5f6ffd;
+  -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+}
+
+.events-list .event-date {
+  margin: 3px 0;
+  padding: 2px 10px;
+  border-left: 5px solid #242f8f;
+  -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+}
+
+.events-list .event-date .event-day {
+  color: #3746cf;
+  font-size: 1.2em;
+  font-weight: 600;
+  text-align: left;
+}
+
+.events-list .event-date .event-month {
+  color: #777;
+  font-size: 1em;
+  font-weight: 600;
+  text-align: left;
+}
+
+.events-list .event-date .event-venue,
+.events-list .event-date .event-price {
+  white-space: nowrap;
+}
+/*# sourceMappingURL=upcoming.css.map */

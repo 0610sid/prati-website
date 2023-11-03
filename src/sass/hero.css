@@ -1,0 +1,123 @@
+.hero {
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+}
+
+.hero-home {
+  background-image: url(../assets/hero.JPG);
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+  -webkit-animation: hue 5s infinite;
+          animation: hue 5s infinite;
+}
+
+.hero-spons {
+  background-image: url(../assets/spons-hero.jpg);
+}
+
+.hero-hof {
+  background-image: url(../assets/halloffame-hero.jpg);
+}
+
+.hero-gallery {
+  background-image: url(../assets/gallery-hero.webp);
+}
+
+.hero-about {
+  background-image: url(../assets/about-hero2.jpg);
+}
+
+.hero-events {
+  background-image: url(../assets/events_hero.jpg);
+}
+
+.hero-illuminati {
+  background-image: url(../assets/illuminati-hero.jpg);
+}
+
+.main-text {
+  height: 70vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+}
+
+.main-text h1 {
+  letter-spacing: 3px;
+  font-family: "Playfair Display", serif;
+  font-size: 80px;
+  font-weight: lighter;
+  padding: 0 1rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.main-text p {
+  padding: 0 2rem;
+  text-align: center;
+  color: #e9e9e9;
+  font-weight: normal;
+}
+
+@media only screen and (max-width: 900px) {
+  .main-text {
+    height: 60vh;
+  }
+  .main-text h1 {
+    font-size: 50px;
+    line-height: 60px;
+  }
+}
+
+@-webkit-keyframes hue {
+  0%,
+  100% {
+    -webkit-filter: hue-rotate(72deg);
+  }
+  20% {
+    -webkit-filter: hue-rotate(144deg);
+  }
+  40% {
+    -webkit-filter: hue-rotate(216deg);
+  }
+  60% {
+    -webkit-filter: hue-rotate(288deg);
+  }
+  80% {
+    -webkit-filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes hue {
+  0%,
+  100% {
+    -webkit-filter: hue-rotate(72deg);
+  }
+  20% {
+    -webkit-filter: hue-rotate(144deg);
+  }
+  40% {
+    -webkit-filter: hue-rotate(216deg);
+  }
+  60% {
+    -webkit-filter: hue-rotate(288deg);
+  }
+  80% {
+    -webkit-filter: hue-rotate(360deg);
+  }
+}
+/*# sourceMappingURL=hero.css.map */

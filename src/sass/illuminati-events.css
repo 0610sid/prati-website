@@ -1,0 +1,69 @@
+.illuminati-theme {
+  background-color: black;
+  padding: 5rem 2rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+.illuminati-theme h2 {
+  letter-spacing: 3px;
+  font-family: "Playfair Display", serif;
+  font-size: 50px;
+  color: #e9e9e9;
+  font-weight: lighter;
+  text-align: center;
+}
+
+@media only screen and (max-width: 900px) {
+  .illuminati-theme {
+    padding: 2rem;
+  }
+  .illuminati-theme h2 {
+    font-size: 35px;
+  }
+}
+
+.ill-background {
+  background-image: url(../assets/illuminati-events-bg.jpg);
+}
+
+.pa-background {
+  background-image: url(../assets/prati_events_bg2.jpg);
+}
+
+.illuminati-events-wrapper {
+  background-color: black;
+  padding: 2rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.illuminati-events-wrapper .illuminati-events {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+  padding-top: 0;
+  background-color: transparent;
+}
+
+.illuminati-events-wrapper .illuminati-events h2 {
+  letter-spacing: 2px;
+  font-family: "Playfair Display", serif;
+  font-size: 50px;
+  margin-bottom: 2rem;
+  color: #e9e9e9;
+  font-weight: lighter;
+}
+
+@media only screen and (max-width: 900px) {
+  .illuminati-events-wrapper .illuminati-events {
+    padding: 1rem 0;
+  }
+  .illuminati-events-wrapper .illuminati-events h2 {
+    font-size: 35px;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+}
+/*# sourceMappingURL=illuminati-events.css.map */

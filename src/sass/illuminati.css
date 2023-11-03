@@ -1,0 +1,141 @@
+.illuminati-home {
+  background-image: url(../assets/illuminati4.jpg);
+  min-height: auto;
+  background-color: black;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  -webkit-filter: hue-rotate(40deg);
+          filter: hue-rotate(40deg);
+}
+
+.illuminati-home .gradient {
+  width: 100%;
+  height: 100px;
+  background: black;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(35%, black), to(rgba(0, 0, 0, 0)));
+  background: linear-gradient(0deg, black 35%, rgba(0, 0, 0, 0) 100%);
+}
+
+@media only screen and (max-width: 900px) {
+  .illuminati-home {
+    min-height: 70vh;
+  }
+}
+
+.illuminati-home .content {
+  text-align: center;
+}
+
+.illuminati-home .content h2 {
+  letter-spacing: 3px;
+  font-family: "Playfair Display", serif;
+  font-size: 60px;
+  font-weight: lighter;
+  padding: 4rem 2rem 2rem 2rem;
+  color: #e9e9e9;
+}
+
+.illuminati-home .content p {
+  padding: 0 2rem;
+  line-height: 2rem;
+  color: #e9e9e9;
+  font-weight: lighter;
+}
+
+@media only screen and (max-width: 900px) {
+  .illuminati-home .content h2 {
+    font-size: 40px;
+    line-height: 40px;
+  }
+  .illuminati-home .content p {
+    padding: 0rem;
+    line-height: 2rem;
+  }
+}
+
+.neon-ill {
+  margin: 0 2rem;
+}
+
+@media only screen and (max-width: 900px) {
+  .neon-ill {
+    margin: 0rem;
+  }
+}
+
+.illuminati-home-embed {
+  margin: 0 2rem;
+  padding: 2rem;
+  text-align: left;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+@media only screen and (max-width: 900px) {
+  .illuminati-home-embed {
+    margin: 0 1.5rem;
+    padding: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+}
+
+.past-winners {
+  max-width: 800px;
+  margin: auto;
+  padding: 4rem 2rem;
+}
+
+.past-winners img {
+  -webkit-filter: brightness(90%);
+          filter: brightness(90%);
+  border-radius: 5px;
+  -webkit-transition: 0.5s ease-in;
+  transition: 0.5s ease-in;
+}
+
+.past-winners img:hover {
+  -webkit-filter: brightness(110%);
+          filter: brightness(110%);
+}
+
+.past-winners h3 {
+  font-family: "Playfair Display", serif;
+  font-weight: lighter;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 40px;
+}
+
+@media only screen and (max-width: 900px) {
+  .past-winners h3 {
+    font-size: 25px;
+    letter-spacing: 1px;
+  }
+}
+
+.past-winners h4 {
+  text-align: center;
+  color: #9c9c9c;
+  font-weight: lighter;
+}
+
+.past-winners h2 {
+  letter-spacing: 3px;
+  font-family: "Playfair Display", serif;
+  font-size: 50px;
+  font-weight: lighter;
+  color: #e9e9e9;
+  text-align: center;
+}
+
+@media only screen and (max-width: 900px) {
+  .past-winners {
+    padding: 2rem 2rem;
+  }
+  .past-winners h2 {
+    font-size: 30px;
+  }
+}
+/*# sourceMappingURL=illuminati.css.map */

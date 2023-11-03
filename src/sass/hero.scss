@@ -1,0 +1,91 @@
+@import "./variables.scss";
+
+.hero {
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+}
+
+.hero-home {
+  background-image: url(../assets/hero.JPG);
+  filter: grayscale(100%);
+  animation: hue 5s infinite;
+}
+
+.hero-spons {
+  background-image: url(../assets/spons-hero.jpg);
+}
+
+.hero-hof {
+  background-image: url(../assets/halloffame-hero.jpg);
+}
+.hero-gallery {
+  background-image: url(../assets/gallery-hero.webp);
+}
+.hero-about {
+  background-image: url(../assets/about-hero2.jpg);
+}
+
+.hero-events {
+  background-image: url(../assets/events_hero.jpg);
+}
+
+.hero-illuminati {
+  background-image: url(../assets/illuminati-hero.webp);
+}
+
+.main-text {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+
+  h1 {
+    letter-spacing: 3px;
+    font-family: "Playfair Display", serif;
+    font-size: 80px;
+    font-weight: lighter;
+    padding: 0 1rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    color: white;
+  }
+
+  p {
+    padding: 0 2rem;
+    text-align: center;
+    color: $light-grey;
+    font-weight: normal;
+  }
+
+  @media only screen and (max-width: 900px) {
+    height: 60vh;
+
+    h1 {
+      font-size: 50px;
+      line-height: 60px;
+    }
+  }
+}
+
+@keyframes hue {
+  0%,
+  100% {
+    -webkit-filter: hue-rotate(72deg);
+  }
+  20% {
+    -webkit-filter: hue-rotate(144deg);
+  }
+  40% {
+    -webkit-filter: hue-rotate(216deg);
+  }
+  60% {
+    -webkit-filter: hue-rotate(288deg);
+  }
+  80% {
+    -webkit-filter: hue-rotate(360deg);
+  }
+}

@@ -1,0 +1,41 @@
+@import "./variables.scss";
+
+.footer {
+  padding: 4rem 3rem;
+  background-color: rgb(17, 17, 17);
+}
+
+.footer-prati h3 {
+  letter-spacing: 3px;
+  font-family: "Playfair Display", serif;
+  font-size: 30px;
+  font-weight: lighter;
+  color: $light-grey;
+}
+
+.quick-links,
+.footer-prati {
+  width: fit-content;
+  margin: auto;
+
+  @media only screen and (max-width: 767px) {
+    width: 100%;
+  }
+}
+
+p {
+  font-weight: lighter;
+  line-height: 2rem;
+}
+
+.social-link {
+  width: 40px !important;
+  height: 40px !important;
+  background-color: rgb(72, 3, 99);
+  border-radius: 50%;
+  padding: 0.7rem;
+}
+
+.social-link:hover {
+  background-color: rgb(100, 3, 138);
+}

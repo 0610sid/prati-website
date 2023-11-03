@@ -1,0 +1,45 @@
+.footer {
+  padding: 4rem 3rem;
+  background-color: #111111;
+}
+
+.footer-prati h3 {
+  letter-spacing: 3px;
+  font-family: "Playfair Display", serif;
+  font-size: 30px;
+  font-weight: lighter;
+  color: #e9e9e9;
+}
+
+.quick-links,
+.footer-prati {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+}
+
+@media only screen and (max-width: 767px) {
+  .quick-links,
+  .footer-prati {
+    width: 100%;
+  }
+}
+
+p {
+  font-weight: lighter;
+  line-height: 2rem;
+}
+
+.social-link {
+  width: 40px !important;
+  height: 40px !important;
+  background-color: #480363;
+  border-radius: 50%;
+  padding: 0.7rem;
+}
+
+.social-link:hover {
+  background-color: #64038a;
+}
+/*# sourceMappingURL=footer.css.map */

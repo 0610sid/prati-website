@@ -1,0 +1,78 @@
+@import "./variables.scss";
+
+.hall-of-fame {
+  background-color: black;
+  padding: 3rem;
+
+  .glimpses {
+    max-width: 1200px;
+    margin: auto;
+    padding: 2rem 0;
+    h2 {
+      letter-spacing: 2px;
+      font-family: "Playfair Display", serif;
+      font-size: 50px;
+      margin-bottom: 1rem;
+      color: $light-grey;
+      font-weight: lighter;
+    }
+  }
+  @media only screen and (max-width: 900px) {
+    padding: 2rem;
+    .glimpses {
+      padding: 1rem 0;
+      h2 {
+        font-size: 30px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.celeb-wrapper {
+  height: 170px;
+  width: 140px;
+  margin: 5px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  img {
+    height: 140px;
+    width: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgb(229, 171, 255);
+    transition: 5ms linear;
+    overflow: clip;
+  }
+
+  img:hover {
+    transform: scale(1.05);
+    filter: brightness(120%);
+  }
+
+  p {
+    line-height: 1rem;
+    text-align: center;
+  }
+
+  @media only screen and (max-width: 700px) {
+    height: 130px;
+    width: 100px;
+    margin: 5px;
+
+    p {
+      font-size: 14px;
+    }
+
+    img {
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgb(205, 96, 255);
+    }
+  }
+}

@@ -1,0 +1,57 @@
+.nav-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 2rem 3rem;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 1000;
+  color: #e9e9e9;
+}
+
+.nav-wrapper img {
+  height: 80px;
+  -webkit-animation: none;
+          animation: none;
+  -webkit-filter: hue-rotate(0deg);
+          filter: hue-rotate(0deg);
+}
+
+.nav-wrapper h1 {
+  letter-spacing: 3px;
+  font-family: "Playfair Display", serif;
+  font-size: 40px;
+  font-weight: lighter;
+}
+
+.nav-links {
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+.nav-links p {
+  margin: 0 1rem;
+  cursor: pointer;
+  color: #e9e9e9;
+}
+
+.nav-links p:hover {
+  text-shadow: 0 0 10px #51cbee;
+}
+
+.MuiDrawer-paper {
+  width: 400px !important;
+  background-color: rgba(21, 18, 68, 0.726) !important;
+  padding: 1rem 2rem;
+}
+
+@media (max-width: 600px) {
+  .MuiDrawer-paper {
+    width: 100% !important;
+  }
+}
+/*# sourceMappingURL=nav.css.map */

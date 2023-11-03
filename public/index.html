@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <title>Pratibimb VJTI</title>
+    <meta name="title" content="Pratibimb VJTI" />
+    <meta
+      name="description"
+      content="Pratibimb VJTI's Official Website. Delve into the world of art, music, laughter, and magic!"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://pratibimbvjti.in/" />
+    <meta property="og:title" content="Pratibimb VJTI" />
+    <meta
+      property="og:description"
+      content="Pratibimb VJTI's Official Website. Delve into the world of art, music, laughter, and magic!"
+    />
+    <meta property="og:image" content="%PUBLIC_URL%/Prati.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://pratibimbvjti.in/" />
+    <meta property="twitter:title" content="Pratibimb VJTI" />
+    <meta
+      property="twitter:description"
+      content="Pratibimb VJTI's Official Website. Delve into the world of art, music, laughter, and magic!"
+    />
+    <meta property="twitter:image" content="%PUBLIC_URL%/Prati.png" />
+
+    <link rel="apple-touch-icon" href="logo.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <script>
+      (function () {
+        function id(v) {
+          return document.getElementById(v);
+        }
+        function loadbar() {
+          var ovrl = id("overlay"),
+            prog = id("progress"),
+            stat = id("progstat"),
+            img = document.images,
+            c = 0;
+          tot = img.length;
+
+          function imgLoaded() {
+            c += 1;
+            var perc = (((100 / tot) * c) << 0) + "%";
+            prog.style.width = perc;
+            stat.innerHTML = perc;
+            if (c === tot) return doneLoading();
+          }
+          function doneLoading() {
+            ovrl.style.opacity = 0;
+            setTimeout(function () {
+              ovrl.style.display = "none";
+            }, 1200);
+          }
+          for (var i = 0; i < tot; i++) {
+            var tImg = new Image();
+            tImg.onload = imgLoaded;
+            tImg.onerror = imgLoaded;
+            tImg.src = img[i].src;
+          }
+        }
+        document.addEventListener("DOMContentLoaded", loadbar, false);
+      })();
+    </script>
+    <style>
+      .no-js #loader {
+        display: none;
+      }
+      .js #loader {
+        display: block;
+        position: absolute;
+        left: 100px;
+        top: 0;
+      }
+      .se-pre-con {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background: center no-repeat rgb(0, 0, 0);
+      }
+
+      .loader-container {
+        margin: 0;
+        height: 100vh;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+
+      .lightgreen,
+      .darkgreen {
+        margin: auto;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+      }
+
+      .lightgreen {
+        z-index: 999;
+        background-color: rgba(171, 39, 232, 0.3);
+        animation: hide1 2s ease infinite;
+      }
+
+      .darkgreen {
+        background-color: rgba(155, 11, 199, 0.4);
+        animation: hide2 2s ease infinite;
+      }
+
+      @keyframes hide1 {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(0);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes hide2 {
+        0% {
+          transform: scale(0);
+        }
+        50% {
+          transform: scale(1);
+        }
+        100% {
+          transform: scale(0);
+        }
+      }
+      #overlay {
+        position: fixed;
+        z-index: 99999;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: rgba(0, 0, 0);
+        transition: 1s 0.4s;
+      }
+      #progress {
+        height: 1px;
+        background: transparent;
+        position: absolute;
+        width: 0;
+        top: 50%;
+        padding: 0 10vw;
+      }
+      #progstat {
+        font-size: 0.7em;
+        letter-spacing: 3px;
+        position: absolute;
+        top: 50%;
+        margin-top: -0.7em;
+        width: 100%;
+        text-align: center;
+        color: rgb(223, 223, 223);
+      }
+    </style>
+    <script
+      type="text/javascript"
+      src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"
+    ></script>
+    <!-- <script type="text/javascript" src="loadImg.js"></script> -->
+    <!-- <script type="text/javascript">
+      $(function () {
+        $("img").imgPreload();
+      });
+    </script> -->
+  </head>
+  <body>
+    <div class="se-pre-con">
+      <!-- <div class="loader-container"> -->
+      <div id="overlay">
+        <div id="progstat"></div>
+        <div id="progress"></div>
+        <div class="lightgreen"></div>
+        <div class="darkgreen"></div>
+      </div>
+      <!-- </div> -->
+    </div>
+    <div id="root"></div>
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+  <script>
+    $(window).load(function () {
+      // Animate loader off screen
+      $(".se-pre-con").fadeOut("slow");
+    });
+  </script>
+  <!-- <script type="text/javascript">
+    $(function () {
+      $("img").imgPreload();
+    });
+  </script> -->
+</html>

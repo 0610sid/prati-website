@@ -1,0 +1,55 @@
+@import "./variables.scss";
+
+.nav-wrapper {
+  display: flex;
+  padding: 2rem 3rem;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  color: $light-grey;
+
+  img {
+    height: 80px;
+    animation: none;
+    filter: hue-rotate(0deg);
+  }
+
+  h1 {
+    letter-spacing: 3px;
+    font-family: "Playfair Display", serif;
+    font-size: 40px;
+    font-weight: lighter;
+  }
+}
+
+.nav-links {
+  font-size: 18px;
+  letter-spacing: 1px;
+  p {
+    margin: 0 1rem;
+    cursor: pointer;
+    color: $light-grey;
+  }
+
+  p:hover {
+    text-shadow: 0 0 10px rgba(81, 203, 238, 1);
+  }
+}
+
+.MuiDrawer-paper {
+  width: 400px !important;
+  background-color: rgba(21, 18, 68, 0.726) !important;
+  padding: 1rem 2rem;
+}
+
+// .css-1drgtl0-MuiButtonBase-root-MuiIconButton-root {
+//   height: 70px;
+//   width: 70px;
+//   align-items: center;
+// }
+
+@media (max-width: 600px) {
+  .MuiDrawer-paper {
+    width: 100% !important;
+  }
+}
