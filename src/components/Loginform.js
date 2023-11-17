@@ -1,213 +1,156 @@
-import React, { useEffect, useState } from "react";
-import Modal from "react-modal";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
-import { doc, collection, getDoc, setDoc } from "firebase/firestore";
-import { auth, provider, fire } from "../firebaseConfig";
-import "../sass/loginform.css";
+import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import "../sass/loginform.css"
 import HeroCommon from "./HeroCommon";
-import { TextField } from "@mui/material";
-
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-    zIndex: "100",
-    backgroundColor: "#474644",
-    opacity: "100%",
-  },
-};
+import NeonButton from "./NeonButton";
 
 const LoginForm = () => {
-  let subtitle;
+  const [collegeName, setCollegeName] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loginStatus, setLoginStatus] = useState(false);
+
   const navigate = useNavigate();
-  const [errorLoggingIn, setErrorLoggingIn] = useState(false);
-  const [status, setStatus] = useState();
-  const [showCC, setShowCC] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("");
 
-  const user1 = localStorage.getItem("user");
-  const [isOpen, setIsOpen] = useState(false);
-
-  function openModal(msg) {
-    setErrorMsg(msg);
-    setIsOpen(true);
-  }
-
-  function afterOpenModal() {
-    subtitle.style.color = "#f00";
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  const handleCC = async (user) => {
-    if (user) {
-      const docRef = doc(fire, "Email_Map", user.email);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.data()) {
-        navigate("/events");
-      } else {
-        setShowCC(true);
-      }
-    }
+  const customStyles = {
+    content: {
+      backgroundColor: "rgba(71, 70, 68, 0.7)",
+      backdropFilter: "blur(10px)",
+      border: "none",
+    },
   };
 
-  useEffect(() => {
-    if (user1) {
-      handleCC(JSON.parse(user1));
-    }
-  }, [navigate]);
-
-  const signIn = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const user = result.user;
-        localStorage.setItem("credential", JSON.stringify(credential));
-        localStorage.setItem("user", JSON.stringify(user));
-        handleCC(user);
-      })
-      .catch((err) => {
-        setErrorLoggingIn(true);
-      });
+  const userAuthenticated = () => {
+    axios.get("http://localhost:9000/isUserAuth", {
+      headers: {
+        "x-access-token": localStorage.getItem("token"),
+      },
+    }).then((response) => {
+      console.log(response);
+    });
   };
 
-  const verifyAndRegisterCC = async (e) => {
+  const handleCollegeNameChange = (e) => {
+    setCollegeName(e.target.value);
+  };
+
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (status === "NCP") {
-      const docRef = collection(fire, "Email_Map");
-      const email = JSON.parse(localStorage.getItem("user")).email;
-      await setDoc(doc(docRef, email), {
-        id: "-1",
+    axios.post("http://localhost:9000/login", { collegeName, username, password })
+    .then((response) => {
+        if (!response.data.auth) {
+          setLoginStatus(false);
+          setError(response.data.message);
+        } else {
+          console.log(response.data);
+          localStorage.setItem("token", response.data.token)
+          setLoginStatus (true);
+          if (response.data.result[0].isVerified)
+          { navigate("/events"); }
+          else navigate("/verification");
+        }
       });
-      navigate("/events");
-    } else if (
-      status.slice(0, 3) === "CC-" &&
-      status.slice(3).match("[0-9]{2}")
-    ) {
-      const ccId = status.slice(3);
-      const docRef = doc(fire, "CC_Map", ccId);
-      const docSnap = await getDoc(docRef);
-      console.log(docSnap.data());
-      if (docSnap.data()) {
-        openModal(
-          "This College Code has already registered. Login found invalid"
-        );
-      } else {
-        const docRef = collection(fire, "CC_Map");
-        const email = JSON.parse(localStorage.getItem("user")).email;
-        await setDoc(doc(docRef, status.slice(3)), {
-          email,
-        });
-        const docRef1 = collection(fire, "Email_Map");
-        await setDoc(doc(docRef1, email), {
-          id: status.slice(3),
-        });
-        navigate("/events");
-      }
-    } else {
-      openModal("Incorrect status given as input, please try again");
-    }
-  };
+};
 
-  return !errorLoggingIn ? (
+  return (
     <div>
       <HeroCommon
         imgClass="hero-events"
-        title="Event Registration"
-        subtitle="Login using your Gmail"
-      ></HeroCommon>
-      <Modal
-        isOpen={isOpen}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Modal Alert"
-      >
-        <center>
-          <h2
-            ref={(_subtitle) => (subtitle = _subtitle)}
-            style={{ color: "#f5aeb1" }}
-          >
-            Error!
-          </h2>
-          <div style={{ color: "white" }}>{errorMsg}</div>
-          <button
-            style={{ color: "black", padding: "0.3rem", marginTop: "1rem" }}
-            onClick={closeModal}
-          >
-            Close
-          </button>
-        </center>
-      </Modal>
+        title="PRATIBIMB EVENTS"
+        subtitle="AN ENTHRALLING RIDE FULL OF FUN AND EXPERIENCE"
+      />
+
       <div style={{ background: "black" }}>
         <div className="illuminati-theme">
-          {!showCC ? (
-            <center>
-              <button onClick={signIn} className="custom-btn btn-15">
-                Login Here
-              </button>
-            </center>
-          ) : (
-            <center className="vjti">
-              <h2 data-aos="fade-up">Enter your participation type</h2>
-              <p data-aos="fade-up">
-                <b>CC</b> - College Contingent (Mention along with code -
-                Example CC-71)
-              </p>
-              <p data-aos="fade-up">
-                <b>NCP</b> - Non Contingent Participant
-              </p>
-              <br />
-              <div>
-                {!isOpen && (
-                  <form>
-                    <TextField
-                      id="outlined-basic"
-                      label="Participation Status"
-                      variant="outlined"
-                      value={status}
-                      onChange={(e) => {
-                        setStatus(e.target.value);
-                      }}
-                    />
-                    <br />
-                    <button
-                      onClick={verifyAndRegisterCC}
-                      className="custom-btn btn-15"
-                      style={{ marginTop: "2rem" }}
-                    >
-                      Register participation status
-                    </button>
-                  </form>
-                )}
-              </div>
-            </center>
-          )}
+          <h2 data-aos="fade-up">PERFORMING ARTS</h2>
+          <br />
+          <p data-aos="fade-up">
+            The goal of art is Expression. It is the journey of the free soul.
+            It is the escapist fantasy to live as well as the grim reality to be
+            felt. For every talented bone and every whisper of creativity,
+            PratibimbVJTI is a cocooning hub and the best platform to showcase
+            your zing and panache.
+          </p>
+          <p data-aos="fade-up">
+            The Performance Arts Sector include all the events ranging from
+            Drama, Dance, Vocals, Poetry to Instrumentals, Raps and Beatboxing,
+            Artwork and Social-work. These events not only add fun to your life
+            but also help build your personality as a whole.
+          </p>
+          <p data-aos="fade-up">
+            Pratibimb also brings you the opportunity to interact with immensely
+            talented peers from other colleges too, which in itself would be a
+            great experience! When so many passionate and fierce people get
+            together, it really is a sight to behold. So join us on this
+            beautiful and enthralling ride full of fun and captivating
+            experiences.
+          </p>
+          <br />
+          <br />
         </div>
       </div>
-    </div>
-  ) : (
-    <div>
-      <HeroCommon
-        imgClass="hero-events"
-        title="Event Registration"
-        subtitle="An Error occured while registering. Please try again!"
-      ></HeroCommon>
+
       <div style={{ background: "black" }}>
-        <div className="illuminati-theme">
-          <center>
-            <button onClick={signIn} className="custom-btn btn-15">
-              Login Here
-            </button>
-          </center>
+      <h2 data-aos="fade-up" style={{ textAlign: "center"}}>Please Login to Register for Events!</h2>
+      <br />
+        <div className="box">
+        <h2>Login</h2>      
+          <form onSubmit={handleSubmit}>
+            <div className="inputBox">
+              <input
+                type="text"
+                name="college_name"
+                required
+                value={collegeName}
+                onChange={handleCollegeNameChange}
+              />
+              <label>College Name</label>
+            </div>
+            <div className="inputBox">
+              <input
+                type="text"
+                name="username"
+                required
+                value={username}
+                onChange={handleUsernameChange}
+              />
+              <label>CC Code</label>
+            </div>
+            <div className="inputBox">
+              <input
+                type="password"
+                name="password"
+                required
+                value={password}
+                onChange={handlePasswordChange}
+              />
+              <label>Password</label>
+            </div>
+            {/* {loginStatus && (<button>Check if authenticated</button>)} */}
+            {error && <b><p style={{ color: 'red' }} className="error-message">{error}</p></b>}
+            <div className="center-btn">
+              <input
+                type="submit"
+                name="sign-in"
+                value="Login"
+                className="custom-btn btn-15"
+              />
+            </div>
+          </form>
         </div>
+        <center>
+          <NeonButton href="/admin/login">Login as Admin</NeonButton>
+        </center>
       </div>
     </div>
   );

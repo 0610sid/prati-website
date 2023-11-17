@@ -10,8 +10,7 @@ const SignOut = () => {
   useEffect(() => {
     signOut(auth)
       .then(() => {
-        localStorage.removeItem("user");
-        localStorage.removeItem("credential");
+        localStorage.removeItem("token");
         navigate("/");
       })
       .catch((err) => {});

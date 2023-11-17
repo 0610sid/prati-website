@@ -8,7 +8,7 @@ import logo from "../assets/prati-white.png";
 
 const Navbar = () => {
   const navchange = useMediaQuery("(min-width:1300px)");
-  const user = localStorage.getItem("user");
+  const user = localStorage.getItem("token");
 
   const Navlinks = ({ fd }) => {
     return (
