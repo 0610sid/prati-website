@@ -18,8 +18,13 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import UpcomingEvents from "./components/UpcomingEvents";
 import Loginform from "./components/Loginform";
+import Verification from "./components/Verification";
 import SignOut from "./components/SignOut";
+import AdminLogin from "./components/AdminLogin";
+import Verify from "./components/Verify" 
 import ScrollToTop from "./utils/scrollToTop";
+import UserRoutes from "./utils/UserRoutes";
+import AdminRoutes from "./utils/AdminRoutes";
 
 const theme = createTheme({
   palette: {
@@ -48,7 +53,7 @@ const Home = () => {
   );
 };
 
-const App = () => {
+function App() {
   let routes = useRoutes([
     { path: "/", element: <Home /> },
     { path: "/sponsors", element: <Sponsors /> },
@@ -56,9 +61,12 @@ const App = () => {
     { path: "/gallery", element: <Gallery /> },
     { path: "/about", element: <About /> },
     { path: "/illuminati", element: <Illuminati /> },
-    { path: "/events", element: <Events /> },
+    { path: "/events", element: <UserRoutes> <Events /> </UserRoutes>},
     { path: "/login", element: <Loginform /> },
+    { path: "/verification", element: <UserRoutes> <Verification /> </UserRoutes> },
     { path: "/signout", element: <SignOut /> },
+    { path: "/admin/login", element: <AdminLogin /> },
+    { path: "/admin/verify", element: <AdminRoutes><Verify /></AdminRoutes> },
     // ...
   ]);
   return routes;
@@ -81,4 +89,5 @@ const AppWrapper = () => {
     </Router>
   );
 };
+
 export default AppWrapper;
