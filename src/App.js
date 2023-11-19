@@ -14,6 +14,7 @@ import HallOfFame from "./components/HallOfFame";
 import About from "./components/About";
 import Illuminati from "./components/Illuminati";
 import Events from "./components/Events";
+import EventsUnprotected from "./components/EventsUnprotected"
 import AOS from "aos";
 import "aos/dist/aos.css";
 import UpcomingEvents from "./components/UpcomingEvents";
@@ -62,6 +63,8 @@ function App() {
     { path: "/about", element: <About /> },
     { path: "/illuminati", element: <Illuminati /> },
     { path: "/events", element: <UserRoutes> <Events /> </UserRoutes>},
+    { path: "/list", element: <EventsUnprotected /> },
+    // { path: "/events", element: <Events />},
     { path: "/login", element: <Loginform /> },
     { path: "/verification", element: <UserRoutes> <Verification /> </UserRoutes> },
     { path: "/signout", element: <SignOut /> },
