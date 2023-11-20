@@ -28,7 +28,7 @@
     "react-firebase-hooks": "^5.1.1",
     "react-modal": "^3.16.1",
     "react-preloaders": "^3.0.3",
-    "react-router-dom": "^6.8.1",
+    "react-router-dom": "^6.19.0",
     "react-scripts": "^4.0.3",
     "react-spinners": "^0.11.0",
     "react-swipeable": "^6.2.0",

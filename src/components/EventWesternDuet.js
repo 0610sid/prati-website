@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import image from "../images/DuetDance.webp"; 
-import "../css/events.css"
+import image from "../images/DuetDance.jpg"; 
+import "../sass/events.css"
 function WesternDuet() {
     const [participantName, setParticipantName] = useState('');
     const [participantNumber, setParticipantNumber] = useState('');

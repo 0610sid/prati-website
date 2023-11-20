@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import image from "../images/monoact.jpg"; 
-import "../css/events.css"
+import "../sass/events.css"
 import axios from 'axios';
 
 function MonoAct() {

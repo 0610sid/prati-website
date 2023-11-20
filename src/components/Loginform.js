@@ -6,7 +6,6 @@ import HeroCommon from "./HeroCommon";
 import NeonButton from "./NeonButton";
 
 const LoginForm = () => {
-  const [collegeName, setCollegeName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -32,10 +31,6 @@ const LoginForm = () => {
     });
   };
 
-  const handleCollegeNameChange = (e) => {
-    setCollegeName(e.target.value);
-  };
-
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
   };
@@ -46,7 +41,7 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    axios.post("http://localhost:9000/login", { collegeName, username, password })
+    axios.post("http://localhost:9000/login", { username, password })
     .then((response) => {
         if (!response.data.auth) {
           setLoginStatus(false);
@@ -63,14 +58,16 @@ const LoginForm = () => {
 };
 
   return (
+    
     <div>
       <HeroCommon
         imgClass="hero-events"
-        title="PRATIBIMB EVENTS"
-        subtitle="AN ENTHRALLING RIDE FULL OF FUN AND EXPERIENCE"
+        title=""
+        subtitle=""
       />
 
       <div style={{ background: "black" }}>
+      
         <div className="illuminati-theme">
           <h2 data-aos="fade-up">PERFORMING ARTS</h2>
           <br />
@@ -95,27 +92,20 @@ const LoginForm = () => {
             beautiful and enthralling ride full of fun and captivating
             experiences.
           </p>
-          <br />
-          <br />
         </div>
       </div>
 
       <div style={{ background: "black" }}>
       <h2 data-aos="fade-up" style={{ textAlign: "center"}}>Please Login to Register for Events!</h2>
       <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      
         <div className="box">
         <h2>Login</h2>      
           <form onSubmit={handleSubmit}>
-            <div className="inputBox">
-              <input
-                type="text"
-                name="college_name"
-                required
-                value={collegeName}
-                onChange={handleCollegeNameChange}
-              />
-              <label>College Name</label>
-            </div>
             <div className="inputBox">
               <input
                 type="text"
@@ -148,9 +138,6 @@ const LoginForm = () => {
             </div>
           </form>
         </div>
-        <center>
-          <NeonButton href="/admin/login">Login as Admin</NeonButton>
-        </center>
       </div>
     </div>
   );

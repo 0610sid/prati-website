@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "../css/events.css"
+import "../sass/events.css"
 import axios from 'axios';
 
 function MrandMs() {

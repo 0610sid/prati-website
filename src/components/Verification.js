@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import "../sass/verification.css";
 import HeroCommon from "./HeroCommon";
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Verification = () => {
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
+  const [collegeName, setCollegeName] = useState("");
   const [collegeId, setCollegeId] = useState("");
+  const [error, setError] = useState("");
+  const [loginStatus, setLoginStatus] = useState(false);
+
+  const navigate = useNavigate();
 
   const customStyles = {
     content: {
@@ -31,13 +38,17 @@ const Verification = () => {
     }
   };
 
+  const handleCollegeNameChange = (e) => {
+    setCollegeName(e.target.value);
+  };
+
   const handleCollegeIdChange = (e) => {
     setCollegeId(e.target.value);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    axios.post("http://localhost:9000/verification", { name, mobile, collegeId })
+    axios.post("http://localhost:9000/verification", { name, mobile, collegeName, collegeId })
     .then((response) => {
         if (!response.data.auth) {
           setLoginStatus(false);
@@ -83,6 +94,16 @@ const Verification = () => {
             />
             <label>Mobile</label>
           </div>
+          <div className="inputBox">
+              <input
+                type="text"
+                name="college_name"
+                required
+                value={collegeName}
+                onChange={handleCollegeNameChange}
+              />
+              <label>College Name</label>
+            </div>
           <div className="inputBox">
             <input
               type="text"

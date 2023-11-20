@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import image from "../images/SemiClassicalDance.jpg"; 
-import "../css/events.css"
+import "../sass/events.css"
 
 export default function SemiClassical() {
     const [participantName, setParticipantName] = useState('');

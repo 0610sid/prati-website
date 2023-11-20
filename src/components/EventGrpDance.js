@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import image from "../images/grpdance2.jpg"; 
 import axios from 'axios';
-import "../css/events.css"
+import "../sass/events.css"
 export default function EventForm() {
     const [participantName, setParticipantName] = useState('');
     const [teamName, setTeamName] = useState('');
