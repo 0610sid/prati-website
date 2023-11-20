@@ -78,7 +78,6 @@ function App() {
     { path: "/signout", element: <SignOut /> },
     { path: "/admin/login", element: <AdminLogin /> },
     { path: "/admin/verify", element: <AdminRoutes><Verify /></AdminRoutes> },
-    { path: "/", element:  },
     { path: "/GroupDance", element: <EventForm></EventForm> },
     { path: "/StandUp", element: <Standup></Standup> },
     { path: "/Western-duet", element: <WesternDuet></WesternDuet> },
