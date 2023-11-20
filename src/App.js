@@ -25,6 +25,17 @@ import Verify from "./components/Verify"
 import ScrollToTop from "./utils/scrollToTop";
 import UserRoutes from "./utils/UserRoutes";
 import AdminRoutes from "./utils/AdminRoutes";
+import TextForm from './components/TextForm';
+import  EventForm from './components/EventGrpDance';
+import  Standup from './components/EventStandUp';
+import Solo_Singing from './components/EventSinging';
+import WesternDuet from './components/EventWesternDuet';
+import MonoAct from './components/EventMonoAct';
+import  MrandMs from './components/EventMrAndMs';
+import  SemiClassical from './components/EventSemiClassical';
+import Band from './components/EventBand';
+// import LoginForm from './components/login';
+import Btn from './components/btns';
 
 const theme = createTheme({
   palette: {
@@ -67,6 +78,15 @@ function App() {
     { path: "/signout", element: <SignOut /> },
     { path: "/admin/login", element: <AdminLogin /> },
     { path: "/admin/verify", element: <AdminRoutes><Verify /></AdminRoutes> },
+    { path: "/", element:  },
+    { path: "/GroupDance", element: <EventForm></EventForm> },
+    { path: "/StandUp", element: <Standup></Standup> },
+    { path: "/Western-duet", element: <WesternDuet></WesternDuet> },
+    { path: "/SemiClassical", element: <SemiClassical></SemiClassical> },
+    { path: "/SoloSinging", element: <Solo_Singing></Solo_Singing> },
+    { path: "/MonoAct", element: <MonoAct></MonoAct> },
+    { path: "/Mr&Ms", element: <MrandMs></MrandMs> },
+    { path: "/Band", element: <Band></Band> },
     // ...
   ]);
   return routes;
