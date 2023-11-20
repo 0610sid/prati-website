@@ -2,8 +2,13 @@
   margin: 0;
   box-sizing: border-box;
 } */
-.box {
+
+.heading {
   position: relative;
+}
+
+.box {
+  /* position: relative; */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -1%);

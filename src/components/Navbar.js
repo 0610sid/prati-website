@@ -6,9 +6,13 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import logo from "../assets/prati-white.png";
 
-const Navbar = () => {
+const Navbar = ({ transparent }) => {
   const navchange = useMediaQuery("(min-width:1300px)");
   const user = localStorage.getItem("token");
+
+  const navbarStyles = transparent
+  ? { backgroundColor: 'transparent', boxShadow: 'none' ,zIndex: 1}
+  : {};
 
   const Navlinks = ({ fd }) => {
     return (
@@ -80,7 +84,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="nav-wrapper">
+    <div className="nav-wrapper" style={navbarStyles}>
       <Box display="flex" flexDirection="row" alignItems="center">
         <Link href="/" underline="none" color="inherit">
           <img src={logo} alt="logo" loading="lazy" />

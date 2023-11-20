@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import "../sass/loginform.css"
+import Navbar from "./Navbar";
 import HeroCommon from "./HeroCommon";
 import NeonButton from "./NeonButton";
+import backgroundImage from '../assets/login_page.jpg';
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -41,69 +43,54 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    axios.post("http://localhost:9000/login", { username, password })
-    .then((response) => {
-        if (!response.data.auth) {
-          setLoginStatus(false);
-          setError(response.data.message);
+
+    try {
+        // Perform the login request
+        const loginResponse = await axios.post("http://localhost:9000/login", {
+            username,
+            password
+        });
+
+        // Check the authentication status
+        if (loginResponse.data.auth) {
+          console.log(loginResponse.data);
+          localStorage.setItem("token", loginResponse.data.token);
+          setLoginStatus(true);
+
+          // Check if user is verified
+          if (loginResponse.data.result[0].isVerified) {
+              navigate("/events");
+          } else {
+            navigate("/verification");
+            
+          }
         } else {
-          console.log(response.data);
-          localStorage.setItem("token", response.data.token)
-          setLoginStatus (true);
-          if (response.data.result[0].isVerified)
-          { navigate("/events"); }
-          else navigate("/verification");
+            // Login failed
+            setLoginStatus(false);
+            setError(loginResponse.data.message);
         }
-      });
+    } catch (error) {
+        console.error("Error during login:", error);
+        // Handle the error as needed
+    }
 };
 
   return (
+    <>
     
-    <div>
-      <HeroCommon
-        imgClass="hero-events"
-        title=""
-        subtitle=""
-      />
+      <Navbar transparent />
 
-      <div style={{ background: "black" }}>
-      
-        <div className="illuminati-theme">
-          <h2 data-aos="fade-up">PERFORMING ARTS</h2>
-          <br />
-          <p data-aos="fade-up">
-            The goal of art is Expression. It is the journey of the free soul.
-            It is the escapist fantasy to live as well as the grim reality to be
-            felt. For every talented bone and every whisper of creativity,
-            PratibimbVJTI is a cocooning hub and the best platform to showcase
-            your zing and panache.
-          </p>
-          <p data-aos="fade-up">
-            The Performance Arts Sector include all the events ranging from
-            Drama, Dance, Vocals, Poetry to Instrumentals, Raps and Beatboxing,
-            Artwork and Social-work. These events not only add fun to your life
-            but also help build your personality as a whole.
-          </p>
-          <p data-aos="fade-up">
-            Pratibimb also brings you the opportunity to interact with immensely
-            talented peers from other colleges too, which in itself would be a
-            great experience! When so many passionate and fierce people get
-            together, it really is a sight to behold. So join us on this
-            beautiful and enthralling ride full of fun and captivating
-            experiences.
-          </p>
-        </div>
-      </div>
+      <div style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        height: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}></div>
 
-      <div style={{ background: "black" }}>
-      <h2 data-aos="fade-up" style={{ textAlign: "center"}}>Please Login to Register for Events!</h2>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      
-        <div className="box">
+      <div className="box">
+      <h2>PRATIBIMB EVENTS</h2>
         <h2>Login</h2>      
           <form onSubmit={handleSubmit}>
             <div className="inputBox">
@@ -138,8 +125,51 @@ const LoginForm = () => {
             </div>
           </form>
         </div>
+    
+    <div>
+      <div style={{ background: "black" }}>
+      
+        <div className="illuminati-theme">
+          <h2 data-aos="fade-up">PERFORMING ARTS</h2>
+          <br />
+          <p data-aos="fade-up">
+            The goal of art is Expression. It is the journey of the free soul.
+            It is the escapist fantasy to live as well as the grim reality to be
+            felt. For every talented bone and every whisper of creativity,
+            Pratibimb VJTI is a cocooning hub and the best platform to showcase
+            your zing and panache.
+          </p>
+          <p data-aos="fade-up">
+            The Performance Arts Sector include all the events ranging from
+            Drama, Dance, Vocals, Poetry to Instrumentals, Raps and Beatboxing,
+            Artwork and Social-work. These events not only add fun to your life
+            but also help build your personality as a whole.
+          </p>
+          <p data-aos="fade-up">
+            Pratibimb also brings you the opportunity to interact with immensely
+            talented peers from other colleges too, which in itself would be a
+            great experience! When so many passionate and fierce people get
+            together, it really is a sight to behold. So join us on this
+            beautiful and enthralling ride full of fun and captivating
+            experiences.
+          </p>
+        </div>
+      </div>
+
+      <div style={{ background: "black" }}>
+      <h2 data-aos="fade-up" style={{ textAlign: "center"}}>Please Login to Register for Events!</h2>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+
+      
+
+        
       </div>
     </div>
+    </>
   );
 };
 
