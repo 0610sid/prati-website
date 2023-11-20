@@ -1,0 +1,227 @@
+.form-label{
+    font-weight: bold;
+    font-size: x-large;
+  }
+  /* Add this to your CSS */
+  .registration-form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  
+   box-shadow: 0 0 20px white;
+   padding: 20px;
+   border-radius: 10px;
+   background-color: black;
+  
+  }
+  .info{
+    padding: 20px;
+  }
+  .main{
+  
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+   height: 77vh;
+   box-shadow: 0 0 10px whitesmoke;
+   border-radius: 10px;
+   width: 90%;
+   margin: 1%;
+   margin-left: 5%;
+  }
+  .infotitle {
+      color: white;
+      font-family: impact;
+      font-size: 2rem;
+      line-height: 1;
+      text-align: center;
+      text-transform: uppercase;
+     margin-top: 20px;
+     word-spacing: 0.1rem;
+    }
+    
+  .translucent-form select {
+    width: 25%;
+    padding: 0.525rem 0;
+    font-size: 1rem;
+    color: black; /* Adjust text color */
+    margin-bottom: 1.5rem;
+    margin-left: 65%;
+    border: none;
+    border-bottom: 0.085rem solid whitesmoke;
+    outline: none;
+    background: transparent;
+  color: white;
+    /* Additional styles to match the background */
+    background-color: transparent; /* Set to the same background color as the form */
+    appearance: none; /* Remove default arrow icon in some browsers */
+    -webkit-appearance: none; /* Remove default arrow icon in WebKit browsers */
+  }
+  .translucent-form select::after {
+    content: '\25BC'; /* Unicode character for a downward arrow */
+    position: absolute;
+    top: 0;
+    right: 0.75rem; /* Adjust the right offset */
+    padding: 0.25rem;
+    pointer-events: none;
+    color: white; /* Adjust the arrow color */
+    background: transparent;
+    transform: translateY(-50%);
+  }
+  
+  /* Style the select when it's focused */
+  .translucent-form select:focus {
+    border-bottom: 0.085rem solid #244555; /* Adjust focus color */
+    background: transparent;
+  }
+  .translucent-form select option {
+    background-color: black;
+    color: white;
+  }
+  .img{
+    width: 49%;
+    margin-left: .5%;
+    height: 100%;
+    align-items: center;
+    background-size: cover;
+  background-repeat: no-repeat;
+  height: 450px;
+  color: white;
+  }
+  
+  .ulimg li{
+    padding: 8px;
+  }
+  
+  .translucent-form {
+    background: black;
+    max-height: 450px; /* Set a maximum height for the container */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 50%;
+    height: 450px;
+    color:White
+  }
+  .translucent-form::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  .translucent-form::-webkit-scrollbar-thumb {
+    background-color:whitesmoke;
+    border-radius: 6px; 
+  }
+  
+  .translucent-form::-webkit-scrollbar-track {
+    background-color:black; 
+  }
+  
+  #title2{
+    margin-bottom: 30px;
+  }
+  #Addparticipant{
+    position: relative;
+    margin-left: -150px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background-color: #480363;
+  padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 0.325rem;
+    font-size: 1rem;
+    text-align: center;
+    margin-top: -35px;
+  }
+  #TeamMember{
+    position: relative;
+    margin-left: 150px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background-color: #480363;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 0.325rem;
+    font-size: 1rem;
+    text-align: center;
+    margin-top: -40px;
+  }
+  .Sub{
+    position: relative;
+    margin-left: 280px;
+    border: none;
+    outline: none;
+    color: black;
+    background-color: whitesmoke;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 0.325rem;
+    font-size: 1rem;
+    text-align: center;
+    margin-top: -40px;
+  }
+  .translucent-form  label { 
+    position: relative;
+    top: -70px;
+    padding: 0.5rem 0;
+    font-size: 1rem;
+    color: #131313;
+    pointer-events: none;
+  color: white;
+    transition: 0.5s;
+  }
+  #grpNo{
+    position: relative;
+    top: -60px;
+    left: -60px;
+    padding: 0.5rem 0;
+    font-size: 1rem;
+    color: #131313;
+    pointer-events: none;
+  color: white;
+    transition: 0.5s;
+  }
+  
+  
+  .translucent-form .input-label input:focus ~ label,
+  .translucent-form .input-label input:valid ~ label,
+  .translucent-form .input-label input:not([value=""]) ~ label {
+    top: -2.125rem;
+    left: 0;
+    color: #244555;
+    font-size: 0.75rem;
+  }
+  .registration-form input {
+    width: 100%;
+    padding: 0.525rem 0;
+    font-size: 1rem;
+    color:white;
+    letter-spacing: 0.062rem;
+    margin-bottom: 1.5rem;
+    border: none;
+    border-bottom: 0.2vh solid whitesmoke;
+    outline: none;
+    background: transparent;
+  }
+  
+  .registration-form button:hover {
+    background-color: #b30000; /* Adjust the color as needed */
+  }
+  
+  @media (max-width:400px){
+    .registration-form{
+    flex-direction: column;
+    }
+  }
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  

@@ -20,7 +20,15 @@ const Verification = () => {
   };
 
   const handleMobileChange = (e) => {
-    setMobile(e.target.value);
+    const inputValue = e.target.value; // TO ENSURE ONLY DIGITS ARE ADDED IN MOBILE NUMBER FIELD
+    const isNumeric = /^[0-9]+$/.test(inputValue);
+
+    if (isNumeric || inputValue === "") {
+      setMobile(inputValue);
+      setError("");
+    } else {
+      setError("Mobile number can only contain digits!");
+    }
   };
 
   const handleCollegeIdChange = (e) => {
@@ -29,28 +37,18 @@ const Verification = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    try {
-      const response = await fetch("http://localhost:9000/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          mobile,
-          collegeId,
-        }),
+    axios.post("http://localhost:9000/verification", { name, mobile, collegeId })
+    .then((response) => {
+        if (!response.data.auth) {
+          setLoginStatus(false);
+          setError(response.data.message);
+        } else {
+          console.log(response.data);
+          localStorage.setItem("token", response.data.token)
+          setLoginStatus (true);
+          navigate("/events"); 
+        }
       });
-
-      if (response.ok) {
-        console.log("Login successful");
-      } else {
-        console.error("Login failed");
-      }
-    } catch (error) {
-      console.error("Error during login:", error);
-    }
   };
 
   return (
