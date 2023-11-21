@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import HeroCommon from "./HeroCommon";
 import { Grid } from "@mui/material";
 import past_events from "../content/past_events";
 import current_events from "../content/current_events";
@@ -9,7 +8,6 @@ import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
 import Navbar from "../components/Navbar"
-import NeonButton from "./NeonButton";
 
 import MonoAct from "../assets/Pa/PA_Mono_Act.png"
 import StandUp from "../assets/Pa/PA_StandUp.png"
@@ -184,16 +182,18 @@ const Events = () => {
     <div>
       <div style={{ background: "black" }}>
       <Navbar/>
-        <div className="illuminati-theme">
+        <div className="illuminati-theme" style={{padding : "0" , paddingTop : "4rem" , paddingBottom : "3rem"}}>
           <h2 data-aos="fade-up">Upcoming Events of 2024</h2>
           <h2 data-aos="fade-up" style={{fontSize : "22px"}}>Kindly <a href="/login" style={{textDecoration : "none"}}>Login</a> To Register</h2>
           <EventListUpcoming />
         </div>
-        <div data-aos="fade-up">
-          <br />
-          <br />
-          <br />
-          <br />
+        <div data-aos="fade-up" className="illuminati-theme" style={{padding : "0" , paddingBottom : "4rem"}}>
+          {/* <br />
+          <br /> */}
+
+          <h2 data-aos="fade-up" style={{fontSize : "22px" , paddingTop : "-23rem"}}>For Login Details Contact <br/>
+          Shubham : 8766816040
+          </h2>
         </div>
       </div>
 

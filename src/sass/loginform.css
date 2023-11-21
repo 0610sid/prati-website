@@ -19,13 +19,9 @@
 .outer{
   top: 0%;
   position: absolute;
-  
+  width: 100%;  
 }
 
-/* .outer h2{
-  font-family: 'Playfair Display' , serif;
-  font-size: 40px;
-} */
 
 .box h2 {
   margin: 0 0 1.875rem;
