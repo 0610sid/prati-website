@@ -31,12 +31,12 @@ const PACard = ({ name, image }) => {
   );
 };
 
-const RegisterCard = ({ name, image, url }) => {
+const RegisterCard = ({ name, image, url, redirect_url }) => {
   console.log(url);
   return (
     <div className="card-pa" style={{ marginBottom: "2rem" }}>
       <div className="imgbox">
-        <img src={image} alt="" loading="lazy" />
+      <a href={redirect_url}><img src={image} alt="" loading="lazy" /></a>
       </div>
       <div className="content-pa" style={{ marginTop: "-0.5rem" }}>
         <h3>{name}</h3>
@@ -58,13 +58,13 @@ const RegisterCard = ({ name, image, url }) => {
   );
 };
 
-const CommonCard = ({ type, name, image, url, results }) => {
+const CommonCard = ({ type, name, image, url, redirect_url, results }) => {
   return (
     <div>
       {type === "pa" ? (
-        <PACard name={name} image={image} />
+        <PACard name={name} image={image}/>
       ) : type === "reg" ? (
-        <RegisterCard name={name} image={image} url={url} />
+        <RegisterCard name={name} image={image} url={url} redirect_url={redirect_url}/>
       ) : (
         <PACard name={name} image={image} />
       )}
