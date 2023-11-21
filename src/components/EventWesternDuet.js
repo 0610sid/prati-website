@@ -6,9 +6,23 @@ function WesternDuet() {
     const [participantNumber, setParticipantNumber] = useState('');
     const [collegeId, setCollegeId] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         // Handle form submission here.
+        try {
+          const token = localStorage.getItem("token");
+        const response = await axios.post('http://localhost:9000/WesterDuet/addDuo', {
+            participants, // Send the array of participants
+            token
+          });
+    
+            console.log('Response:', response.data);
+            // Optionally, you can reset the form fields here
+            setParticipantName('');
+            setCollegeId('');
+        } catch (error) {
+            console.error('Error:', error);
+        }
     };
   return (
     <div>
@@ -26,7 +40,7 @@ function WesternDuet() {
                 </div>
                
                 <form onSubmit={handleSubmit} className="translucent-form">
-                <h2>Rab bana di jodi</h2>
+                <h2>Rab ne bana di jodi</h2>
                 <h3 id='title2'>~Chance pe dance</h3>
                 <div className='input-label'>
                     <input

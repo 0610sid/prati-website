@@ -12,7 +12,7 @@ function MrandMs() {
       e.preventDefault();
       try {
         const token = localStorage.getItem("token");
-      const response = await axios.post('http://localhost:9000/AddMrAndMs', {
+      const response = await axios.post('http://localhost:9000/MrAndMs/addDuo', {
           participants, // Send the array of participants
           token
         });
