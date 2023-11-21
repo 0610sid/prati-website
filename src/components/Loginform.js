@@ -78,8 +78,9 @@ const LoginForm = () => {
   return (
     <>
     
-      <Navbar transparent />
+    {/* <Navbar/> */}
 
+      
       <div style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: 'cover',
@@ -87,10 +88,14 @@ const LoginForm = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-      }}></div>
+      }}>
+        </div>
+      
+      <div className="outer">
+      <Navbar/>
+      </div>
 
       <div className="box">
-      <h2>PRATIBIMB EVENTS</h2>
         <h2>Login</h2>      
           <form onSubmit={handleSubmit}>
             <div className="inputBox">

@@ -35,7 +35,6 @@ import MonoAct from './components/EventMonoAct';
 import  MrandMs from './components/EventMrAndMs';
 import  SemiClassical from './components/EventSemiClassical';
 import Band from './components/EventBand';
-// import LoginForm from './components/login';
 import Btn from './components/btns';
 
 const theme = createTheme({
@@ -75,20 +74,19 @@ function App() {
     { path: "/illuminati", element: <Illuminati /> },
     { path: "/events", element: <UserRoutes> <Events /> </UserRoutes>},
     { path: "/list", element: <EventsUnprotected /> },
-    // { path: "/events", element: <Events />},
     { path: "/login", element: <Loginform /> },
     { path: "/verification", element: <UserRoutes> <Verification /> </UserRoutes> },
     { path: "/signout", element: <SignOut /> },
     { path: "/admin/login", element: <AdminLogin /> },
     { path: "/admin/verify", element: <AdminRoutes><Verify /></AdminRoutes> },
-    { path: "/GroupDance", element: <EventForm></EventForm> },
-    { path: "/StandUp", element: <Standup></Standup> },
-    { path: "/Western-duet", element: <WesternDuet></WesternDuet> },
-    { path: "/SemiClassical", element: <SemiClassical></SemiClassical> },
-    { path: "/SoloSinging", element: <Solo_Singing></Solo_Singing> },
-    { path: "/MonoAct", element: <MonoAct></MonoAct> },
-    { path: "/Mr&Ms", element: <MrandMs></MrandMs> },
-    { path: "/Band", element: <Band></Band> },
+    { path: "/GroupDance", element: <UserRoutes> <EventForm/> </UserRoutes> },
+    { path: "/StandUp", element: <UserRoutes> <Standup/> </UserRoutes>  },
+    { path: "/Western-duet", element: <UserRoutes> <WesternDuet/> </UserRoutes> },
+    { path: "/SemiClassical", element: <UserRoutes> <SemiClassical/> </UserRoutes>  },
+    { path: "/SoloSinging", element: <UserRoutes> <Solo_Singing/> </UserRoutes>  },
+    { path: "/MonoAct", element: <UserRoutes> <MonoAct /> </UserRoutes> },
+    { path: "/Mr&Ms", element: <UserRoutes> <MrandMs /> </UserRoutes> },
+    { path: "/Band", element: <UserRoutes> <Band /> </UserRoutes> },
     // ...
   ]);
   return routes;

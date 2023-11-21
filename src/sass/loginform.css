@@ -1,7 +1,4 @@
-/* * {
-  margin: 0;
-  box-sizing: border-box;
-} */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&display=swap');
 
 .heading {
   position: relative;
@@ -9,7 +6,7 @@
 
 .box {
   /* position: relative; */
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -1%);
   width: 25rem;
@@ -18,6 +15,13 @@
   background: rgba(0, 0, 0, 0.2);
   border-radius: 0.625rem;
 }
+
+.outer{
+  top: 0%;
+  position: absolute;
+  width: 100%;  
+}
+
 
 .box h2 {
   margin: 0 0 1.875rem;
