@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import "../sass/verification.css";
 import HeroCommon from "./HeroCommon";
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
 const Verification = () => {
   const [name, setName] = useState("");
@@ -48,14 +48,15 @@ const Verification = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    axios.post("http://localhost:9000/verification", { name, mobile, collegeName, collegeId })
+    const token = localStorage.getItem("token");
+    axios.post("http://localhost:9000/verification", { name, mobile, collegeName, collegeId, token })
     .then((response) => {
         if (!response.data.auth) {
           setLoginStatus(false);
           setError(response.data.message);
         } else {
           console.log(response.data);
-          localStorage.setItem("token", response.data.token)
+          // localStorage.setItem("token", response.data.token)
           setLoginStatus (true);
           navigate("/events"); 
         }
