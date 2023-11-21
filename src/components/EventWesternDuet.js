@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import image from "../images/DuetDance.jpg"; 
 import "../sass/events.css"
+import axios from 'axios';
+
 function WesternDuet() {
     const [participantName, setParticipantName] = useState('');
-    const [participantNumber, setParticipantNumber] = useState('');
+    const [participants, setParticipants] = useState('');
     const [collegeId, setCollegeId] = useState('');
 
     const handleSubmit = async (e) => {
@@ -45,10 +47,10 @@ function WesternDuet() {
                 <div className='input-label'>
                     <input
                         type="text"
-                        id="participant-name"
-                        name="participant-name"
-                        value={participantName}
-                        onChange={(e) => setParticipantName(e.target.value)}
+                        id={`participant-name-${i}`}
+                        name={`participant-name-${i}`}
+                        value={participants[i]?.name || ''}
+                        onChange={(e) => handleParticipantChange(e, i, 'name')}
                         required
                     />
                     <label className='l1' htmlFor="participant-name">Participant Name</label>
@@ -56,10 +58,10 @@ function WesternDuet() {
                     <div className='input-label'>
                     <input
                         type="text"
-                        id="participant-number"
-                        name="participant-number"
-                        value={participantNumber}
-                        onChange={(e) => setParticipantNumber(e.target.value)}
+                        id={`college-id-${i}`}
+                        name={`college-id-${i}`}
+                        value={participants[i]?.collegeId || ''}
+                        onChange={(e) => handleParticipantChange(e, i, 'collegeId')}
                         required
                     />
                     <label htmlFor="participant-number" className='l2'>Participant Number</label>
@@ -67,13 +69,15 @@ function WesternDuet() {
                     <div className='input-label'>
                     <input
                         type="url"
-                        id="college-id"
-                        name="college-id"
-                        value={collegeId}
-                        onChange={(e) => setCollegeId(e.target.value)}
+                        id={`college-id-${i}`}
+                        name={`college-id-${i}`}
+                        value={participants[i]?.collegeId || ''}
+                        onChange={(e) => handleParticipantChange(e, i, 'collegeId')}
                         required
                     />
-                    <label htmlFor="college-id" className='l3'>College ID (Drive Link)</label>
+                    <label htmlFor={`college-id-${i}`} className='l3'>
+              College ID (Drive Link)
+            </label>
                     </div>
 
                     <button type="submit" className='Sub'>Submit</button>
@@ -83,5 +87,14 @@ function WesternDuet() {
     </div>
   )
 }
+
+const handleParticipantChange = (e, index, field) => {
+  const updatedParticipants = [...participants];
+  updatedParticipants[index] = {
+    ...updatedParticipants[index],
+    [field]: e.target.value,
+  };
+  setParticipants(updatedParticipants);
+};
 
 export default WesternDuet
