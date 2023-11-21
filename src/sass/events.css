@@ -1,127 +1,226 @@
-.events-home {
-  background: black;
-  background-image: url(../assets/events_bg2.jpg);
-  min-height: auto;
-  background-color: black;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  padding-bottom: 4rem;
+.form-label{
+  font-weight: bold;
+  font-size: x-large;
 }
-
-.events-home .gradient {
-  width: 100%;
-  height: 100px;
-  background: black;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(35%, black), to(rgba(0, 0, 0, 0)));
-  background: linear-gradient(180deg, black 35%, rgba(0, 0, 0, 0) 100%);
-}
-
-@media only screen and (max-width: 900px) {
-  .events-home {
-    min-height: 70vh;
-    padding-bottom: 3rem;
-  }
-}
-
-.events-home .content {
-  text-align: center;
-}
-
-.events-home .content h2 {
-  letter-spacing: 3px;
-  font-family: "Playfair Display", serif;
-  font-size: 60px;
-  font-weight: lighter;
-  padding: 4rem 2rem 2rem 2rem;
-  color: #e9e9e9;
-}
-
-.events-home .content p {
-  padding: 0 2rem;
-  line-height: 2rem;
-  color: #e9e9e9;
-  font-weight: lighter;
-}
-
-@media only screen and (max-width: 900px) {
-  .events-home .content h2 {
-    font-size: 40px;
-    line-height: 40px;
-  }
-  .events-home .content p {
-    padding: 0rem;
-    line-height: 2rem;
-  }
-}
-
-.neon-ill {
-  margin: 0 2rem;
-}
-
-@media only screen and (max-width: 900px) {
-  .neon-ill {
-    margin: 0rem;
-  }
-}
-
-.carousel {
-  overflow: hidden;
-  margin: 2rem;
-}
-
-.inner {
-  white-space: nowrap;
-  -webkit-transition: -webkit-transform 0.3s;
-  transition: -webkit-transform 0.3s;
-  transition: transform 0.3s;
-  transition: transform 0.3s, -webkit-transform 0.3s;
-}
-
-.carousel-item {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  background-color: transparent;
-  width: 300px;
-  color: #fff;
-  opacity: 0.9;
-}
-
-.indicators button {
-  outline: none;
-  background-color: transparent;
-  border: 0;
-}
-
-.indicators button:focus {
-  outline: none;
-}
-
-.indicators {
-  font-size: 30px;
-  display: -webkit-box;
-  display: -ms-flexbox;
+/* Add this to your CSS */
+.registration-form{
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding-top: 2rem;
+  flex-direction: row;
+  align-items: center;
+
+ box-shadow: 0 0 20px white;
+ padding: 20px;
+ border-radius: 10px;
+ background-color: black;
+
+}
+.info{
+  padding: 20px;
+}
+.main{
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+ height: 77vh;
+ box-shadow: 0 0 10px whitesmoke;
+ border-radius: 10px;
+ width: 90%;
+ margin: 1%;
+ margin-left: 5%;
+}
+.infotitle {
+    color: white;
+    font-family: impact;
+    font-size: 2rem;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+   margin-top: 20px;
+   word-spacing: 0.1rem;
+  }
+  
+.translucent-form select {
+  width: 25%;
+  padding: 0.525rem 0;
+  font-size: 1rem;
+  color: black; /* Adjust text color */
+  margin-bottom: 1.5rem;
+  margin-left: 65%;
+  border: none;
+  border-bottom: 0.085rem solid whitesmoke;
+  outline: none;
+  background: transparent;
+color: white;
+  /* Additional styles to match the background */
+  background-color: transparent; /* Set to the same background color as the form */
+  appearance: none; /* Remove default arrow icon in some browsers */
+  -webkit-appearance: none; /* Remove default arrow icon in WebKit browsers */
+}
+.translucent-form select::after {
+  content: '\25BC'; /* Unicode character for a downward arrow */
+  position: absolute;
+  top: 0;
+  right: 0.75rem; /* Adjust the right offset */
+  padding: 0.25rem;
+  pointer-events: none;
+  color: white; /* Adjust the arrow color */
+  background: transparent;
+  transform: translateY(-50%);
+}
+
+/* Style the select when it's focused */
+.translucent-form select:focus {
+  border-bottom: 0.085rem solid #244555; /* Adjust focus color */
+  background: transparent;
+}
+.translucent-form select option {
+  background-color: black;
+  color: white;
+}
+.img{
+  width: 49%;
+  margin-left: .5%;
+  height: 100%;
+  align-items: center;
+  background-size: cover;
+background-repeat: no-repeat;
+height: 450px;
+color: white;
+}
+
+.ulimg li{
+  padding: 8px;
+}
+
+.translucent-form {
+  background: black;
+  max-height: 450px; /* Set a maximum height for the container */
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 50%;
+  height: 450px;
+  color:White
+}
+.translucent-form::-webkit-scrollbar {
+  width: 12px;
+}
+
+.translucent-form::-webkit-scrollbar-thumb {
+  background-color:whitesmoke;
+  border-radius: 6px; 
+}
+
+.translucent-form::-webkit-scrollbar-track {
+  background-color:black; 
+}
+
+#title2{
+  margin-bottom: 30px;
+}
+#Addparticipant{
+  position: relative;
+  margin-left: -150px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background-color: #480363;
+padding: 0.5rem 1rem;
   cursor: pointer;
+  border-radius: 0.325rem;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: -35px;
+}
+#TeamMember{
+  position: relative;
+  margin-left: 150px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background-color: #480363;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 0.325rem;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: -40px;
+}
+.Sub{
+  position: relative;
+  margin-left: 280px;
+  border: none;
+  outline: none;
+  color: black;
+  background-color: whitesmoke;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 0.325rem;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: -40px;
+}
+.translucent-form  label { 
+  position: relative;
+  top: -70px;
+  padding: 0.5rem 0;
+  font-size: 1rem;
+  color: #131313;
+  pointer-events: none;
+color: white;
+  transition: 0.5s;
+}
+#grpNo{
+  position: relative;
+  top: -60px;
+  left: -60px;
+  padding: 0.5rem 0;
+  font-size: 1rem;
+  color: #131313;
+  pointer-events: none;
+color: white;
+  transition: 0.5s;
 }
 
-.indicators > button {
-  font-size: 20px;
-  margin: 7.5px;
+
+.translucent-form .input-label input:focus ~ label,
+.translucent-form .input-label input:valid ~ label,
+.translucent-form .input-label input:not([value=""]) ~ label {
+  top: -2.125rem;
+  left: 0;
+  color: #244555;
+  font-size: 0.75rem;
+}
+.registration-form input {
+  width: 100%;
+  padding: 0.525rem 0;
+  font-size: 1rem;
+  color:white;
+  letter-spacing: 0.062rem;
+  margin-bottom: 1.5rem;
+  border: none;
+  border-bottom: 0.2vh solid whitesmoke;
+  outline: none;
+  background: transparent;
 }
 
-.indicators > button.active {
-  color: #d43d5e;
+.registration-form button:hover {
+  background-color: #b30000; /* Adjust the color as needed */
 }
-/*# sourceMappingURL=events.css.map */
+
+@media (max-width:400px){
+  .registration-form{
+  flex-direction: column;
+  }
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
