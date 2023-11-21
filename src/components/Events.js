@@ -93,65 +93,56 @@ const EventListUpcoming = () => {
     {
         "desc": "Mono Acting",
         "poster": MonoAct,
-        "form": "https://docs.google.com/forms/d/e/1FAIpQLSeg7dgIky6p3PAlu3KCWSdtL1KPAuV-8F-JuzNN5XAOa1kk8Q/viewform?usp=sf_link",
         "name": "Lights Camera Abhinay",
-        "redirect_url": "/MonoAct"
+        "url": "/MonoAct"
     },
     {
         "name": "OnlyPuns",
         "desc": "StandUp",
         "poster": StandUp,
-        "form": "https://docs.google.com/forms/d/e/1FAIpQLSfGg21FOeoAd5ldOTMUEFf-k-cULjYZLEO-NXHj-S38gmjfzA/viewform?usp=sf_link",
-        "redirect_url": "/StandUp"
+        "url": "/StandUp"
     },
     {
         "poster": SoloClassical,
         "desc": "Solo Semi-Classical",
         "name": "Nritta-Nada",
-        "form": "https://docs.google.com/forms/d/e/1FAIpQLSeDnT6KRP00NhYoTP7nDWwCkbymXxbWxqhp1bP5YF0NvF5xAA/viewform?usp=sf_link",
-        "redirect_url": "/SemiClassical"
+        "url": "/SemiClassical"
     },
     {
         "poster": Duet,
-        "form": "https://docs.google.com/forms/d/e/1FAIpQLSfLDpFYvoM9EL3exyayGfHKgLrn3ynE_kCXY0QchDCmUD2JnA/viewform?usp=sf_link",
         "desc": "Western Duet",
         "name": "Rabne bana-di Jodi",
-        "redirect_url": "/WesternDuet"
+        "url": "/WesternDuet"
     },
     {
         "poster": GroupDance,
-        "form": "https://docs.google.com/forms/d/e/1FAIpQLSdsD0lu96K5i-g7LXElrzIiPuzhz60QRipq1v3FDh-g1EDApQ/viewform?usp=sf_link",
         "name": "Nachne de Saare",
         "desc": "Group Dance",
-        "redirect_url": "/GroupDance"
+        "url": "/GroupDance"
     },
     {
         "desc": "Solo Singing",
-        "form": "https://docs.google.com/forms/d/e/1FAIpQLSfjr3iu8nBnVEQ60tR4o0HNcLEIsoxgbdEwA9nWaixkFuM2Dw/viewform?usp=sf_link",
         "name": "Mehfil-E-Prati",
         "poster": SoloSinging,
-        "redirect_url": "/SoloSinging"
+        "url": "/SoloSinging"
     },
     {
         "name": "Rythm Rebels",
         "poster": Band,
-        "form": "https://docs.google.com/forms/d/e/1FAIpQLSedHpSFKpSS1YXMpQVe_kzGSHu4z04W2PkR1A3OCi3pvDyTDw/viewform?usp=sf_link",
         "desc": "Band",
-        "redirect_url": "/Band"
+        "url": "/Band"
     },
     {
-        "form": "https://docs.google.com/forms/d/e/1FAIpQLSfyDae76wme9pe8JQBjK8NJ31maoayNgkSoyu_yjWbcEeNXRA/viewform?usp=sf_link",
         "desc": "Fashion Show",
         "name": "Mr. & Ms. Prati",
         "poster": MrMs,
-        "redirect_url": "/MrAndMs"
+        "url": "/MrAndMs"
     },
     {
-        "form": "https://docs.google.com/forms/d/e/1FAIpQLSfCIcRPJwFGZasLdQGd5A4oGRMvpZnGd5fp_eH-pfPNWQNUkw/viewform?usp=sf_link",
         "name": "Mumbai's Got Talent",
         "poster": MGT,
         "desc": "Talent Show",
-        "redirect_url": "/MonoAct"
+        "url": "/MonoAct"
     }
 ]
 
@@ -179,8 +170,7 @@ const EventListUpcoming = () => {
                 name={il.name}
                 image={il.poster}
                 desc={il.result}
-                url={il.form}
-                redirect_url={il.redirect_url}
+                url={il.url}
                 type="reg"
               />
               <br />

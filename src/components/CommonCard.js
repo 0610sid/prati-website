@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useNavigate } from 'react-router-dom';
 import NeonButton from "./NeonButton";
 const user = localStorage.getItem("user");
 
@@ -31,40 +32,42 @@ const PACard = ({ name, image }) => {
   );
 };
 
-const RegisterCard = ({ name, image, url, redirect_url }) => {
-  console.log(url);
+const RegisterCard = ({ name, image, url }) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(url);
+  };
+
   return (
-    <div className="card-pa" style={{ marginBottom: "2rem" }}>
+    <div className="card-pa" style={{ marginBottom: "5rem" }}>
       <div className="imgbox">
-      <a href={redirect_url}><img src={image} alt="" loading="lazy" /></a>
+        <img src={image} alt="" loading="lazy" />
       </div>
       <div className="content-pa" style={{ marginTop: "-0.5rem" }}>
         <h3>{name}</h3>
         <br />
-        {user && (
-          <a
+        <div className="btn-container" onClick={handleCardClick}>
+          <button
             className="custom-btn btn-15"
-            target="_blank"
-            rel="noreferrer"
             style={{ textDecoration: "none" }}
-            href={url}
           >
-            {" "}
-            Register Now!{" "}
-          </a>
-        )}
+            Register Now!
+          </button>
+        </div>
       </div>
     </div>
   );
 };
 
-const CommonCard = ({ type, name, image, url, redirect_url, results }) => {
+
+const CommonCard = ({ type, name, image, url, results }) => {
   return (
     <div>
       {type === "pa" ? (
         <PACard name={name} image={image}/>
       ) : type === "reg" ? (
-        <RegisterCard name={name} image={image} url={url} redirect_url={redirect_url}/>
+        <RegisterCard name={name} image={image} url={url}/>
       ) : (
         <PACard name={name} image={image} />
       )}
