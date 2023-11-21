@@ -13,7 +13,7 @@ export default function SemiClassical() {
     
         try {
             const token = localStorage.getItem("token");
-            const response = await axios.post('http://localhost:9000/SemiClassical/addParticipant', {
+            const response = await axios.post('http://localhost:9000/semiclassical/addParticipant', {
                 participantName,
                 collegeId, 
                 token

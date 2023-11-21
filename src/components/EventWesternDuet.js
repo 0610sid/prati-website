@@ -11,7 +11,7 @@ function WesternDuet() {
         // Handle form submission here.
         try {
           const token = localStorage.getItem("token");
-        const response = await axios.post('http://localhost:9000/WesterDuet/addDuo', {
+        const response = await axios.post('http://localhost:9000/westernduet/addDuo', {
             participants, // Send the array of participants
             token
           });

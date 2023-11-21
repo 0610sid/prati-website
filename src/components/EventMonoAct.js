@@ -15,7 +15,7 @@ function MonoAct() {
   
       try {
         const token = localStorage.getItem("token");
-          const response = await axios.post('http://localhost:9000/MonoAct/addParticipant', {
+          const response = await axios.post('http://localhost:9000/monoact/addParticipant', {
               participantName,
               collegeId, 
               token
