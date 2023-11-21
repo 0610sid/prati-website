@@ -14,10 +14,12 @@ function Band() {
         console.log("clicked");
         e.preventDefault();
         try {
+          const token = localStorage.getItem("token");
         const response = await axios.post('http://localhost:9000/Band/addTeam', {
             teamName,
             participantNumber,
             participants, // Send the array of participants
+            token
           });
     
             console.log('Response:', response.data);

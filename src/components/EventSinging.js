@@ -11,9 +11,11 @@ function Singing() {
       e.preventDefault();
   
       try {
+        const token = localStorage.getItem("token");
           const response = await axios.post('http://localhost:9000/SoloSinging/addParticipant', {
               participantName,
-              collegeId
+              collegeId, 
+              token
           });
   
           console.log('Response:', response.data);

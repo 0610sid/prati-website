@@ -10,9 +10,11 @@ export default function EventForm() {
         console.log("clicked");
     
         try {
+            const token = localStorage.getItem("token");
             const response = await axios.post('http://localhost:9000/StandUp/addParticipant', {
                 participantName,
-                collegeId
+                collegeId,
+                token
             });
     
             console.log('Response:', response.data);
