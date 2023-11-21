@@ -8,7 +8,7 @@
   flex-direction: row;
   align-items: center;
 
- box-shadow: 0 0 20px white;
+ /* box-shadow: 0 0 20px white; */
  padding: 20px;
  border-radius: 10px;
  background-color: black;
@@ -80,7 +80,7 @@ color: white;
 }
 .img{
   width: 49%;
-  margin-left: .5%;
+  margin-left: 7%;
   height: 100%;
   align-items: center;
   background-size: cover;
@@ -89,8 +89,12 @@ height: 450px;
 color: white;
 }
 
+.img h2 {
+  margin-top: 3%;
+}
+
 .ulimg li{
-  padding: 8px;
+  padding: 2%;
 }
 
 .translucent-form {

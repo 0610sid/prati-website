@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import image from "../images/monoact.jpg"; 
 import "../sass/events.css"
 import axios from 'axios';
+import Navbar from "./Navbar";
 
 function MonoAct() {
     const [participantName, setParticipantName] = useState('');
@@ -27,6 +28,8 @@ function MonoAct() {
       }
   };
   return (
+    <>
+    <Navbar />
     <div>
        <section className="registration-form">
                 <div className='main'>
@@ -72,6 +75,7 @@ function MonoAct() {
                 </div>
             </section>
     </div>
+    </>
   )
 }
 
