@@ -54,12 +54,14 @@ const LoginForm = () => {
           console.log(loginResponse.data);
           localStorage.setItem("token", loginResponse.data.token);
           setLoginStatus(true);
-
           if (loginResponse.data.result[0].isVerified) {
               navigate("/events");
-          } else {
-            navigate("/verification");
-            
+          } 
+          else if (!loginResponse.data.result[0].isFirst) {
+              navigate("/list");
+          }
+          else {
+            navigate("/verification");            
           }
         } else {
             setLoginStatus(false);
