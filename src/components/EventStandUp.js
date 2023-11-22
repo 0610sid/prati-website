@@ -46,7 +46,7 @@ export default function EventForm() {
                 </div>
                
                 <form onSubmit={handleSubmit} className="translucent-form">
-                <h2>OnlyPuns</h2>
+                <p id='heading'>Only Puns</p>
                 <h3 id='title2'>~Sell your jokes</h3>
                 <div className='input-label'>
                     <input

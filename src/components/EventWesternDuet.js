@@ -44,7 +44,7 @@ function WesternDuet() {
           </div>
 
           <form onSubmit={handleSubmit} className="translucent-form">
-            <h2>Rab ne bana di jodi</h2>
+            <p id='heading'>Rab ne bana di jodi</p>
             <h3 id='title2'>~Chance pe dance</h3>
 
             {/* Participant 1 */}

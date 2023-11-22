@@ -94,7 +94,7 @@ function MrandMs() {
                 </div>
                
                 <form onSubmit={handleSubmit} className="translucent-form">
-                <h2>Mr and Ms. Prati</h2>
+                <p id='heading'>Mr and Ms. Prati</p>
                 <h3 id='title2'>~Show your inner beauty</h3>
                 {renderParticipantFields()}
 

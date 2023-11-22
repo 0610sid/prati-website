@@ -81,7 +81,7 @@ function Singing() {
                 </div>
                
                 <form onSubmit={handleSubmit} className="translucent-form">
-                <h2>Mehefile-e-prati</h2>
+                <p id='heading'>Mehefile-e-prati</p>
                 <h3 id='title2'>~Ek shaam pratibimb ke naam</h3>
                 <div className='input-label'>
                     <input
