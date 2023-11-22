@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Box, Link, IconButton, Drawer } from "@mui/material";
+import { jwtDecode } from 'jwt-decode'
 
 import MenuIcon from "@mui/icons-material/Menu";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -9,6 +10,9 @@ import logo from "../assets/prati-white.png";
 const Navbar = () => {
   const navchange = useMediaQuery("(min-width:1300px)");
   const user = localStorage.getItem("token");
+  let verified = false;
+  if (user)
+  { verified = jwtDecode(user).isverified; }
 
   const Navlinks = ({ fd }) => {
     return (
@@ -24,11 +28,19 @@ const Navbar = () => {
               <p>About</p>
             </Link>
           </Box>
-          <Box p={3}>
-            <Link underline="none" href="/list" color="inherit">
-              <p>Events</p>
-            </Link>
-          </Box>
+          {verified ? (
+            <Box p={3}>
+              <Link underline="none" href="/events" color="inherit">
+                <p>Events</p>
+              </Link>
+            </Box>
+          ) : (
+            <Box p={3}>
+              <Link underline="none" href="/list" color="inherit">
+                <p>Events</p>
+              </Link>
+            </Box>
+          )}
           <Box p={3}>
             <Link underline="none" href="/illuminati" color="inherit">
               <p>Illuminati</p>
