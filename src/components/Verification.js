@@ -49,19 +49,25 @@ const Verification = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
-    axios.post("http://localhost:9000/verification", { name, mobile, collegeName, collegeId, token })
-    .then((response) => {
-        if (!response.data.auth) {
-          setLoginStatus(false);
-          setError(response.data.message);
-        } else {
-          console.log(response.data);
-          // localStorage.setItem("token", response.data.token)
-          setLoginStatus (true);
-          navigate("/events"); 
-        }
-      });
+  
+    try {
+      const response = await axios.post("http://localhost:9000/verification", { name, mobile, collegeName, collegeId, token });
+  
+      if (response.data.auth) {
+        console.log(response.data);
+        setLoginStatus(true);
+        navigate("/list");
+      } else {
+        setLoginStatus(false);
+        setError(response.data.message);
+      }
+    } catch (error) {
+      console.error("Error during verification:", error);
+      setLoginStatus(false);
+      setError("Error during submitting form");
+    }
   };
+  
 
   return (
     <div>
@@ -115,6 +121,7 @@ const Verification = () => {
             />
             <label>College Id (Drive Link)</label>
           </div>
+          {error && <b><p style={{ color: 'red' }} className="error-message">{error}</p></b>}
           <div className="center-btn">
             <input
               type="submit"

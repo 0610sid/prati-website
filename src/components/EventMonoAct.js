@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import image from "../images/monoact.jpg"; 
 import "../sass/events.css"
 import axios from 'axios';
@@ -6,29 +7,63 @@ import Navbar from "./Navbar";
 
 function MonoAct() {
     const [participantName, setParticipantName] = useState('');
-    const [collegeId, setCollegeId] = useState('');
+  const [collegeId, setCollegeId] = useState('');
+  const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+  const [countdown, setCountdown] = useState(5);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
-   
-    const handleSubmit = async(e) => {
-      e.preventDefault();
-      console.log("clicked");
-  
-      try {
-        const token = localStorage.getItem("token");
-          const response = await axios.post('http://localhost:9000/monoact/addParticipant', {
-              participantName,
-              collegeId, 
-              token
-          });
-  
-          console.log('Response:', response.data);
-          // Optionally, you can reset the form fields here
-          setParticipantName('');
-          setCollegeId('');
-      } catch (error) {
-          console.error('Error:', error);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    let countdownInterval;
+
+    if (showSuccessMessage) {
+      countdownInterval = setInterval(() => {
+        setCountdown((prevCountdown) => prevCountdown - 1);
+      }, 1000);
+    }
+
+    return () => {
+      clearInterval(countdownInterval);
+    };
+  }, [showSuccessMessage]);
+
+  useEffect(() => {
+    if (countdown === 0) {
+      navigate('/events');
+    }
+  }, [countdown, navigate]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.post('http://localhost:9000/monoact/addParticipant', {
+        participantName,
+        collegeId,
+        token
+      });
+
+      setParticipantName('');
+      setCollegeId('');
+
+      if (response.data === 'Participant added successfully') {
+        setError(''); 
+        setShowSuccessMessage(true);
       }
+    } catch (error) {
+      console.error('Error:', error);
+
+      if (error.response && error.response.status === 400) {
+        setError('Your college has already registered');
+      } else {
+        setError('Internal Server Error');
+      }
+    }
   };
+
   return (
     <>
     <Navbar />
@@ -71,6 +106,13 @@ function MonoAct() {
                     />
                     <label htmlFor="college-id" className='l3'>College ID (Drive Link)</label>
                     </div>
+                    {error && <b><p style={{ color: 'red' }} className="error-message">{error}</p></b>}
+              {showSuccessMessage && (
+                <>
+                  <p style={{ color: 'green' }}>Form Submitted Successfully</p>
+                  <p>Redirecting in {countdown} seconds</p>
+                </>
+              )}
 
                     <button type="submit" className='Sub'>Submit</button>
                 </form>

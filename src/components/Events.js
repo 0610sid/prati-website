@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Navbar from "./Navbar";
 import HeroCommon from "./HeroCommon";
 import { Grid } from "@mui/material";
 import past_events from "../content/past_events";
@@ -28,6 +29,7 @@ const EventListPast = () => {
   const justify2 = useMediaQuery("(min-width:600px)");
 
   return (
+    
     <ImageList
       sx={{ width: "100%" }}
       cols={justify2 ? (justify1 ? 6 : 4) : 2}
@@ -153,6 +155,7 @@ const EventListUpcoming = () => {
   }, []);
 
   return (
+    
     <div style={{ margin: "6rem 0 2rem 0" }}>
       <Grid container spacing={5} justifyContent={justify ? "start" : "center"}>
         {info.map((il, index) => {
@@ -186,6 +189,7 @@ const EventListUpcoming = () => {
 const Events = () => {
   return (
     <div>
+      <Navbar />
       <div style={{ background: "black" }}>
         <div className="illuminati-theme">
           <h2 data-aos="fade-up">Upcoming Events of 2024</h2>

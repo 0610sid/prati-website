@@ -20,6 +20,7 @@ import "aos/dist/aos.css";
 import UpcomingEvents from "./components/UpcomingEvents";
 import Loginform from "./components/Loginform";
 import Verification from "./components/Verification";
+import VerificationRedirect from "./components/VerificationRedirect";
 import SignOut from "./components/SignOut";
 import AdminLogin from "./components/AdminLogin";
 import Verify from "./components/Verify" 
@@ -76,6 +77,7 @@ function App() {
     { path: "/list", element: <EventsUnprotected /> },
     { path: "/login", element: <Loginform /> },
     { path: "/verification", element: <UserRoutes> <Verification /> </UserRoutes> },
+    { path: "/verificationRedirect", element: <UserRoutes> <VerificationRedirect /> </UserRoutes> },
     { path: "/signout", element: <SignOut /> },
     { path: "/admin/login", element: <AdminLogin /> },
     { path: "/admin/verify", element: <AdminRoutes><Verify /></AdminRoutes> },

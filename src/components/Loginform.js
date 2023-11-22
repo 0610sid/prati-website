@@ -45,19 +45,16 @@ const LoginForm = () => {
     e.preventDefault();
 
     try {
-        // Perform the login request
         const loginResponse = await axios.post("http://localhost:9000/login", {
             username,
             password
         });
 
-        // Check the authentication status
         if (loginResponse.data.auth) {
           console.log(loginResponse.data);
           localStorage.setItem("token", loginResponse.data.token);
           setLoginStatus(true);
 
-          // Check if user is verified
           if (loginResponse.data.result[0].isVerified) {
               navigate("/events");
           } else {
@@ -65,13 +62,11 @@ const LoginForm = () => {
             
           }
         } else {
-            // Login failed
             setLoginStatus(false);
             setError(loginResponse.data.message);
         }
     } catch (error) {
         console.error("Error during login:", error);
-        // Handle the error as needed
     }
 };
 
@@ -168,8 +163,6 @@ const LoginForm = () => {
       <br />
       <br />
       <br />
-
-      
 
         
       </div>
