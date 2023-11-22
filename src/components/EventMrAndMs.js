@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import "../sass/events.css"
 import axios from 'axios';
 import Navbar from "./Navbar";
+import image from "../images/FashionShow.jpg"
+
 
 function MrandMs() {
   const [participantName, setParticipantName] = useState('');
@@ -75,17 +77,19 @@ function MrandMs() {
     setParticipants(updatedParticipants);
   };
   return (
-    <div>
+    <div style={{backgroundColor:"black"}}>
+      <Navbar/>
+
        <section className="registration-form">
                 <div className='main'>
-                <div className='img' >
+                <div className='img' style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${image})` }}>
                     <h2 id='info-title' >A quick go through before you register</h2>
                       <ul className='ulimg'>
-        
-                        <li className=''>Rules:WebFree. Welcome to CodePen. Sign Up with Google. Sign Up with GitHub. Sign Up with Facebook. </li>
-                        <li className=''>Rules:Or, Sign Up with Email. By signing up, you agree to CodePen's Terms</li>
-                        <li className=''>description:OOr, Sign Up with Email. By signing up, you agree to CodePen's Termsr, Sign Up with Email. By signing up, you agree to CodePen's Terms</li>
-                        <li className=''><strong>Contact person:@Tejal-1234567890</strong></li>
+                      <li className=''>January 5 , 2024 @ 12:00 pm</li>
+                      <li className=''>Single entry per college</li>
+                      <li className=''>Please maintain decency in outfit choice.</li>
+                      <li className=''>For detailed rules please visit <a href='https://drive.google.com/file/d/12ADjgD9CZMaOUB5QMZG-19gIMWQEp19t/view?usp=drive_link'>here</a>.</li>
+                      <li className=''><strong>Shubhangi Bagul : 8766816040</strong></li>
                         </ul> 
                 </div>
                

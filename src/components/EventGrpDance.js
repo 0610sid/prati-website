@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import image from "../images/grpdance2.jpg"; 
 import axios from 'axios';
 import "../sass/events.css"
+import Navbar from "./Navbar";
+
+
 export default function EventForm() {
     const [participantName, setParticipantName] = useState('');
     const [teamName, setTeamName] = useState('');
@@ -79,17 +82,19 @@ export default function EventForm() {
         setParticipants(updatedParticipants);
       };
     return (
-        <>
+        <div style={{backgroundColor:"black"}}>
+          <Navbar/>
+
             <section className="registration-form">
                 <div className='main'>
                 <div className='img' style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${image})` }}>
                     <h2 className='infotitle infotitle--shadow' >A quick go through before you register</h2>
                       <ul className='ulimg'>
-        
-                        <li className=''>Rules:WebFree. Welcome to CodePen. Sign Up with Google. Sign Up with GitHub. Sign Up with Facebook. </li>
-                        <li className=''>Rules:Or, Sign Up with Email. By signing up, you agree to CodePen's Terms</li>
-                        <li className=''>description:OOr, Sign Up with Email. By signing up, you agree to CodePen's Termsr, Sign Up with Email. By signing up, you agree to CodePen's Terms</li>
-                        <li className=''><strong>Contact person:@Tejal-1234567890</strong></li>
+                      <li className=''>January 5 , 2024 @ 5:00 pm</li>
+                      <li className=''>Single entry per college</li>
+                      <li className=''>Please ensure safety in your performance.</li>
+                      <li className=''>For detailed rules please visit <a href='https://drive.google.com/file/d/12ADjgD9CZMaOUB5QMZG-19gIMWQEp19t/view?usp=drive_link'>here</a>.</li>
+                      <li className=''><strong>Yashvi Gala : 9930336236</strong></li>
                         </ul> 
                 </div>
                
@@ -131,6 +136,6 @@ export default function EventForm() {
                 </form>
                 </div>
             </section>
-        </>
+        </div>
     );
 }

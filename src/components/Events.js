@@ -138,7 +138,7 @@ const EventListUpcoming = () => {
         "desc": "Fashion Show",
         "name": "Mr. & Ms. Prati",
         "poster": MrMs,
-        "url": "/MrAndMs"
+        "url": "/Mr&Ms"
     },
     {
         "name": "Mumbai's Got Talent",
