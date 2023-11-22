@@ -6,10 +6,9 @@ import axios from 'axios';
 import Navbar from "./Navbar";
 
 function MonoAct() {
-    const [participantName, setParticipantName] = useState('');
+  const [participantName, setParticipantName] = useState('');
   const [collegeId, setCollegeId] = useState('');
   const [error, setError] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
   const [countdown, setCountdown] = useState(5);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
@@ -82,7 +81,7 @@ function MonoAct() {
                 </div>
                
                 <form onSubmit={handleSubmit} className="translucent-form">
-                <h2>Mehefile-e-prati</h2>
+                <p id='heading'>Mehefile-e-prati</p>
                 <h3 id='title2'>~Ek shaam pratibimb ke naam</h3>
                 <div className='input-label'>
                     <input
@@ -107,12 +106,12 @@ function MonoAct() {
                     <label htmlFor="college-id" className='l3'>College ID (Drive Link)</label>
                     </div>
                     {error && <b><p style={{ color: 'red' }} className="error-message">{error}</p></b>}
-              {showSuccessMessage && (
-                <>
-                  <p style={{ color: 'green' }}>Form Submitted Successfully</p>
-                  <p>Redirecting in {countdown} seconds</p>
-                </>
-              )}
+                    {showSuccessMessage && (
+                      <>
+                      <p style={{ color: 'green' }}>Form Submitted Successfully</p>
+                      <p>Redirecting in {countdown} seconds</p>
+                      </>
+                    )}
 
                     <button type="submit" className='Sub'>Submit</button>
                 </form>

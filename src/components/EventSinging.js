@@ -1,32 +1,67 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import image from "../images/sing.jpg"; 
+// import "../sass/events.css"
 import axios from 'axios';
+import Navbar from "./Navbar";
 
 function Singing() {
     const [participantName, setParticipantName] = useState('');
     const [collegeId, setCollegeId] = useState('');
+    const [error, setError] = useState('');
+    const [countdown, setCountdown] = useState(5);
+    const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      let countdownInterval;
+  
+      if (showSuccessMessage) {
+        countdownInterval = setInterval(() => {
+          setCountdown((prevCountdown) => prevCountdown - 1);
+        }, 1000);
+      }
+  
+      return () => {
+        clearInterval(countdownInterval);
+      };
+    }, [showSuccessMessage]);
+  
+    useEffect(() => {
+      if (countdown === 0) {
+        navigate('/events');
+      }
+    }, [countdown, navigate]);
+  
     const handleSubmit = async (e) => {
-      console.log("clicked");
       e.preventDefault();
   
       try {
         const token = localStorage.getItem("token");
-          const response = await axios.post('http://localhost:9000/solosinging/addParticipant', {
-              participantName,
-              collegeId, 
-              token
-          });
+        const response = await axios.post('http://localhost:9000/solosinging/addParticipant', {
+          participantName,
+          collegeId,
+          token
+        });
   
-          console.log('Response:', response.data);
-          // Optionally, you can reset the form fields here
-          setParticipantName('');
-          setCollegeId('');
+        setParticipantName('');
+        setCollegeId('');
+  
+        if (response.data === 'Participant added successfully') {
+          setError(''); 
+          setShowSuccessMessage(true);
+        }
       } catch (error) {
-          console.error('Error:', error);
-      }
-  };
+        console.error('Error:', error);
   
+        if (error.response && error.response.status === 400) {
+          setError('Your college has already registered');
+        } else {
+          setError('Internal Server Error');
+        }
+      }
+    };  
   
   return (
     <div>
@@ -68,6 +103,13 @@ function Singing() {
                     />
                     <label htmlFor="college-id" className='l3'>College ID (Drive Link)</label>
                     </div>
+                    {error && <b><p style={{ color: 'red' }} className="error-message">{error}</p></b>}
+                    {showSuccessMessage && (
+                      <>
+                      <p style={{ color: 'green' }}>Form Submitted Successfully</p>
+                      <p>Redirecting in {countdown} seconds</p>
+                      </>
+                    )}
 
                     <button type="submit" className='Sub'>Submit</button>
                 </form>
