@@ -54,16 +54,14 @@ const Verification = () => {
       const response = await axios.post("http://localhost:9000/verification", { name, mobile, collegeName, collegeId, token });
   
       if (response.data.auth) {
-        console.log(response.data);
-        setLoginStatus(true);
-        navigate("/list");
+        console.log(response.data.result);
+        navigate("/verificationRedirect");
       } else {
         setLoginStatus(false);
         setError(response.data.message);
       }
     } catch (error) {
       console.error("Error during verification:", error);
-      setLoginStatus(false);
       setError("Error during submitting form");
     }
   };
@@ -113,7 +111,7 @@ const Verification = () => {
             </div>
           <div className="inputBox">
             <input
-              type="text"
+              type="url"
               name="collegeId"
               required
               value={collegeId}

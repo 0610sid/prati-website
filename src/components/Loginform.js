@@ -54,15 +54,12 @@ const LoginForm = () => {
           console.log(loginResponse.data);
           localStorage.setItem("token", loginResponse.data.token);
           setLoginStatus(true);
-          if (loginResponse.data.result[0].isVerified) {
-              navigate("/events");
-          } 
-          else if (!loginResponse.data.result[0].isFirst) {
-              navigate("/list");
-          }
-          else {
-            navigate("/verification");            
-          }
+          if (loginResponse.data.result[0].isfirst && !loginResponse.data.result[0].isverified) 
+          { navigate('/verification'); }
+          else if (!loginResponse.data.result[0].isfirst && !loginResponse.data.result[0].isverified)
+          { navigate('/verificationRedirect'); }
+          else if (loginResponse.data.result[0].isverified)
+          { navigate('/events'); }
         } else {
             setLoginStatus(false);
             setError(loginResponse.data.message);

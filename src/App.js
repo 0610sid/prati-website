@@ -37,6 +37,7 @@ import  MrandMs from './components/EventMrAndMs';
 import  SemiClassical from './components/EventSemiClassical';
 import Band from './components/EventBand';
 import Btn from './components/btns';
+import VerificationCheck from './utils/VerificationCheck';
 
 const theme = createTheme({
   palette: {
@@ -73,7 +74,7 @@ function App() {
     { path: "/gallery", element: <Gallery /> },
     { path: "/about", element: <About /> },
     { path: "/illuminati", element: <Illuminati /> },
-    { path: "/events", element: <UserRoutes> <Events /> </UserRoutes>},
+    { path: "/events", element: <UserRoutes><VerificationCheck> <Events /> </VerificationCheck></UserRoutes>},
     { path: "/list", element: <EventsUnprotected /> },
     { path: "/login", element: <Loginform /> },
     { path: "/verification", element: <UserRoutes> <Verification /> </UserRoutes> },
@@ -81,14 +82,14 @@ function App() {
     { path: "/signout", element: <SignOut /> },
     { path: "/admin/login", element: <AdminLogin /> },
     { path: "/admin/verify", element: <AdminRoutes><Verify /></AdminRoutes> },
-    { path: "/GroupDance", element: <UserRoutes> <EventForm/> </UserRoutes> },
-    { path: "/StandUp", element: <UserRoutes> <Standup/> </UserRoutes>  },
-    { path: "/WesternDuet", element: <UserRoutes> <WesternDuet/> </UserRoutes> },
-    { path: "/SemiClassical", element: <UserRoutes> <SemiClassical/> </UserRoutes>  },
-    { path: "/SoloSinging", element: <UserRoutes> <Solo_Singing/> </UserRoutes>  },
-    { path: "/MonoAct", element: <UserRoutes> <MonoAct /> </UserRoutes> },
-    { path: "/Mr&Ms", element: <UserRoutes> <MrandMs /> </UserRoutes> },
-    { path: "/Band", element: <UserRoutes> <Band /> </UserRoutes> },
+    { path: "/GroupDance", element: <UserRoutes><VerificationCheck> <EventForm/> </VerificationCheck></UserRoutes> },
+    { path: "/StandUp", element: <UserRoutes><VerificationCheck> <Standup/> </VerificationCheck></UserRoutes>  },
+    { path: "/WesternDuet", element: <UserRoutes><VerificationCheck> <WesternDuet/> </VerificationCheck></UserRoutes> },
+    { path: "/SemiClassical", element: <UserRoutes><VerificationCheck> <SemiClassical/> </VerificationCheck></UserRoutes>  },
+    { path: "/SoloSinging", element: <UserRoutes><VerificationCheck> <Solo_Singing/> </VerificationCheck></UserRoutes>  },
+    { path: "/MonoAct", element: <UserRoutes><VerificationCheck> <MonoAct /></VerificationCheck> </UserRoutes> },
+    { path: "/Mr&Ms", element: <UserRoutes><VerificationCheck> <MrandMs /></VerificationCheck> </UserRoutes> },
+    { path: "/Band", element: <UserRoutes><VerificationCheck> <Band /></VerificationCheck> </UserRoutes> },
     // ...
   ]);
   return routes;
