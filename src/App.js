@@ -83,7 +83,7 @@ function App() {
     { path: "/admin/verify", element: <AdminRoutes><Verify /></AdminRoutes> },
     { path: "/GroupDance", element: <UserRoutes> <EventForm/> </UserRoutes> },
     { path: "/StandUp", element: <UserRoutes> <Standup/> </UserRoutes>  },
-    { path: "/Western-duet", element: <UserRoutes> <WesternDuet/> </UserRoutes> },
+    { path: "/WesternDuet", element: <UserRoutes> <WesternDuet/> </UserRoutes> },
     { path: "/SemiClassical", element: <UserRoutes> <SemiClassical/> </UserRoutes>  },
     { path: "/SoloSinging", element: <UserRoutes> <Solo_Singing/> </UserRoutes>  },
     { path: "/MonoAct", element: <UserRoutes> <MonoAct /> </UserRoutes> },

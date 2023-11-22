@@ -107,7 +107,7 @@ const EventListUpcoming = () => {
     {
         "poster": SoloClassical,
         "desc": "Solo Semi-Classical",
-        "name": "Nritta-Nada",
+        "name": "Natarang",
         "url": "/SemiClassical"
     },
     {
@@ -156,7 +156,7 @@ const EventListUpcoming = () => {
 
   return (
     
-    <div style={{ margin: "6rem 0 2rem 0" }}>
+    <div style={{ margin: "6rem 0 0 0" }}>
       <Grid container spacing={5} justifyContent={justify ? "start" : "center"}>
         {info.map((il, index) => {
           return (
@@ -189,35 +189,25 @@ const EventListUpcoming = () => {
 const Events = () => {
   return (
     <div>
-      <Navbar />
       <div style={{ background: "black" }}>
+      <Navbar />
         <div className="illuminati-theme">
           <h2 data-aos="fade-up">Upcoming Events of 2024</h2>
           <EventListUpcoming />
         </div>
-        <div data-aos="fade-up">
-          <br />
-          <br />
-          <br />
-          <br />
-        </div>
       </div>
 
-      <div className="illuminati-events-wrapper pa-background">
+      {/* <div className="illuminati-events-wrapper pa-background">
         <div className="illuminati-events">
           <h2 style={{ color: "black" }} data-aos="fade-up">
             Events of 2021
           </h2>
           <EventListCurrent />
         </div>
-      </div>
+      </div> */}
 
       <div
-        className="illuminati-events-wrapper"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(35,31,42,1) 0%, rgba(145,130,172,1) 100%)",
-        }}
+        className="illuminati-events-wrapper pa-background"
       >
         <div className="illuminati-events">
           <h2 data-aos="fade-up">Past Events</h2>

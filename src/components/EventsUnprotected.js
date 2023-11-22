@@ -99,7 +99,7 @@ const EventListUpcoming = () => {
     {
         "poster": SoloClassical,
         "desc": "Solo Semi-Classical",
-        "name": "Nritta-Nada",
+        "name": "Natarang",
     },
     {
         "poster": Duet,
@@ -198,11 +198,7 @@ const Events = () => {
       </div> */}
 
       <div
-        className="illuminati-events-wrapper"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(35,31,42,1) 0%, rgba(145,130,172,1) 100%)",
-        }}
+        className="illuminati-events-wrapper pa-background"
       >
         <div className="illuminati-events">
           <h2 data-aos="fade-up">Past Events</h2>
