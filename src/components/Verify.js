@@ -1,58 +1,42 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-// import "../sass/adminVerify.css"
-import HeroCommon from "./HeroCommon";
-import NeonButton from "./NeonButton";
 
 const Verify = () => {
     const [values, setValues] = useState([]);
-    const [data, setData] = useState([]);
-
     const navigate = useNavigate();
 
-    const customStyles = {
-        content: {
-          backgroundColor: "rgba(71, 70, 68, 0.7)",
-          backdropFilter: "blur(10px)",
-          border: "none",
-        },
-      };
-
-    useEffect(() => {
-        const getData = async() => {
-            const res = await fetch("http://localhost:9000/admin/verify");
-            const fetchedData = await res.json();
-            setValues(fetchedData);
-        }
+      useEffect(() => {
+        const getData = async () => {
+            try {
+                const res = await fetch("http://localhost:9000/admin/verify");
+                const fetchedData = await res.json();
+                setValues(fetchedData)
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
         getData();
     }, []);
 
-    const handleSubmit = async(ccCode) => {
-        // e.preventDefault();
-
-        axios.put("http://localhost:9000/admin/verify/ccCode")
-        .then((response) => {
-            if (!response.data.success) {
-                console.log(response.data.message);
-            } else {
-            console.log(response.data);
-         }
-         navigate("/admin/verify");
-        });
+    const handleSubmit = async (ccCode) => {
+        axios.put(`http://localhost:9000/admin/verify/${ccCode}`)
+            .then((response) => {
+                if (!response.data.success) {
+                    console.log(response.data.message);
+                } else {
+                    console.log(response.data);
+                }
+                // Move navigate inside the else block to avoid navigating on error
+                navigate("/admin/verify");
+            }); 
     };
 
     return (
         <>
-            <HeroCommon
-            imgClass="hero-events"
-            title=" "
-            subtitle=" "
-            customStyles={customStyles}
-        />
             <br />
             <h2 style={{textAlign: "center"}}>Logged In users</h2>
-            <table bordered hover size="sm" style={{maxWidth: "1000px"}} align='center'>
+            <table border="true" hover="true" size="sm" style={{ maxWidth: "1000px" }} align='center'>
             <thead>
                 <tr>
                 <th>CC_Code</th>
@@ -60,19 +44,18 @@ const Verify = () => {
                 <th>College Id</th>
                 <th>Name</th>
                 <th>Mobile Number</th>  
-                <th></th>              
+                <th>Button</th>              
                 </tr>
             </thead>
             <tbody>
-                {
-                values.map( (getValues) => (
+                {values.rows && values.rows.map((getValues) => (
                     <tr>
-                        <td>{ getValues.ccCode }</td>
-                        <td>{ getValues.collegeName }</td>
-                        <td>{ getValues.collegeId }</td>
+                        <td>{ getValues.cc_code}</td>
+                        <td>{ getValues.collegename }</td>
+                        <td>{ getValues.college_id }</td>
                         <td>{ getValues.name }</td>
-                        <td>{ getValues.mobNo }</td>
-                        <td><button type="submit" onClick={handleSubmit(getValues.ccCode)}>Verify</button></td>
+                        <td>{ getValues.mobile }</td>
+                        <td><button type="submit" onClick={() => handleSubmit(getValues.cc_code)}>Verify</button></td>
                     </tr>
                 ))
                 }  
