@@ -42,14 +42,15 @@
    margin-top: 20px;
    word-spacing: 0.1rem;
   }
-  
+
 .translucent-form select {
-  width: 25%;
+  align-items: center;
+  width: 15%;
   padding: 0.525rem 0;
   font-size: 1rem;
   color: black; /* Adjust text color */
   margin-bottom: 1.5rem;
-  margin-left: 65%;
+  margin-left: 60%;
   border: none;
   border-bottom: 0.085rem solid whitesmoke;
   outline: none;
@@ -64,7 +65,7 @@ color: white;
   content: '\25BC'; /* Unicode character for a downward arrow */
   position: absolute;
   top: 0;
-  right: 0.75rem; /* Adjust the right offset */
+  left: 0.30rem; /* Adjust the right offset */
   padding: 0.25rem;
   pointer-events: none;
   color: white; /* Adjust the arrow color */
@@ -78,6 +79,8 @@ color: white;
   background: transparent;
 }
 .translucent-form select option {
+  margin-left: 50%;
+  width: 25%;
   background-color: black;
   color: white;
 }
@@ -128,7 +131,7 @@ text-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
 }
 
 .translucent-form::-webkit-scrollbar-thumb {
-  background-color:whitesmoke;
+  background-color:#480363;
   border-radius: 6px; 
 }
 
@@ -136,20 +139,7 @@ text-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
   background-color:black; 
 }
 
-#Addparticipant{
-  position: relative;
-  margin-left: -150px;
-  border: none;
-  outline: none;
-  color: #fff;
-  background-color: #480363;
-padding: 0.5rem 1rem;
-  cursor: pointer;
-  border-radius: 0.325rem;
-  font-size: 1rem;
-  text-align: center;
-  margin-top: -35px;
-}
+
 #TeamMember{
   position: relative;
   margin-left: 150px;
@@ -164,13 +154,16 @@ padding: 0.5rem 1rem;
   text-align: center;
   margin-top: -40px;
 }
+.input-label{
+  width: 100%;
+}
 .Sub{
   position: relative;
-  margin-left: 280px;
+  margin-top: 3%;
   border: none;
   outline: none;
   color: black;
-  background-color: violet;
+  background-color:#480363;
   padding: 0.3rem 0.7rem;
   cursor: pointer;
   border-radius: 0.325rem;
@@ -179,8 +172,10 @@ padding: 0.5rem 1rem;
   margin-top: -40px;
 }
 #title2{
+  padding: 10px;
   margin-bottom: 30px;
   margin-left: 22%;
+  padding: 5px;
   font-style: italic;
   text-shadow: 0 0 2px rgba(255, 255, 255, 0.8), 0 0 8px rgba(138, 43, 226, 0.6), 0 0 10px rgba(255, 255, 255, 0.4);
 }
@@ -192,23 +187,23 @@ padding: 0.5rem 1rem;
   text-shadow: 0 0 3px rgba(255, 255, 255, 0.8), 0 0 10px rgba(138, 43, 226, 0.6), 0 0 10px rgba(255, 255, 255, 0.4);
 }
 .translucent-form  label { 
+  display: inline;
   text-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
-  text-align: center;
   position: relative;
   top: -50px;
-  padding: 1rem 0;
+  padding: 0.2rem 0;
   font-size: 1rem;
   color: #131313;
   pointer-events: none;
   color: white;
   transition: 0.5s;
-  margin-left: 20%;
+  margin-left: 10%;
 }
 #grpNo{
+  width: auto;
   position: relative;
-  top: -60px;
-  left: -60px;
-  padding: 0.5rem 0;
+  top: -50px;
+  left: -50px;
   font-size: 1rem;
   color: #131313;
   pointer-events: none;
@@ -221,10 +216,12 @@ color: white;
 .translucent-form .input-label input:valid ~ label,
 .translucent-form .input-label input:not([value=""]) ~ label {
   text-align: center;
-  top: -2.125rem;
-  left: 0;
-  color: #244555;
-  font-size: 0.75rem;
+  left: -10%;
+  top: -5.125rem;
+  color:whitesmoke;
+  font-size: 0.85rem;
+  transition: all 1s ease;
+
 }
 .registration-form input {
   width: 100%;
@@ -243,16 +240,73 @@ color: white;
   background-color: #b30000; /* Adjust the color as needed */
 }
 
-@media (max-width:400px){
-  .registration-form{
-  flex-direction: column;
-  }
+@media (max-width: 600px) {
+
+
+ 
+  
+.img h2 {
+ font-size: 1.5rem;
+    margin-top: 0%;
+
 }
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.img{
+      width: 95%;
+      padding: 5%;
+}
+
+  .main {
+    margin-left: 0;
+  flex-direction: column;
+  height: auto;
+  width: 98%;
   }
-  to {
-    transform: rotate(360deg);
+ 
+  #heading, .title2{
+        text-align: center;
   }
+
+  #Addparticipant,
+  #TeamMember,
+  .Sub {
+    margin-top:2px;
+    margin-left: 0;
+  }
+
+  #title2 {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .translucent-form label {
+    margin-left: 0;
+    text-align: center;
+  }
+  
+  .translucent-form select{
+      width: 25%;
+      margin-left: 68%;
+  }
+  #grpNo {
+    left: auto;
+  }
+
+  .registration-form,
+  .translucent-form {
+    width: auto;
+    margin-left: 1%;
+  }
+  .translucent-form .input-label input:focus ~ label,
+  .translucent-form .input-label input:valid ~ label,
+  .translucent-form .input-label input:not([value=""]) ~ label {
+    text-align: center;
+    left: -1%;
+    top: -5.125rem;
+    color:whitesmoke;
+    font-size: 0.85rem;
+    transition: all 1s ease;
+  
+  }
+ 
+  
 }
