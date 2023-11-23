@@ -16,7 +16,7 @@ function MrandMs() {
       e.preventDefault();
       try {
         const token = localStorage.getItem("token");
-      const response = await axios.post('http://localhost:9000/mrandms/addDuo', {
+      const response = await axios.post('http://localhost:9000/events/mrandms/addDuo', {
           participants, // Send the array of participants
           token
         });

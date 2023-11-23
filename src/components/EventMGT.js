@@ -16,7 +16,7 @@ export default function EventForm() {
     console.log("clicked");
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:9000/MGT/addTeam', {
+      const response = await axios.post('http://localhost:9000/events/MGT/addTeam', {
         teamName,
         participantNumber,
         participants, // Send the array of participants
