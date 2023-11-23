@@ -366,10 +366,6 @@ color: white;
 }
 
 @media (max-width: 600px) {
-
-
- 
-  
 .img h2 {
  font-size: 1.5rem;
     margin-top: 0%;
@@ -380,38 +376,38 @@ color: white;
       padding: 5%;
 }
 
-  .main {
-    margin-left: 0;
+.main {
+  margin-left: 0;
+}
+
 @media (max-width: 600px) {
-
-
- 
-  
-.img h2 {
- font-size: 1.5rem;
+  .img h2 {
+    font-size: 1.5rem;
     margin-top: 0%;
+  }
 
-}
-.img{
-      width: 95%;
-      padding: 5%;
-}
+  .img {
+    width: 95%;
+    padding: 5%;
+  }
 
   .main {
     margin-left: 0;
-  flex-direction: column;
-  height: auto;
-  width: 98%;
+    flex-direction: column;
+    height: auto;
+    width: 98%;
   }
- 
-  #heading, .title2{
-        text-align: center;
+}
+
+  #heading,
+  .title2 {
+    text-align: center;
   }
 
   #Addparticipant,
   #TeamMember,
   .Sub {
-    margin-top:2px;
+    margin-top: 2px;
     margin-left: 0;
   }
 
@@ -424,11 +420,12 @@ color: white;
     margin-left: 0;
     text-align: center;
   }
-  
-  .translucent-form select{
-      width: 25%;
-      margin-left: 68%;
+
+  .translucent-form select {
+    width: 25%;
+    margin-left: 68%;
   }
+
   #grpNo {
     left: auto;
   }
@@ -438,21 +435,16 @@ color: white;
     width: auto;
     margin-left: 1%;
   }
+
   .translucent-form .input-label input:focus ~ label,
   .translucent-form .input-label input:valid ~ label,
   .translucent-form .input-label input:not([value=""]) ~ label {
     text-align: center;
     left: -1%;
     top: -5.125rem;
-    color:whitesmoke;
+    color: whitesmoke;
     font-size: 0.85rem;
     transition: all 1s ease;
-  
   }
-  
 }
-
-
-
-
 
