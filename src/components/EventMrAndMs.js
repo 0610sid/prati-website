@@ -51,7 +51,7 @@ function MrandMs() {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post('http://localhost:9000/events/mrandms/addDuo', {
+      const response = await axios.post('http://51.20.66.1:9000/events/mrandms/addDuo', {
         participant1,
         participant2,
         performanceLink,

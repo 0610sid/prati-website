@@ -41,7 +41,7 @@ function Singing() {
 
         try {
           const token = localStorage.getItem("token");
-          const response = await axios.post('http://localhost:9000/events/solosinging/addParticipant', {
+          const response = await axios.post('http://51.20.66.1:9000/events/solosinging/addParticipant', {
             participantName,
             collegeId,
             mobile,

@@ -43,7 +43,7 @@ export default function EventForm() {
         e.preventDefault();
         try {
           const token = localStorage.getItem("token");
-        const response = await axios.post('http://localhost:9000/events/groupdance/addTeam', {
+        const response = await axios.post('http://51.20.66.1:9000/events/groupdance/addTeam', {
           teamName, participantNumber, leader, alternate, token });
     
           console.log('Response:', response.data);

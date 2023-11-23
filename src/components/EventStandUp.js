@@ -41,7 +41,7 @@ export default function EventForm() {
 
         try {
             const token = localStorage.getItem("token");
-            const response = await axios.post('http://localhost:9000/events/standup/addParticipant', {
+            const response = await axios.post('http://51.20.66.1:9000/events/standup/addParticipant', {
                 participantName,
                 collegeId,
                 performanceLink,

@@ -24,7 +24,7 @@ const LoginForm = () => {
   };
 
   const userAuthenticated = () => {
-    axios.get("http://localhost:9000/isUserAuth", {
+    axios.get("http://51.20.66.1:9000/isUserAuth", {
       headers: {
         "x-access-token": localStorage.getItem("token"),
       },
@@ -45,7 +45,7 @@ const LoginForm = () => {
     e.preventDefault();
 
     try {
-        const loginResponse = await axios.post("http://localhost:9000/login", {
+        const loginResponse = await axios.post("http://51.20.66.1:9000/login", {
             username,
             password
         });

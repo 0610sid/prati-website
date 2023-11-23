@@ -9,7 +9,7 @@ const Verify = () => {
       useEffect(() => {
         const getData = async () => {
             try {
-                const res = await fetch("http://localhost:9000/admin/verify");
+                const res = await fetch("http://51.20.66.1:9000/admin/verify");
                 const fetchedData = await res.json();
                 setValues(fetchedData)
             } catch (error) {
@@ -20,7 +20,7 @@ const Verify = () => {
     }, []);
 
     const handleSubmit = async (ccCode) => {
-        axios.put(`http://localhost:9000/admin/verify/${ccCode}`)
+        axios.put(`http://51.20.66.1:9000/admin/verify/${ccCode}`)
             .then((response) => {
                 if (!response.data.success) {
                     console.log(response.data.message);

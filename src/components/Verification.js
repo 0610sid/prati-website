@@ -51,7 +51,7 @@ const Verification = () => {
     const token = localStorage.getItem("token");
   
     try {
-      const response = await axios.post("http://localhost:9000/verification", { name, mobile, collegeName, collegeId, token });
+      const response = await axios.post("http://51.20.66.1:9000/verification", { name, mobile, collegeName, collegeId, token });
   
       if (response.data.auth) {
         console.log(response.data.result);

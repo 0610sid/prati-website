@@ -30,7 +30,7 @@ const AdminLogin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    axios.post("http://localhost:9000/admin/login", { username, password })
+    axios.post("http://51.20.66.1:9000/admin/login", { username, password })
     .then((response) => {
         if (!response.data.auth) {
           setError(response.data.message);
