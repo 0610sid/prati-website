@@ -95,12 +95,13 @@ function App() {
 
     // { path: "/GroupDance", element: <EventForm/> },
     // { path: "/StandUp", element:  <Standup/>   },
-    // { path: "/WesternDuet", element: <UserRoutes><VerificationCheck> <WesternDuet/> </VerificationCheck></UserRoutes> },
-    // { path: "/SemiClassical", element: <UserRoutes><VerificationCheck> <SemiClassical/> </VerificationCheck></UserRoutes>  },
-    // { path: "/SoloSinging", element: <UserRoutes><VerificationCheck> <Solo_Singing/> </VerificationCheck></UserRoutes>  },
-    // { path: "/MonoAct", element: <UserRoutes><VerificationCheck> <MonoAct /></VerificationCheck> </UserRoutes> },
-    // { path: "/Mr&Ms", element: <UserRoutes><VerificationCheck> <MrandMs /></VerificationCheck> </UserRoutes> },
-    // { path: "/Band", element: <UserRoutes><VerificationCheck> <Band /></VerificationCheck> </UserRoutes> },
+    // { path: "/WesternDuet", element: <WesternDuet/>  },
+    // { path: "/SemiClassical", element:  <SemiClassical/>  },
+    // { path: "/SoloSinging", element: <Solo_Singing/> },
+    // { path: "/MonoAct", element:  <MonoAct />},
+    // { path: "/Mr&Ms", element: <MrandMs /> },
+    // { path: "/Band", element:  <Band /> },
+    // { path: "/MGT", element: <MGT /> },
     // ...
   ]);
   return routes;

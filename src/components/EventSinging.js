@@ -116,7 +116,9 @@ function Singing() {
                       </>
                     )}
 
-                    <button type="submit" className='Sub'>Submit</button>
+                    <div id='btn'>
+                        <button type="submit" className='Sub'>Submit</button>
+                    </div>
                 </form>
                 </div>
             </section>

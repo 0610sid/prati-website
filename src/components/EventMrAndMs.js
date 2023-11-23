@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import "../sass/events.css"
 import axios from 'axios';
 import Navbar from "./Navbar";
-import image from "../images/FashionShow.jpg"
+import image from "../images/mr&msprati.png"
 
 
 function MrandMs() {
@@ -101,7 +101,9 @@ function MrandMs() {
                
                 {renderParticipantFields()}
 
-                    <button type="submit" className='Sub'>Submit</button>
+                <div id='btn'>
+                        <button type="submit" className='Sub'>Submit</button>
+                    </div>
                 </form>
                 </div>
             </section>

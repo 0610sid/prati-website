@@ -52,20 +52,20 @@ body {
 }
 
 
-.translucent-form label {
+/* .translucent-form label {
   display: inline;
-  font-family: 'Cormorant Garamond', serif; /* Vintage font */
+  font-family: 'Cormorant Garamond', serif; 
   text-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
   position: relative;
   top: -50px;
   padding: 0.2rem 0;
   font-size: 1rem;
-  color: #f0ead6; /* Soft cream color for text */
+  color: #f0ead6; 
   pointer-events: none;
   color: white;
   transition: 0.5s;
   margin-left: 10%;
-}
+} */
 
 #grpNo {
   width: auto;
@@ -274,12 +274,11 @@ justify-content:space-around;
 }
 .input-label{
   /* display: inline; */
+  margin-left: 8vw;
   width: 60%;
   justify-content: space-around;
   align-items: center;
   align-self: center;
-  
-  /* margin-left: 90px; */
 }
 
 #btn{
@@ -293,14 +292,14 @@ justify-content: space-around;
   /* margin-left: 280px; */
   border: none;
   outline: none;
-  color: black;
-  background-color: violet;
-  padding: 0.3rem 0.7rem;
+  color: white;
+  background-color: rgb(105, 40, 105);
+  padding: 0.9rem 0.9rem;
   cursor: pointer;
   border-radius: 0.325rem;
   font-size: 1rem;
   text-align: center;
-  margin-top: -20px;
+  margin-top: 0px;
 }
 #title2{
   padding: 10px;
@@ -319,6 +318,8 @@ justify-content: space-around;
 }
 .translucent-form  label { 
   display: inline;
+  justify-content: left;
+  justify-self: left;
   text-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
   position: relative;
   top: -50px;
@@ -328,7 +329,7 @@ justify-content: space-around;
   pointer-events: none;
   color: white;
   transition: 0.5s;
-  margin-left: 10%;
+  margin-left: 1vw;
 }
 #grpNo{
   width: auto;
@@ -347,23 +348,19 @@ color: white;
 .translucent-form .input-label input:valid ~ label,
 .translucent-form .input-label input:not([value=""]) ~ label {
   text-align: center;
-  left: -10%;
+  left: 0%;
+  transform: translateX(-50%); /* Center the label horizontally */
   top: -5.125rem;
   color:whitesmoke;
   font-size: 0.85rem;
   transition: all 1s ease;
-
-  left: -10%;
-  top: -5.125rem;
-  color:whitesmoke;
-  font-size: 0.85rem;
-  transition: all 1s ease;
-
 }
+
+
 .registration-form input {
   width: 100%;
   font-family: "Playfair Display", serif;
-  padding: 0.525rem 0;
+  padding: 0.25rem 0;
   font-size: 1rem;
   color:white;
   letter-spacing: 0.062rem;
@@ -376,14 +373,14 @@ color: white;
 
 /*new section*/
 .registration-form button{
-  background-color: #5c4741;
+  background-color: rgba(118, 35, 182, 0.538);
   font-family: "Playfair Display", serif;
   font-weight: lighter;
 }
 
 .registration-form button:hover {
-  background-color: rgb(118, 48, 8); /* Adjust the color as needed */
-  color : black;
+  background-color: rgba(63, 26, 91, 0.538); /* Adjust the color as needed */
+  /* color : black; */
 }
 
 @media (max-width: 600px) {

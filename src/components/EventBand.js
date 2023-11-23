@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "../sass/events.css"
 import axios from 'axios';
-import image from "../images/band1.jpg"; 
+import image from "../images/band.jpg"; 
 
 import Navbar from "./Navbar";
 
@@ -135,7 +135,9 @@ function Band() {
                     </div>
                  
                     {renderParticipantFields()}
-          <button type="submit" className='Sub'>Submit</button>
+                    <div id='btn'>
+                        <button type="submit" className='Sub'>Submit</button>
+                    </div>
                 </form>
                 </div>
             </section>

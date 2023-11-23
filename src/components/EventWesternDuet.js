@@ -120,7 +120,9 @@ function WesternDuet() {
               <label htmlFor="college-id-2" className='l3'>College ID 2 (Drive Link)</label>
             </div>
 
-            <button type="submit" className='Sub'>Submit</button>
+            <div id='btn'>
+                        <button type="submit" className='Sub'>Submit</button>
+                    </div>
           </form>
         </div>
       </section>

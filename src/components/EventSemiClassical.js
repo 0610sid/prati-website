@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import image from "../images/SemiClassicalDance.jpg"; 
+import image from "../images/solosemiclassical.png"; 
 import "../sass/events.css";
 import Navbar from "./Navbar";
 
@@ -114,7 +114,9 @@ export default function SemiClassical() {
                         </>
                     )}
 
-                    <button type="submit" className='Sub'>Submit</button>
+                    <div id='btn'>
+                        <button type="submit" className='Sub'>Submit</button>
+                    </div>
                 </form>
                 </div>
             </section>

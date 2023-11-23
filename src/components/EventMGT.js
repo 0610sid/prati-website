@@ -138,7 +138,9 @@ export default function EventForm() {
               <label  htmlFor="participant-number" className='l2'>Participant Number</label>
             </div>
             {renderParticipantFields()}
-            <button type="submit" className='Sub'>Submit</button>
+            <div id='btn'>
+                        <button type="submit" className='Sub'>Submit</button>
+                    </div>
           </form>
         </div>
       </section>

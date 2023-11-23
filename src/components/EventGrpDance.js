@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import image from "../images/grpdance2.jpg"; 
+import image from "../images/groupdance.jpg"; 
 import axios from 'axios';
 import "../sass/events.css"
 import Navbar from "./Navbar";
@@ -138,7 +138,9 @@ export default function EventForm() {
                  
                     {renderParticipantFields()}
                     <br></br>
-          <button type="submit" className='Sub'>Submit</button>
+                    <div id='btn'>
+                        <button type="submit" className='Sub'>Submit</button>
+                    </div>
                 </form>
                 </div>
             </section>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import image from "../images/monoact.jpg"; 
+import image from "../images/monoact.jpg";
 import "../sass/events.css"
 import axios from 'axios';
 import Navbar from "./Navbar";
