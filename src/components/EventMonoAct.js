@@ -81,8 +81,11 @@ function MonoAct() {
                 </div>
                
                 <form onSubmit={handleSubmit} className="translucent-form">
-                <p id='heading'>Mehefile-e-prati</p>
-                <h3 id='title2'>~Ek shaam pratibimb ke naam</h3>
+                  <div id='titleform'>
+                      <p id='heading'>Mehefile-e-prati</p>
+                    <h3 id='title2'>~Ek shaam pratibimb ke naam</h3>
+                  </div>
+              
                 <div className='input-label'>
                     <input
                         type="text"

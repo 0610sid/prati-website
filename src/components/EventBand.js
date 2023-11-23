@@ -100,8 +100,11 @@ function Band() {
                 </div>
                
                 <form onSubmit={handleSubmit} className="translucent-form">
-                <p id='heading'>Rhythme Rebels</p>
-                <h3 id='title2'>~Unleash your inner beat</h3>
+                  <div id='titleform'>
+                      <p id='heading'>Rhythme Rebels</p>
+                    <h3 id='title2'>~Unleash your inner beat</h3>
+                  </div>
+                
                 <div className='input-label'>
                     <input
                         type="text"

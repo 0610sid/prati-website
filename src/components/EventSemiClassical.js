@@ -79,8 +79,11 @@ export default function SemiClassical() {
                 </div>
                
                 <form onSubmit={handleSubmit} className="translucent-form">
-                <p id='heading'>Natarang</p>
-                <h3 id='title2'>~Dance in harmony</h3>
+                  <div id='titleform'>
+                      <p id='heading'>Natarang</p>
+                    <h3 id='title2'>~Dance in harmony</h3>
+                  </div>
+                
                 <div className='input-label'>
                     <input
                         type="text"

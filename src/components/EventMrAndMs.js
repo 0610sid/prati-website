@@ -94,8 +94,11 @@ function MrandMs() {
                 </div>
                
                 <form onSubmit={handleSubmit} className="translucent-form">
-                <p id='heading'>Mr and Ms. Prati</p>
-                <h3 id='title2'>~Show your inner beauty</h3>
+                  <div id='titleform'>
+                      <p id='heading'>Mr and Ms. Prati</p>
+                    <h3 id='title2'>~Show your inner beauty</h3>
+                  </div>
+               
                 {renderParticipantFields()}
 
                     <button type="submit" className='Sub'>Submit</button>

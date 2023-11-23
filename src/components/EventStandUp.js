@@ -46,8 +46,11 @@ export default function EventForm() {
                 </div>
                
                 <form onSubmit={handleSubmit} className="translucent-form">
-                <p id='heading'>Only Puns</p>
-                <h3 id='title2'>~Sell your jokes</h3>
+                    <div id='titleform'>
+                          <p id='heading'>Only Puns</p>
+                          <h3 id='title2'>~Sell your jokes</h3>
+                    </div>
+                
                 <div className='input-label'>
                     <input
                         type="text"
@@ -70,7 +73,10 @@ export default function EventForm() {
                     />
                     <label htmlFor="college-id" className='l3'>College ID (Drive Link)</label>
                     </div>
-                    <button type="submit" className='Sub'>Submit</button>
+                    <div id='btn'>
+                        <button type="submit" className='Sub'>Submit</button>
+                    </div>
+                  
                 </form>
                 </div>
             </section>
