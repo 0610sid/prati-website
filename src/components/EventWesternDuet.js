@@ -12,7 +12,7 @@ function WesternDuet() {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.post('http://localhost:9000/westernduet/addDuo', {
+      const response = await axios.post('http://localhost:9000/events/westernduet/addDuo', {
         participant1,
         participant2,
         token

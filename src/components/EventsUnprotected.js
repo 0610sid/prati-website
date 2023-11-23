@@ -183,7 +183,7 @@ const Events = () => {
           <br /> */}
 
           <h2 data-aos="fade-up" style={{fontSize : "22px" , paddingTop : "-23rem"}}>For Login Details Contact <br/>
-          Shubham : 8766816040
+          Shubham : 8452095193
           </h2>
         </div>
       </div>

@@ -121,9 +121,10 @@ function Band() {
     onChange={(e) => setParticipantNumber(e.target.value)}
     required
   >
-    {[...Array(15).keys()].map((num) => (
-      <option key={num + 1} value={(num + 1).toString()}>
-        {num + 1}
+    <option  value="0">0</option>
+    {[...Array(12).keys()].map((num) => (
+      <option key={num + 4} value={(num + 4).toString()}>
+        {num + 4}
       </option>
     ))}
   </select>

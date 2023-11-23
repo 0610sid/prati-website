@@ -4,8 +4,15 @@ import Carousel from "./Carousel";
 import { CarouselItem } from "./Carousel";
 import EventCardHome from "./EventCardHome";
 import NeonButton from "./NeonButton";
+import { jwtDecode } from 'jwt-decode'
 
 const EventsHome = () => {
+
+  const user = localStorage.getItem("token");
+  let verified = false;
+  if (user)
+  { verified = jwtDecode(user).isverified; }
+
   return (
     <div className="events-home">
       <div className="content">
@@ -24,7 +31,10 @@ const EventsHome = () => {
           ) : null}
         </div>
         <div data-aos="fade-up">
-          <NeonButton href="/events">See All Events</NeonButton>
+          {verified ?
+            <NeonButton href="/events">See All Events</NeonButton> :
+            <NeonButton href="/list">See All Events</NeonButton> 
+          }
         </div>
         <br />
       </div>

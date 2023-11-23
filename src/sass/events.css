@@ -186,6 +186,8 @@ color: white;
 .translucent-form select option {
   margin-left: 50%;
   width: 25%;
+  margin-left: 50%;
+  width: 25%;
   background-color: black;
   color: white;
 }
@@ -267,11 +269,11 @@ text-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
 }
 .Sub{
   position: relative;
-  margin-top: 3%;
+  margin-left: 280px;
   border: none;
   outline: none;
   color: black;
-  background-color:#480363;
+  background-color: violet;
   padding: 0.3rem 0.7rem;
   cursor: pointer;
   border-radius: 0.325rem;
@@ -330,6 +332,12 @@ color: white;
   font-size: 0.85rem;
   transition: all 1s ease;
 
+  left: -10%;
+  top: -5.125rem;
+  color:whitesmoke;
+  font-size: 0.85rem;
+  transition: all 1s ease;
+
 }
 .registration-form input {
   width: 100%;
@@ -357,6 +365,23 @@ color: white;
   color : black;
 }
 
+@media (max-width: 600px) {
+
+
+ 
+  
+.img h2 {
+ font-size: 1.5rem;
+    margin-top: 0%;
+
+}
+.img{
+      width: 95%;
+      padding: 5%;
+}
+
+  .main {
+    margin-left: 0;
 @media (max-width: 600px) {
 
 
