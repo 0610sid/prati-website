@@ -6,12 +6,12 @@ import Navbar from "./Navbar";
 
 
 export default function EventForm() {
-    const [participantName, setParticipantName] = useState('');
-    const [teamName, setTeamName] = useState('');
-    const [participantNumber, setParticipantNumber] = useState('');
-    const [collegeId, setCollegeId] = useState('');
-    const [participants, setParticipants] = useState([]); 
+  const [teamName, setTeamName] = useState('');
+  const [participantNumber, setParticipantNumber] = useState('');
+  const [leader, setleader] = useState({ name: '', contactNumber: '', collegeId: '' });
+  const [alternate, setalternate] = useState({ name: '', contactNumber: '', collegeId: ''});\
     let fields;
+    
     const handleSubmit = async (e) => {
         console.log("clicked");
         e.preventDefault();
