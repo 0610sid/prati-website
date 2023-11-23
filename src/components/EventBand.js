@@ -17,6 +17,7 @@ function Band() {
         const token = localStorage.getItem("token");
         const response = await axios.post('http://localhost:9000/events/band/addTeam', {
           teamName,
+          participantNumber,
           leader,
           alternate,
           token

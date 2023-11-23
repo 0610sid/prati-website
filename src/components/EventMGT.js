@@ -14,7 +14,7 @@ export default function EventForm() {
       e.preventDefault();
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.post('http://localhost:9000/events/band/addTeam', {
+        const response = await axios.post('http://localhost:9000/events/MGT/addTeam', {
           teamName,
           leader,
           alternate,
