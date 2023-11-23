@@ -60,7 +60,7 @@ const Home = () => {
         <AboutUsHome />
         <IlluminatiHome />
         <EventsHome />
-        <UpcomingEvents />
+        {/* <UpcomingEvents /> */}
       </div>
     </>
   );

@@ -5,8 +5,7 @@ import { Grid } from "@mui/material";
 
 import CHIRAG_SHELAR from "../assets/Team/CHIRAG_SHELAR.jpeg";
 import AMANPREET_BAINS from "../assets/Team/AMANPREET_BAINS.jpg";
-import SID from "../assets/Team/SID.jpeg"
-import KRUSENIX from "../assets/krusenix.png"
+//SID was here ig:sid_0610
 
 export default function WebDevTeam() {
   return (
@@ -35,36 +34,6 @@ export default function WebDevTeam() {
           />
         </Grid>
       </Grid>
-
-      <center>
-        <p style={{ marginBottom: "1.2rem" }}>
-          Website contributed by{" "}
-          <a
-            href="https://communityofcoders.in/"
-            target="_blank"
-            rel="noreferrer"
-            style={{
-              textDecoration: "none",
-              color: "green",
-              fontSize: "1.2rem",
-              fontWeight: "strong",
-            }}
-          >
-            Community of Coders, VJTI
-          </a>{" "}
-          💚
-        </p>
-      </center>
-
-      <center>
-        <div style={{display : "flex" , justifyContent:"center", width:"100%"}}>
-        <p style={{ marginBottom: "3.2rem" }}>
-          <img src={KRUSENIX} width="250px" style={{marginBottom : "-2rem" , marginLeft : "0.5rem"}} />
-        </p>
-        </div>
-        
-      </center>
-      
     </Box>
   );
 }
