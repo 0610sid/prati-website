@@ -9,27 +9,22 @@ export default function EventForm() {
   const [teamName, setTeamName] = useState('');
   const [participantNumber, setParticipantNumber] = useState('');
   const [leader, setleader] = useState({ name: '', contactNumber: '', collegeId: '' });
-  const [alternate, setalternate] = useState({ name: '', contactNumber: '', collegeId: ''});\
+  const [alternate, setalternate] = useState({ name: '', contactNumber: '', collegeId: ''});
     let fields;
-    
+
     const handleSubmit = async (e) => {
         console.log("clicked");
         e.preventDefault();
         try {
           const token = localStorage.getItem("token");
         const response = await axios.post('http://localhost:9000/events/groupdance/addTeam', {
-            teamName,
-            participantNumber,
-            participants, // Send the array of participants
-            token
-          });
+          teamName, participantNumber, leader, alternate, token });
     
-            console.log('Response:', response.data);
-            // Optionally, you can reset the form fields here
-            setParticipantName('');
-            setCollegeId('');
+          console.log('Response:', response.data);
+          setleader({ name: '', contactNumber: '', collegeId: '' });
+          setalternate({ name: '', contactNumber: '', collegeId: '' });
         } catch (error) {
-            console.error('Error:', error);
+          console.error('Error:', error);
         }
     };
 
