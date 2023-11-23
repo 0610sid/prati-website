@@ -43,6 +43,7 @@ export default function SemiClassical() {
           const response = await axios.post('http://localhost:9000/events/semiclassical/addParticipant', {
             participantName,
             collegeId,
+            mobile,
             token
           });
     
