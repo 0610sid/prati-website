@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import image from "../images/DuetDance.jpg"; 
 import "../sass/events.css"
 import axios from 'axios';
@@ -7,6 +8,31 @@ import Navbar from "./Navbar";
 function WesternDuet() {
   const [participant1, setParticipant1] = useState({ name: '', contactNumber: '', collegeId: '' });
   const [participant2, setParticipant2] = useState({ name: '', contactNumber: '', collegeId: '' });
+  const [error, setError] = useState('');
+  const [countdown, setCountdown] = useState(5);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    let countdownInterval;
+
+    if (showSuccessMessage) {
+      countdownInterval = setInterval(() => {
+        setCountdown((prevCountdown) => prevCountdown - 1);
+      }, 1000);
+    }
+
+    return () => {
+      clearInterval(countdownInterval);
+    };
+  }, [showSuccessMessage]);
+
+  useEffect(() => {
+    if (countdown === 0) {
+      navigate('/events');
+    }
+  }, [countdown, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,8 +47,17 @@ function WesternDuet() {
       console.log('Response:', response.data);
       setParticipant1({ name: '', contactNumber: '', collegeId: '' });
       setParticipant2({ name: '', contactNumber: '', collegeId: '' });
+    
+      if (response.data === 'Participants added successfully') {
+        setError(''); 
+        setShowSuccessMessage(true);
+      }
     } catch (error) {
-      console.error('Error:', error);
+      if (error.response && error.response.status === 400) {
+        setError('Your college has already registered');
+      } else {
+        setError('Internal Server Error');
+      }
     }
   };
 
@@ -119,8 +154,15 @@ function WesternDuet() {
               />
               <label htmlFor="college-id-2" className='l3'>College ID 2 (Drive Link)</label>
             </div>
+            {error && <b><p style={{ color: 'red' }} className="error-message">{error}</p></b>}
+                    {showSuccessMessage && (
+                      <>
+                      <p style={{ color: 'green' }}>Form Submitted Successfully</p>
+                      <p>Redirecting in {countdown} seconds</p>
+                      </>
+                    )}
 
-            <div id='btn'>
+                <div id='btn'>
                         <button type="submit" className='Sub'>Submit</button>
                     </div>
           </form>

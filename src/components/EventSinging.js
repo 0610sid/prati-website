@@ -8,6 +8,8 @@ import Navbar from "./Navbar";
 function Singing() {
     const [participantName, setParticipantName] = useState('');
     const [collegeId, setCollegeId] = useState('');
+
+    const [mobile, setmobile] = useState('');
     const [error, setError] = useState('');
     const [countdown, setCountdown] = useState(5);
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
@@ -35,32 +37,34 @@ function Singing() {
     }, [countdown, navigate]);
   
     const handleSubmit = async (e) => {
-      e.preventDefault();
-  
-      try {
-        const token = localStorage.getItem("token");
-        const response = await axios.post('http://localhost:9000/events/solosinging/addParticipant', {
-          participantName,
-          collegeId,
-          token
-        });
-  
-        setParticipantName('');
-        setCollegeId('');
-  
-        if (response.data === 'Participant added successfully') {
-          setError(''); 
-          setShowSuccessMessage(true);
+        e.preventDefault();
+
+        try {
+          const token = localStorage.getItem("token");
+          const response = await axios.post('http://localhost:9000/events/solosinging/addParticipant', {
+            participantName,
+            collegeId,
+            mobile,
+            token
+          });
+    
+          setParticipantName('');
+          setCollegeId('');
+          setmobile('');
+    
+          if (response.data === 'Participant added successfully') {
+            setError(''); 
+            setShowSuccessMessage(true);
+          }
+        } catch (error) {
+          console.error('Error:', error);
+    
+          if (error.response && error.response.status === 400) {
+            setError('Your college has already registered');
+          } else {
+            setError('Internal Server Error');
+          }
         }
-      } catch (error) {
-        console.error('Error:', error);
-  
-        if (error.response && error.response.status === 400) {
-          setError('Your college has already registered');
-        } else {
-          setError('Internal Server Error');
-        }
-      }
     };  
   
   return (
@@ -74,18 +78,15 @@ function Singing() {
                       <ul className='ulimg'>
                       <li className=''>January 4 , 2024 @ 11:30 am</li>
                       <li className=''>Single entry per college</li>
-                      <li className=''>Please ensure the language of the song is 2015 and it is released on or before 2015.</li>
+                      <li className=''>Please ensure the language of the song is Hindi and it is released on or before 2015.</li>
                       <li className=''>For detailed rules please visit <a href='https://drive.google.com/file/d/12ADjgD9CZMaOUB5QMZG-19gIMWQEp19t/view?usp=drive_link'>here</a>.</li>
                       <li className=''><strong>Ritvik Jeeda : 9136646275</strong></li>
                         </ul> 
                 </div>
                
                 <form onSubmit={handleSubmit} className="translucent-form">
-                  <div id='titleform'>
-                      <p id='heading'>Mehefile-e-prati</p>
-                    <h3 id='title2'>~Ek shaam pratibimb ke naam</h3>
-                  </div>
-            
+                <p id='heading'>Mehefile-e-prati</p>
+                <h3 id='title2'>~Ek shaam pratibimb ke naam</h3>
                 <div className='input-label'>
                     <input
                         type="text"
@@ -108,6 +109,18 @@ function Singing() {
                     />
                     <label htmlFor="college-id" className='l3'>College ID (Drive Link)</label>
                     </div>
+             
+            <div className='input-label'>
+              <input
+                type="tel"
+                id="contact-number"
+                name="contact-number"
+                value={mobile}
+                onChange={(e) => setmobile(e.target.value)}
+                required
+              />
+              <label htmlFor="contact-number" className='l5'>Contact Number</label>
+            </div>
                     {error && <b><p style={{ color: 'red' }} className="error-message">{error}</p></b>}
                     {showSuccessMessage && (
                       <>
@@ -116,9 +129,7 @@ function Singing() {
                       </>
                     )}
 
-                    <div id='btn'>
-                        <button type="submit" className='Sub'>Submit</button>
-                    </div>
+                    <button type="submit" className='Sub'>Submit</button>
                 </form>
                 </div>
             </section>

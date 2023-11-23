@@ -8,6 +8,7 @@ import Navbar from "./Navbar";
 export default function SemiClassical() {
     const [participantName, setParticipantName] = useState('');
     const [collegeId, setCollegeId] = useState('');
+    const [mobile, setmobile] = useState('');
     const [error, setError] = useState('');
     const [countdown, setCountdown] = useState(5);
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
@@ -106,6 +107,17 @@ export default function SemiClassical() {
                     />
                     <label htmlFor="college-id" className='l3'>College ID (Drive Link)</label>
                     </div>
+                    <div className='input-label'>
+                    <input
+                      type="tel"
+                      id="contact-number"
+                      name="contact-number"
+                      value={mobile}
+                      onChange={(e) => setmobile(e.target.value)}
+                      required
+                    />
+                    <label htmlFor="contact-number" className='l5'>Contact Number</label>
+            </div>
                     {error && <b><p style={{ color: 'red' }} className="error-message">{error}</p></b>}
                     {showSuccessMessage && (
                         <>

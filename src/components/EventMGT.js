@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import image from "../images/grpdance2.jpg"; 
 import axios from 'axios';
 import "../sass/events.css"
@@ -7,98 +8,68 @@ import Navbar from './Navbar';
 export default function EventForm() {
   const [teamName, setTeamName] = useState('');
   const [participantNumber, setParticipantNumber] = useState('');
-  const [leader, setleader] = useState({ name: '', contactNumber: '', collegeId: '' });
-  const [alternate, setalternate] = useState({ name: '', contactNumber: '', collegeId: ''});
+  const [leader, setleader] = useState({ name: '', mobile: '', collegeId: '' });
+  const [alternate, setalternate] = useState({ name: '', mobile: '', collegeId: ''});
+  const [performanceLink, setPerformanceLink] = useState('');
+  const [error, setError] = useState('');
+  const [countdown, setCountdown] = useState(5);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    let countdownInterval;
+
+    if (showSuccessMessage) {
+      countdownInterval = setInterval(() => {
+        setCountdown((prevCountdown) => prevCountdown - 1);
+      }, 1000);
+    }
+
+    return () => {
+      clearInterval(countdownInterval);
+    };
+  }, [showSuccessMessage]);
+
+  useEffect(() => {
+    if (countdown === 0) {
+      navigate('/events');
+    }
+  }, [countdown, navigate]);
 
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
         const token = localStorage.getItem("token");
         const response = await axios.post('http://localhost:9000/events/MGT/addTeam', {
-          teamName,
-          leader,
-          alternate,
-          token
+          teamName, participantNumber, leader, alternate, performanceLink, token
         });
   
         console.log('Response:', response.data);
-        setleader({ name: '', contactNumber: '', collegeId: '' });
-        setalternate({ name: '', contactNumber: '', collegeId: '' });
+        setleader({ name: '', mobile: '', collegeId: '' });
+        setalternate({ name: '', mobile: '', collegeId: '' });
+        if (response.data === 'Participant added successfully') {
+          setError(''); 
+          setShowSuccessMessage(true);
+        }
       } catch (error) {
         console.error('Error:', error);
+        if (error.response && error.response.status === 400) {
+          setError('Your college has already registered');
+        } else {
+          setError('Internal Server Error');
+        }
       }
     };
 
-  // const renderParticipantFields = () => {
-  //   const participantFields = [];
-
-  //   for (let i = 0; i < Math.min(participantNumber, 2); i++) {
-  //     participantFields.push(
-  //       <div key={i}>
-  //         <h3>Team Member-{i + 1}</h3>
-  //         <div className='input-label'>
-  //           <input
-  //             type="text"
-  //             id={`participant-name-${i}`}
-  //             name={`participant-name-${i}`}
-  //             value={participants[i]?.name || ''}
-  //             onChange={(e) => handleParticipantChange(e, i, 'name')}
-  //             required
-  //           />
-  //           <label htmlFor={`participant-name-${i}`} className='l1'>
-  //             Participant Name
-  //           </label>
-  //         </div>
-  //         <div className='input-label'>
-  //           <input
-  //             type="url"
-  //             id={`college-id-${i}`}
-  //             name={`college-id-${i}`}
-  //             value={participants[i]?.collegeId || ''}
-  //             onChange={(e) => handleParticipantChange(e, i, 'collegeId')}
-  //             required
-  //           />
-  //           <label htmlFor={`college-id-${i}`} className='l3'>
-  //             College ID (Drive Link)
-  //           </label>
-  //         </div>
-  //         <div className='input-label'>
-  //           <input
-  //             type="tel"
-  //             id={`contact-number-${i}`}
-  //             name={`contact-number-${i}`}
-  //             value={participants[i]?.contactNumber || ''}
-  //             onChange={(e) => handleParticipantChange(e, i, 'contactNumber')}
-  //             required
-  //           />
-  //           <label htmlFor={`contact-number-${i}`} className='l4'>
-  //             Contact Number
-  //           </label>
-  //         </div>
-  //       </div>
-  //     );
-  //   }
-
-  //   return participantFields;
-  // };
-
-  // const handleParticipantChange = (e, index, field) => {
-  //   const updatedParticipants = [...participants];
-  //   updatedParticipants[index] = {
-  //     ...updatedParticipants[index],
-  //     [field]: e.target.value,
-  //   };
-  //   setParticipants(updatedParticipants);
-  // };
-
-  return (
+    return (
     <div style={{backgroundColor : "black"}}>
         <Navbar/>
 
       <section className="registration-form">
         <div className='main'>
           <div className='img' style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${image})` }}>
-            <h2 className='infotitle infotitle--shadow' >A quick go through before you register</h2>
+            <h2 className='info-title' >A quick go through before you register</h2>
             <ul className='ulimg'>
             <li className=''>January 4 , 2024 @ 04:30 pm</li>
             <li className=''>No age restrictions.</li>
@@ -133,9 +104,9 @@ export default function EventForm() {
                       required
                     >
                       <option  value="0">0</option>
-                      {[...Array(12).keys()].map((num) => (
-                        <option key={num + 4} value={(num + 4).toString()}>
-                          {num + 4}
+                      {[...Array(50).keys()].map((num) => (
+                        <option key={num + 1} value={(num + 1).toString()}>
+                          {num + 1}
                         </option>
                       ))}
                     </select>
@@ -159,8 +130,8 @@ export default function EventForm() {
                 type="text"
                 id="contact-number-1"
                 name="contact-number-1"
-                value={leader.contactNumber}
-                onChange={(e) => setleader({ ...leader, contactNumber: e.target.value })}
+                value={leader.mobile}
+                onChange={(e) => setleader({ ...leader, mobile: e.target.value })}
                 required
               />
               <label htmlFor="contact-number-1" className='l2'>Leader: Contact Number </label>
@@ -194,8 +165,8 @@ export default function EventForm() {
                 type="text"
                 id="contact-number-2"
                 name="contact-number-2"
-                value={alternate.contactNumber}
-                onChange={(e) => setalternate({ ...alternate, contactNumber: e.target.value })}
+                value={alternate.mobile}
+                onChange={(e) => setalternate({ ...alternate, mobile: e.target.value })}
                 required
               />
               <label htmlFor="contact-number-2" className='l2'>Alternate Leader: Contact Number </label>
@@ -211,6 +182,26 @@ export default function EventForm() {
               />
               <label htmlFor="college-id-2" className='l3'>Alternate Leader: College ID (Drive Link)</label>
             </div>
+            <div className='input-label'>
+              <input
+                type='url'
+                id='performance-link'
+                name='performance-link'
+                value={performanceLink}
+                onChange={(e) => setPerformanceLink(e.target.value)}
+                required
+              />
+              <label htmlFor='performance-link' className='l5'>
+                Performance Link
+              </label>
+            </div>
+            {error && <b><p style={{ color: 'red' }} className="error-message">{error}</p></b>}
+                    {showSuccessMessage && (
+                      <>
+                      <p style={{ color: 'green' }}>Form Submitted Successfully</p>
+                      <p>Redirecting in {countdown} seconds</p>
+                      </>
+                    )}
             <div id='btn'>
                         <button type="submit" className='Sub'>Submit</button>
                     </div>

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import image from "../images/standupimg.jpg"; 
 import axios from 'axios';
 
@@ -7,34 +8,73 @@ import Navbar from "./Navbar";
 export default function EventForm() {
     const [participantName, setParticipantName] = useState('');
     const [collegeId, setCollegeId] = useState('');
+    const [performanceLink, setPerformanceLink] = useState('');
+    const [mobile, setmobile] = useState('');
+    const [error, setError] = useState('');
+    const [countdown, setCountdown] = useState(5);
+    const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
-    const handleSubmit = async(e) => {
-        e.preventDefault();
-        console.log("clicked");
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        let countdownInterval;
     
+        if (showSuccessMessage) {
+          countdownInterval = setInterval(() => {
+            setCountdown((prevCountdown) => prevCountdown - 1);
+          }, 1000);
+        }
+    
+        return () => {
+          clearInterval(countdownInterval);
+        };
+      }, [showSuccessMessage]);
+
+      useEffect(() => {
+        if (countdown === 0) {
+          navigate('/events');
+        }
+      }, [countdown, navigate]);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
         try {
             const token = localStorage.getItem("token");
             const response = await axios.post('http://localhost:9000/events/standup/addParticipant', {
                 participantName,
                 collegeId,
+                performanceLink,
+                mobile,
                 token
             });
-    
-            console.log('Response:', response.data);
-            // Optionally, you can reset the form fields here
+
             setParticipantName('');
             setCollegeId('');
+            setPerformanceLink('');
+            setmobile('');
+
+            if (response.data === 'Participant added successfully') {
+                setError(''); 
+                setShowSuccessMessage(true);
+            }
         } catch (error) {
             console.error('Error:', error);
+            if (error.response && error.response.status === 400) {
+                setError('Your college has already registered');
+              } else {
+                setError('Internal Server Error');
+              }
         }
     };
+
 
     return (
         <div style={{backgroundColor : "black"}}>
             <Navbar/>
             <section className="registration-form">
                 <div className='main'>
-                <div className='img'style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${image})` }} >
+                <div className='img' style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${image})` }}>
                     <h2 id='info-title' >A quick go through before you register</h2>
                       <ul className='ulimg'>
                         <li className=''>January 6 , 2024 @ 12:30 pm</li>
@@ -46,11 +86,8 @@ export default function EventForm() {
                 </div>
                
                 <form onSubmit={handleSubmit} className="translucent-form">
-                    <div id='titleform'>
-                          <p id='heading'>Only Puns</p>
-                          <h3 id='title2'>~Sell your jokes</h3>
-                    </div>
-                
+                <p id='heading'>Only Puns</p>
+                <h3 id='title2'>~Sell your jokes</h3>
                 <div className='input-label'>
                     <input
                         type="text"
@@ -73,10 +110,37 @@ export default function EventForm() {
                     />
                     <label htmlFor="college-id" className='l3'>College ID (Drive Link)</label>
                     </div>
-                    <div id='btn'>
+                        <div className='input-label'>
+                            <input
+                                type="url"
+                                id="performance-link"
+                                name="performance-link"
+                                value={performanceLink}
+                                onChange={(e) => setPerformanceLink(e.target.value)}
+                                required
+                            />
+                            <label htmlFor="performance-link" className='l3'>Performance Link</label>
+                        </div>
+
+                        <div className='input-label'>
+                            <input
+                                type="tel"
+                                id="mobile-no"
+                                name="mobile-no"
+                                value={mobile}
+                                onChange={(e) => setmobile(e.target.value)}
+                                required
+                            />
+                            <label htmlFor="mobile-no" className='l4'>Mobile No.</label>
+                        </div>
+                        {error && <b><p style={{ color: 'red' }} className="error-message">{error}</p></b>}
+                    {showSuccessMessage && (
+                      <>
+                      <p style={{ color: 'green' }}>Form Submitted Successfully</p>
+                      <p>Redirecting in {countdown} seconds</p>
+                      </>
+                    )}
                         <button type="submit" className='Sub'>Submit</button>
-                    </div>
-                  
                 </form>
                 </div>
             </section>

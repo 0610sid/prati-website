@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import "../sass/events.css"
 import axios from 'axios';
 import image from "../images/band.jpg"; 
@@ -8,8 +9,34 @@ import Navbar from "./Navbar";
 function Band() {
   const [teamName, setTeamName] = useState('');
   const [participantNumber, setParticipantNumber] = useState('');
-  const [leader, setleader] = useState({ name: '', contactNumber: '', collegeId: '' });
-  const [alternate, setalternate] = useState({ name: '', contactNumber: '', collegeId: ''});
+  const [leader, setleader] = useState({ name: '', mobile: '', collegeId: '' });
+  const [alternate, setalternate] = useState({ name: '', mobile: '', collegeId: ''});
+  const [error, setError] = useState('');
+  const [countdown, setCountdown] = useState(5);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    let countdownInterval;
+
+    if (showSuccessMessage) {
+      countdownInterval = setInterval(() => {
+        setCountdown((prevCountdown) => prevCountdown - 1);
+      }, 1000);
+    }
+
+    return () => {
+      clearInterval(countdownInterval);
+    };
+  }, [showSuccessMessage]);
+
+  useEffect(() => {
+    if (countdown === 0) {
+      navigate('/events');
+    }
+  }, [countdown, navigate]);
+
 
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -24,10 +51,21 @@ function Band() {
         });
   
         console.log('Response:', response.data);
-        setleader({ name: '', contactNumber: '', collegeId: '' });
-        setalternate({ name: '', contactNumber: '', collegeId: '' });
+        setleader({ name: '', mobile: '', collegeId: '' });
+        setalternate({ name: '', mobile: '', collegeId: '' });
+
+        if (response.data === 'Participant added successfully') {
+          setError(''); 
+          setShowSuccessMessage(true);
+        }
       } catch (error) {
         console.error('Error:', error);
+
+        if (error.response && error.response.status === 400) {
+          setError('Your college has already reached maximum registration limit');
+        } else {
+          setError('Internal Server Error');
+        }
       }
     };
 
@@ -72,7 +110,7 @@ function Band() {
                       required
                     >
                       <option  value="0">0</option>
-                      {[...Array(12).keys()].map((num) => (
+                      {[...Array(5).keys()].map((num) => (
                         <option key={num + 4} value={(num + 4).toString()}>
                           {num + 4}
                         </option>
@@ -98,8 +136,8 @@ function Band() {
                 type="text"
                 id="contact-number-1"
                 name="contact-number-1"
-                value={leader.contactNumber}
-                onChange={(e) => setleader({ ...leader, contactNumber: e.target.value })}
+                value={leader.mobile}
+                onChange={(e) => setleader({ ...leader, mobile: e.target.value })}
                 required
               />
               <label htmlFor="contact-number-1" className='l2'>Leader: Contact Number </label>
@@ -133,8 +171,8 @@ function Band() {
                 type="text"
                 id="contact-number-2"
                 name="contact-number-2"
-                value={alternate.contactNumber}
-                onChange={(e) => setalternate({ ...alternate, contactNumber: e.target.value })}
+                value={alternate.mobile}
+                onChange={(e) => setalternate({ ...alternate, mobile: e.target.value })}
                 required
               />
               <label htmlFor="contact-number-2" className='l2'>Alternate Leader: Contact Number </label>
@@ -150,6 +188,13 @@ function Band() {
               />
               <label htmlFor="college-id-2" className='l3'>Alternate Leader: College ID (Drive Link)</label>
             </div>
+            {error && <b><p style={{ color: 'red' }} className="error-message">{error}</p></b>}
+                    {showSuccessMessage && (
+                      <>
+                      <p style={{ color: 'green' }}>Form Submitted Successfully</p>
+                      <p>Redirecting in {countdown} seconds</p>
+                      </>
+                    )}
 
           <button type="submit" className='Sub'>Submit</button>
                 </form>

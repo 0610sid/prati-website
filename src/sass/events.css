@@ -279,17 +279,33 @@ justify-content:space-around;
   justify-content: space-around;
   align-items: center;
   align-self: center;
+
 }
 
-#btn{
+.input-label1{
   display: flex;
-align-items: center;
-justify-content: space-around;
+  flex-direction: column; /* Stack items vertically */
+  margin-bottom: 10px;
 }
+
+.input-label1 label {
+  width: 0%;; /* Add margin between label and select */
+}
+
+.input-label1 select {
+  width: 30%; /* Make the select element fill the container width */
+}
+
+/* #btn{
+  display: flex;
+align-items: center; 
+margin-left: 22%;
+justify-content: space-around;
+} */
 
 .Sub{
   position: relative;
-  /* margin-left: 280px; */
+  margin-left: 42%; 
   border: none;
   outline: none;
   color: white;
@@ -304,13 +320,15 @@ justify-content: space-around;
 #title2{
   padding: 10px;
   margin-bottom: 30px;
-  margin-left: 22%;
+  /* margin-left: 22%; */
+  text-align: center;
   padding: 5px;
   font-style: italic;
   text-shadow: 0 0 2px rgba(255, 255, 255, 0.8), 0 0 8px rgba(138, 43, 226, 0.6), 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
 #heading{
+  text-align: center;
   font-weight: bold;
   font-size: 2.2rem;
   font-style: italic;
@@ -463,6 +481,10 @@ color: white;
     color: whitesmoke;
     font-size: 0.85rem;
     transition: all 1s ease;
+  }
+
+  p .error-message {
+    text-align: center;
   }
 }
 
