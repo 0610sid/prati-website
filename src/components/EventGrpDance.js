@@ -33,58 +33,6 @@ export default function EventForm() {
         }
     };
 
-    const renderParticipantFields = () => {
-        const participantFields = [];
-    
-        for (let i = 0; i < participantNumber; i++) {
-          participantFields.push(
-            <div key={i}>
-              <br></br>
-              <br></br>
-             
-              <h3>Team Member-{i+1 }</h3>
-              <br></br>
-              <div className='input-label'>
-                <input
-                  type="text"
-                  id={`participant-name-${i}`}
-                  name={`participant-name-${i}`}
-                  value={participants[i]?.name || ''}
-                  onChange={(e) => handleParticipantChange(e, i, 'name')}
-                  required
-                />
-                <label htmlFor={`participant-name-${i}`} className='l1'>
-                  Participant Name
-                </label>
-              </div>
-              <div className='input-label'>
-                <input
-                  type="url"
-                  id={`college-id-${i}`}
-                  name={`college-id-${i}`}
-                  value={participants[i]?.collegeId || ''}
-                  onChange={(e) => handleParticipantChange(e, i, 'collegeId')}
-                  required
-                />
-                <label htmlFor={`college-id-${i}`} className='l3'>
-                  College ID (Drive Link)
-                </label>
-              </div>
-            </div>
-          );
-        }
-    
-        return participantFields;
-      };
-    
-      const handleParticipantChange = (e, index, field) => {
-        const updatedParticipants = [...participants];
-        updatedParticipants[index] = {
-          ...updatedParticipants[index],
-          [field]: e.target.value,
-        };
-        setParticipants(updatedParticipants);
-      };
     return (
         <div style={{backgroundColor:"black"}}>
           <Navbar/>
@@ -110,34 +58,101 @@ export default function EventForm() {
                 <div className='input-label'>
                     <input
                         type="text"
-                        id="team-name"
-                        name="team-name"
+                        id="participant-name"
+                        name="participant-name"
                         value={teamName}
-                        onChange={(e) => {setTeamName(e.target.value);}}
+                        onChange={(e) => setTeamName(e.target.value)}
                         required
                     />
-                   <label htmlFor="team-name" className='l2'>Team Name</label>
+                    <label className='l1' htmlFor="participant-name">Team Name</label>
                     </div>
                     <div className='input-label'>
                     <select
-    id="participant-number"
-    name="participant-number"
-    value={participantNumber}
-    onChange={(e) => setParticipantNumber(e.target.value)}
-    required
-  >
-    <option  value="5">5</option>
-    {[...Array(12).keys()].map((num) => (
-      <option key={num + 4} value={(num + 4).toString()}>
-        {num + 4}
-      </option>
-    ))}
-  </select>
-                      <label id="grpNo" htmlFor="participant-number" className='l2'>Participant Number</label>
+                      id="participant-number"
+                      name="participant-number"
+                      value={participantNumber}
+                      onChange={(e) => setParticipantNumber(e.target.value)}
+                      required
+                    >
+                      <option  value="0">0</option>
+                      {[...Array(12).keys()].map((num) => (
+                        <option key={num + 4} value={(num + 4).toString()}>
+                          {num + 4}
+                        </option>
+                      ))}
+                    </select>
+                      <label id="grpNo" htmlFor="participant-number" className='l2'>Number of participants</label>
                     </div>
                  
-                    {renderParticipantFields()}
-                    <br></br>
+                    {/* Participant 1 */}
+            <div className='input-label'>
+              <input
+                type="text"
+                id="participant-name-1"
+                name="participant-name-1"
+                value={leader.name}
+                onChange={(e) => setleader({ ...leader, name: e.target.value })}
+                required
+              />
+              <label className='l1' htmlFor="participant-name-1">Leader: Name </label>
+            </div>
+            <div className='input-label'>
+              <input
+                type="text"
+                id="contact-number-1"
+                name="contact-number-1"
+                value={leader.contactNumber}
+                onChange={(e) => setleader({ ...leader, contactNumber: e.target.value })}
+                required
+              />
+              <label htmlFor="contact-number-1" className='l2'>Leader: Contact Number </label>
+            </div>
+            <div className='input-label'>
+              <input
+                type="text"
+                id="college-id-1"
+                name="college-id-1"
+                value={leader.collegeId}
+                onChange={(e) => setleader({ ...leader, collegeId: e.target.value })}
+                required
+              />
+              <label htmlFor="college-id-1" className='l3'>Leader: College ID (Drive Link)</label>
+            </div>
+
+            {/* Participant 2 */}
+            <div className='input-label'>
+              <input
+                type="text"
+                id="participant-name-2"
+                name="participant-name-2"
+                value={alternate.name}
+                onChange={(e) => setalternate({ ...alternate, name: e.target.value })}
+                required
+              />
+              <label className='l1' htmlFor="participant-name-2">Alternate Leader: Name </label>
+            </div>
+            <div className='input-label'>
+              <input
+                type="text"
+                id="contact-number-2"
+                name="contact-number-2"
+                value={alternate.contactNumber}
+                onChange={(e) => setalternate({ ...alternate, contactNumber: e.target.value })}
+                required
+              />
+              <label htmlFor="contact-number-2" className='l2'>Alternate Leader: Contact Number </label>
+            </div>
+            <div className='input-label'>
+              <input
+                type="url"
+                id="college-id-2"
+                name="college-id-2"
+                value={alternate.collegeId}
+                onChange={(e) => setalternate({ ...alternate, collegeId: e.target.value })}
+                required
+              />
+              <label htmlFor="college-id-2" className='l3'>Alternate Leader: College ID (Drive Link)</label>
+            </div>
                     <div id='btn'>
                         <button type="submit" className='Sub'>Submit</button>
                     </div>
