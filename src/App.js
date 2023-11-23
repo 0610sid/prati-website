@@ -36,6 +36,7 @@ import MonoAct from './components/EventMonoAct';
 import  MrandMs from './components/EventMrAndMs';
 import  SemiClassical from './components/EventSemiClassical';
 import Band from './components/EventBand';
+import MGT from './components/EventMGT'
 import Btn from './components/btns';
 import VerificationCheck from './utils/VerificationCheck';
 
@@ -90,6 +91,7 @@ function App() {
     { path: "/MonoAct", element: <UserRoutes><VerificationCheck> <MonoAct /></VerificationCheck> </UserRoutes> },
     { path: "/Mr&Ms", element: <UserRoutes><VerificationCheck> <MrandMs /></VerificationCheck> </UserRoutes> },
     { path: "/Band", element: <UserRoutes><VerificationCheck> <Band /></VerificationCheck> </UserRoutes> },
+    { path: "/MGT", element: <UserRoutes><VerificationCheck> <MGT /></VerificationCheck> </UserRoutes> },
 
     // { path: "/GroupDance", element: <EventForm/> },
     // { path: "/StandUp", element:  <Standup/>   },

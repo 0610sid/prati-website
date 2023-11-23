@@ -144,7 +144,7 @@ const EventListUpcoming = () => {
         "name": "Mumbai's Got Talent",
         "poster": MGT,
         "desc": "Talent Show",
-        "url": "/MonoAct"
+        "url": "/MGT"
     }
 ]
 
