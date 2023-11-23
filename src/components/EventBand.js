@@ -6,82 +6,30 @@ import image from "../images/band.jpg";
 import Navbar from "./Navbar";
 
 function Band() {
-    const [participantName, setParticipantName] = useState('');
     const [teamName, setTeamName] = useState('');
     const [participantNumber, setParticipantNumber] = useState('');
-    const [collegeId, setCollegeId] = useState('');
-    const [participants, setParticipants] = useState([]); 
+    const [leader, setleader] = useState({ name: '', contactNumber: '', collegeId: '' });
+    const [alternate, setalternate] = useState({ name: '', contactNumber: '', collegeId: '' }) 
 
-    const handleSubmit = async(e) => {
-        console.log("clicked");
-        e.preventDefault();
-        try {
-          const token = localStorage.getItem("token");
-        const response = await axios.post('http://localhost:9000/band/addTeam', {
-            teamName,
-            participantNumber,
-            participants, // Send the array of participants
-            token
-          });
-    
-            console.log('Response:', response.data);
-            // Optionally, you can reset the form fields here
-            setParticipantName('');
-            setCollegeId('');
-        } catch (error) {
-            console.error('Error:', error);
-        }      
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      try {
+        const token = localStorage.getItem("token");
+        const response = await axios.post('http://localhost:9000/events/band/addTeam', {
+          teamName,
+          leader,
+          alternate,
+          token
+        });
+  
+        console.log('Response:', response.data);
+        setleader({ name: '', contactNumber: '', collegeId: '' });
+        setalternate({ name: '', contactNumber: '', collegeId: '' });
+      } catch (error) {
+        console.error('Error:', error);
+      }
     };
-    const renderParticipantFields = () => {
-        const participantFields = [];
-    
-        for (let i = 0; i < participantNumber; i++) {
-          participantFields.push(
-            <div key={i}>
-              <br></br>
-              <br></br>
-              <h3>Team Member-{i + 1}</h3>
-              <br></br>
-              <div className='input-label'>
-                <input
-                  type="text"
-                  id={`participant-name-${i}`}
-                  name={`participant-name-${i}`}
-                  value={participants[i]?.name || ''}
-                  onChange={(e) => handleParticipantChange(e, i, 'name')}
-                  required
-                />
-                <label htmlFor={`participant-name-${i}`} className='l1'>
-                  Participant Name
-                </label>
-              </div>
-              <div className='input-label'>
-                <input
-                  type="url"
-                  id={`college-id-${i}`}
-                  name={`college-id-${i}`}
-                  value={participants[i]?.collegeId || ''}
-                  onChange={(e) => handleParticipantChange(e, i, 'collegeId')}
-                  required
-                />
-                <label htmlFor={`college-id-${i}`} className='l3'>
-                  College ID (Drive Link)
-                </label>
-              </div>
-            </div>
-          );
-        }
-    
-        return participantFields;
-      };
-      const handleParticipantChange = (e, index, field) => {
-        const updatedParticipants = [...participants];
-        updatedParticipants[index] = {
-          ...updatedParticipants[index],
-          [field]: e.target.value,
-        };
-        setParticipants(updatedParticipants);
-      };
+
   return (
     <div style={{backgroundColor : "black"}}>
       <Navbar/>
@@ -105,33 +53,33 @@ function Band() {
                     <h3 id='title2'>~Unleash your inner beat</h3>
                   </div>
                 
-                <div className='input-label'>
+               <div className='input-label'>
                     <input
                         type="text"
                         id="participant-name"
                         name="participant-name"
-                        value={participantName}
-                        onChange={(e) => setParticipantName(e.target.value)}
+                        value={teamName}
+                        onChange={(e) => setTeamName(e.target.value)}
                         required
                     />
-                    <label className='l1' htmlFor="participant-name">Participant Name</label>
+                    <label className='l1' htmlFor="participant-name">Team Name</label>
                     </div>
                     <div className='input-label'>
                     <select
-    id="participant-number"
-    name="participant-number"
-    value={participantNumber}
-    onChange={(e) => setParticipantNumber(e.target.value)}
-    required
-  >
-    <option  value="0">0</option>
-    {[...Array(12).keys()].map((num) => (
-      <option key={num + 4} value={(num + 4).toString()}>
-        {num + 4}
-      </option>
-    ))}
-  </select>
-                      <label id="grpNo" htmlFor="participant-number" className='l2'>Participant Number</label>
+                      id="participant-number"
+                      name="participant-number"
+                      value={participantNumber}
+                      onChange={(e) => setParticipantNumber(e.target.value)}
+                      required
+                    >
+                      <option  value="0">0</option>
+                      {[...Array(12).keys()].map((num) => (
+                        <option key={num + 4} value={(num + 4).toString()}>
+                          {num + 4}
+                        </option>
+                      ))}
+                    </select>
+                      <label id="grpNo" htmlFor="participant-number" className='l2'>Number of participants</label>
                     </div>
                  
                     {renderParticipantFields()}

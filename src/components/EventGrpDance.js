@@ -17,7 +17,7 @@ export default function EventForm() {
         e.preventDefault();
         try {
           const token = localStorage.getItem("token");
-        const response = await axios.post('http://localhost:9000/groupdance/addTeam', {
+        const response = await axios.post('http://localhost:9000/events/groupdance/addTeam', {
             teamName,
             participantNumber,
             participants, // Send the array of participants
@@ -126,7 +126,7 @@ export default function EventForm() {
     onChange={(e) => setParticipantNumber(e.target.value)}
     required
   >
-    <option  value="0">0</option>
+    <option  value="5">5</option>
     {[...Array(12).keys()].map((num) => (
       <option key={num + 4} value={(num + 4).toString()}>
         {num + 4}
