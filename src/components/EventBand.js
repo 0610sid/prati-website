@@ -9,7 +9,7 @@ function Band() {
     const [teamName, setTeamName] = useState('');
     const [participantNumber, setParticipantNumber] = useState('');
     const [leader, setleader] = useState({ name: '', contactNumber: '', collegeId: '' });
-    const [alternate, setalternate] = useState({ name: '', contactNumber: '', collegeId: }) 
+    const [alternate, setalternate] = useState({ name: '', contactNumber: '', collegeId: '' }) 
 
     const handleSubmit = async (e) => {
       e.preventDefault();
