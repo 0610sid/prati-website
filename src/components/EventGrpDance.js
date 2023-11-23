@@ -39,7 +39,11 @@ export default function EventForm() {
         for (let i = 0; i < participantNumber; i++) {
           participantFields.push(
             <div key={i}>
-              <h3>Team Member-{i + 1}</h3>
+              <br></br>
+              <br></br>
+             
+              <h3>Team Member-{i+1 }</h3>
+              <br></br>
               <div className='input-label'>
                 <input
                   type="text"
@@ -132,6 +136,7 @@ export default function EventForm() {
                     </div>
                  
                     {renderParticipantFields()}
+                    <br></br>
           <button type="submit" className='Sub'>Submit</button>
                 </form>
                 </div>

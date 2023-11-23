@@ -34,7 +34,7 @@ export default function EventForm() {
             <Navbar/>
             <section className="registration-form">
                 <div className='main'>
-                <div className='img' style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${image})` }}>
+                <div className='img'style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${image})` }} >
                     <h2 id='info-title' >A quick go through before you register</h2>
                       <ul className='ulimg'>
                         <li className=''>January 6 , 2024 @ 12:30 pm</li>

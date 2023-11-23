@@ -1,3 +1,107 @@
+body {
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif; /* Vintage font */
+  background-color: #f5f0e1; /* Vintage background color */
+}
+
+.form-label {
+  font-weight: bold;
+  font-size: x-large;
+  color: #5c4741; /* Vintage brown color for labels */
+}
+
+/* ... (rest of your existing CSS) ... */
+
+.infotitle {
+  color: #f0ead6; /* Soft cream color for the title */
+  font-family: 'Cormorant Garamond', serif; /* Vintage font */
+  font-size: 2rem;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 20px;
+  word-spacing: 0.1rem;
+}
+
+.img h2 {
+  margin-top: 4%;
+  font-family: 'Cormorant Garamond', serif; /* Vintage font */
+  font-size: 1.3rem;
+  color: #f0ead6; /* Soft cream color for text */
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.8), 0 0 8px rgba(138, 43, 226, 0.6), 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+#title2 {
+  padding: 10px;
+  margin-bottom: 30px;
+  margin-left: 22%;
+  padding: 5px;
+  font-family: 'Cormorant Garamond', serif; /* Vintage font */
+  font-style: italic;
+  color: #f0ead6; /* Soft cream color for text */
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.8), 0 0 8px rgba(138, 43, 226, 0.6), 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+#heading {
+  font-weight: bold;
+  font-family: 'Cormorant Garamond', serif; /* Vintage font */
+  font-size: 2.2rem;
+  font-style: italic;
+  color: #f0ead6; /* Soft cream color for text */
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.8), 0 0 10px rgba(138, 43, 226, 0.6), 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+
+.translucent-form label {
+  display: inline;
+  font-family: 'Cormorant Garamond', serif; /* Vintage font */
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
+  position: relative;
+  top: -50px;
+  padding: 0.2rem 0;
+  font-size: 1rem;
+  color: #f0ead6; /* Soft cream color for text */
+  pointer-events: none;
+  color: white;
+  transition: 0.5s;
+  margin-left: 10%;
+}
+
+#grpNo {
+  width: auto;
+  position: relative;
+  top: -50%;
+  left: 2%;
+  font-size: 1rem;
+  font-family: 'Cormorant Garamond', serif; 
+  color: #f0ead6; 
+  pointer-events: none;
+  color: white;
+  transition: 0.5s;
+}
+
+
+
+#participant-number{
+  position: relative;
+  margin-right: 30px;
+  /* flex-direction: column; */
+  /* right: 50%; */
+}
+
+
+
+.translucent-form .input-label input:focus ~ label,
+.translucent-form .input-label input:valid ~ label,
+.translucent-form .input-label input:not([value=""]) ~ label {
+  text-align: center;
+  left: -10%;
+  top: -5.125rem;
+  color: whitesmoke;
+  font-size: 0.85rem;
+  transition: all 1s ease;
+}
+
 .form-label{
   font-weight: bold;
   font-size: x-large;
@@ -14,6 +118,7 @@
  background-color: black;
 
 }
+
 .info{
   padding: 20px;
 }
@@ -22,7 +127,7 @@
   flex-direction: row;
   align-items: center;
   height: 77vh;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.7), 0 0 10px rgba(138, 43, 226, 0.7);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.7), 0 0 10px rgba(226, 144, 43, 0.538);
   /* box-shadow: 
   0 0 10px rgba(255, 255, 255, 0.7), 
   0 0 10px rgba(255, 255, 255, 0.7), 
@@ -42,14 +147,15 @@
    margin-top: 20px;
    word-spacing: 0.1rem;
   }
-  
+
 .translucent-form select {
-  width: 25%;
+  align-items: center;
+  width: 15%;
   padding: 0.525rem 0;
   font-size: 1rem;
   color: black; /* Adjust text color */
   margin-bottom: 1.5rem;
-  margin-left: 65%;
+  margin-left: 60%;
   border: none;
   border-bottom: 0.085rem solid whitesmoke;
   outline: none;
@@ -64,7 +170,7 @@ color: white;
   content: '\25BC'; /* Unicode character for a downward arrow */
   position: absolute;
   top: 0;
-  right: 0.75rem; /* Adjust the right offset */
+  left: 0.30rem; /* Adjust the right offset */
   padding: 0.25rem;
   pointer-events: none;
   color: white; /* Adjust the arrow color */
@@ -78,11 +184,15 @@ color: white;
   background: transparent;
 }
 .translucent-form select option {
+  margin-left: 50%;
+  width: 25%;
   background-color: black;
   color: white;
 }
 .img{
   display: flex;
+  /* background-image: url("../images/standupimg.jpg");
+  background-image: -moz-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); */
   flex-direction: column;
   justify-content: space-evenly;
   width: 55%;
@@ -101,6 +211,7 @@ text-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
 
 .img h2 {
   margin-top: 4%;
+  font-family: "Playfair Display", serif;
   font-size: 1.3rem;
   text-shadow: 0 0 2px rgba(255, 255, 255, 0.8), 0 0 8px rgba(138, 43, 226, 0.6), 0 0 10px rgba(255, 255, 255, 0.4);
 }
@@ -128,7 +239,7 @@ text-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
 }
 
 .translucent-form::-webkit-scrollbar-thumb {
-  background-color:whitesmoke;
+  background-color:#480363;
   border-radius: 6px; 
 }
 
@@ -136,20 +247,7 @@ text-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
   background-color:black; 
 }
 
-#Addparticipant{
-  position: relative;
-  margin-left: -150px;
-  border: none;
-  outline: none;
-  color: #fff;
-  background-color: #480363;
-padding: 0.5rem 1rem;
-  cursor: pointer;
-  border-radius: 0.325rem;
-  font-size: 1rem;
-  text-align: center;
-  margin-top: -35px;
-}
+
 #TeamMember{
   position: relative;
   margin-left: 150px;
@@ -164,13 +262,16 @@ padding: 0.5rem 1rem;
   text-align: center;
   margin-top: -40px;
 }
+.input-label{
+  width: 100%;
+}
 .Sub{
   position: relative;
-  margin-left: 280px;
+  margin-top: 3%;
   border: none;
   outline: none;
   color: black;
-  background-color: violet;
+  background-color:#480363;
   padding: 0.3rem 0.7rem;
   cursor: pointer;
   border-radius: 0.325rem;
@@ -179,8 +280,10 @@ padding: 0.5rem 1rem;
   margin-top: -40px;
 }
 #title2{
+  padding: 10px;
   margin-bottom: 30px;
   margin-left: 22%;
+  padding: 5px;
   font-style: italic;
   text-shadow: 0 0 2px rgba(255, 255, 255, 0.8), 0 0 8px rgba(138, 43, 226, 0.6), 0 0 10px rgba(255, 255, 255, 0.4);
 }
@@ -192,23 +295,23 @@ padding: 0.5rem 1rem;
   text-shadow: 0 0 3px rgba(255, 255, 255, 0.8), 0 0 10px rgba(138, 43, 226, 0.6), 0 0 10px rgba(255, 255, 255, 0.4);
 }
 .translucent-form  label { 
+  display: inline;
   text-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
-  text-align: center;
   position: relative;
   top: -50px;
-  padding: 1rem 0;
+  padding: 0.2rem 0;
   font-size: 1rem;
   color: #131313;
   pointer-events: none;
   color: white;
   transition: 0.5s;
-  margin-left: 20%;
+  margin-left: 10%;
 }
 #grpNo{
-  position: relative;
-  top: -60px;
-  left: -60px;
-  padding: 0.5rem 0;
+  width: auto;
+  
+  top: -50px;
+  left: 2px;
   font-size: 1rem;
   color: #131313;
   pointer-events: none;
@@ -221,13 +324,16 @@ color: white;
 .translucent-form .input-label input:valid ~ label,
 .translucent-form .input-label input:not([value=""]) ~ label {
   text-align: center;
-  top: -2.125rem;
-  left: 0;
-  color: #244555;
-  font-size: 0.75rem;
+  left: -10%;
+  top: -5.125rem;
+  color:whitesmoke;
+  font-size: 0.85rem;
+  transition: all 1s ease;
+
 }
 .registration-form input {
   width: 100%;
+  font-family: "Playfair Display", serif;
   padding: 0.525rem 0;
   font-size: 1rem;
   color:white;
@@ -239,20 +345,89 @@ color: white;
   background: transparent;
 }
 
-.registration-form button:hover {
-  background-color: #b30000; /* Adjust the color as needed */
+/*new section*/
+.registration-form button{
+  background-color: #5c4741;
+  font-family: "Playfair Display", serif;
+  font-weight: lighter;
 }
 
-@media (max-width:400px){
-  .registration-form{
+.registration-form button:hover {
+  background-color: rgb(118, 48, 8); /* Adjust the color as needed */
+  color : black;
+}
+
+@media (max-width: 600px) {
+
+
+ 
+  
+.img h2 {
+ font-size: 1.5rem;
+    margin-top: 0%;
+
+}
+.img{
+      width: 95%;
+      padding: 5%;
+}
+
+  .main {
+    margin-left: 0;
   flex-direction: column;
+  height: auto;
+  width: 98%;
   }
+ 
+  #heading, .title2{
+        text-align: center;
+  }
+
+  #Addparticipant,
+  #TeamMember,
+  .Sub {
+    margin-top:2px;
+    margin-left: 0;
+  }
+
+  #title2 {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .translucent-form label {
+    margin-left: 0;
+    text-align: center;
+  }
+  
+  .translucent-form select{
+      width: 25%;
+      margin-left: 68%;
+  }
+  #grpNo {
+    left: auto;
+  }
+
+  .registration-form,
+  .translucent-form {
+    width: auto;
+    margin-left: 1%;
+  }
+  .translucent-form .input-label input:focus ~ label,
+  .translucent-form .input-label input:valid ~ label,
+  .translucent-form .input-label input:not([value=""]) ~ label {
+    text-align: center;
+    left: -1%;
+    top: -5.125rem;
+    color:whitesmoke;
+    font-size: 0.85rem;
+    transition: all 1s ease;
+  
+  }
+  
 }
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
+
+
+
+
