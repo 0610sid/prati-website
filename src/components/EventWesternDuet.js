@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import image from "../images/DuetDance.jpg"; 
+import image from "../images/DuetDance.jpg";
 import "../sass/events.css"
 import axios from 'axios';
 import Navbar from "./Navbar";
@@ -47,9 +47,9 @@ function WesternDuet() {
       console.log('Response:', response.data);
       setParticipant1({ name: '', contactNumber: '', collegeId: '' });
       setParticipant2({ name: '', contactNumber: '', collegeId: '' });
-    
+
       if (response.data === 'Participants added successfully') {
-        setError(''); 
+        setError('');
         setShowSuccessMessage(true);
       }
     } catch (error) {
@@ -62,28 +62,28 @@ function WesternDuet() {
   };
 
   return (
-    <div style={{backgroundColor:"black"}}>
-        <Navbar/>
+    <div style={{ backgroundColor: "black" }}>
+      <Navbar />
 
       <section className="registration-form">
         <div className='main'>
           <div className='img' style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${image})` }}>
             <h2 id='info-title' >A quick go through before you register</h2>
             <ul className='ulimg'>
-                <li className=''>January 5 , 2024 @ 2:00 pm</li>
-                <li className=''>Single entry per college</li>
-                <li className=''>Any kind of profanity will lead to direct elimination of the whole contigent.</li>
-                <li className=''>For detailed rules please visit <a href='https://drive.google.com/file/d/12ADjgD9CZMaOUB5QMZG-19gIMWQEp19t/view?usp=drive_link'>here</a>.</li>
-                <li className=''><strong>Yashvi Gala : 9930336236</strong></li>
-            </ul> 
+              <li className=''>January 5 , 2024 @ 2:00 pm</li>
+              <li className=''>Single entry per college</li>
+              <li className=''>Any kind of profanity will lead to direct elimination of the whole contigent.</li>
+              <li className=''>For detailed rules please visit <a href='https://drive.google.com/file/d/12ADjgD9CZMaOUB5QMZG-19gIMWQEp19t/view?usp=drive_link'>here</a>.</li>
+              <li className=''><strong>Yashvi Gala : 9930336236</strong></li>
+            </ul>
           </div>
 
           <form onSubmit={handleSubmit} className="translucent-form">
             <div id='titleform'>
-                <p id='heading'>Rab ne bana di jodi</p>
-                <h3 id='title2'>~Chance pe dance</h3>
+              <p id='heading'>Rab ne bana di jodi</p>
+              <h3 id='title2'>~Chance pe dance</h3>
             </div>
-      
+
 
             {/* Participant 1 */}
             <div className='input-label'>
@@ -155,16 +155,16 @@ function WesternDuet() {
               <label htmlFor="college-id-2" className='l3'>College ID 2 (Drive Link)</label>
             </div>
             {error && <div className='success-div'><b><p style={{ color: 'red' }} className="error-message">{error}</p></b></div>}
-                    {showSuccessMessage && (
-                      <div className='success-div'>
-                      <p style={{ color: 'green' }}>Form Submitted Successfully</p>
-                      <p>Redirecting in {countdown} seconds</p>
-                      </div>
-                    )}
+            {showSuccessMessage && (
+              <div className='success-div'>
+                <p style={{ color: 'green' }}>Form Submitted Successfully</p>
+                <p>Redirecting in {countdown} seconds</p>
+              </div>
+            )}
 
-                <div className='sub-btn-div'>
-                        <button type="submit" className='Sub'>Submit</button>
-                    </div>
+            <div className='sub-btn-div'>
+              <button type="submit" className='Sub'>Submit</button>
+            </div>
           </form>
         </div>
       </section>

@@ -87,51 +87,51 @@ const EventListUpcoming = () => {
 
   const localData = [
     {
-        "desc": "Mono Acting",
-        "poster": MonoAct,
-        "name": "Lights Camera Abhinay"
+      "desc": "Mono Acting",
+      "poster": MonoAct,
+      "name": "Lights Camera Abhinay"
     },
     {
-        "name": "OnlyPuns",
-        "desc": "StandUp",
-        "poster": StandUp,
+      "name": "OnlyPuns",
+      "desc": "StandUp",
+      "poster": StandUp,
     },
     {
-        "poster": SoloClassical,
-        "desc": "Solo Semi-Classical",
-        "name": "Natarang",
+      "poster": SoloClassical,
+      "desc": "Solo Semi-Classical",
+      "name": "Natarang",
     },
     {
-        "poster": Duet,
-        "desc": "Western Duet",
-        "name": "Rabne bana-di Jodi"
+      "poster": Duet,
+      "desc": "Western Duet",
+      "name": "Rabne bana-di Jodi"
     },
     {
-        "poster": GroupDance,
-        "name": "Nachne de Saare",
-        "desc": "Group Dance"
+      "poster": GroupDance,
+      "name": "Nachne de Saare",
+      "desc": "Group Dance"
     },
     {
-        "desc": "Solo Singing",
-        "name": "Mehfil-E-Prati",
-        "poster": SoloSinging
+      "desc": "Solo Singing",
+      "name": "Mehfil-E-Prati",
+      "poster": SoloSinging
     },
     {
-        "name": "Rythm Rebels",
-        "poster": Band,
-        "desc": "Band"
+      "name": "Rythm Rebels",
+      "poster": Band,
+      "desc": "Band"
     },
     {
-        "desc": "Fashion Show",
-        "name": "Mr. & Ms. Prati",
-        "poster": MrMs
+      "desc": "Fashion Show",
+      "name": "Mr. & Ms. Prati",
+      "poster": MrMs
     },
     {
-        "name": "Mumbai's Got Talent",
-        "poster": MGT,
-        "desc": "Talent Show"
+      "name": "Mumbai's Got Talent",
+      "poster": MGT,
+      "desc": "Talent Show"
     }
-]
+  ]
 
   useEffect(() => {
     setInfo(localData)
@@ -172,18 +172,18 @@ const Events = () => {
   return (
     <div>
       <div style={{ background: "black" }}>
-      <Navbar/>
-        <div className="illuminati-theme" style={{padding : "0" , paddingTop : "4rem" , paddingBottom : "3rem"}}>
+        <Navbar />
+        <div className="illuminati-theme" style={{ padding: "0", paddingTop: "4rem", paddingBottom: "3rem" }}>
           <h2 data-aos="fade-up">Upcoming Events of 2024</h2>
-          <h2 data-aos="fade-up" style={{fontSize : "22px"}}>Kindly <a href="/login" style={{textDecoration : "none"}}>Login</a> To Register</h2>
+          <h2 data-aos="fade-up" style={{ fontSize: "22px" }}>Kindly <a href="/login" style={{ textDecoration: "none" }}>Login</a> To Register</h2>
           <EventListUpcoming />
         </div>
-        <div data-aos="fade-up" className="illuminati-theme" style={{padding : "0" , paddingBottom : "4rem"}}>
+        <div data-aos="fade-up" className="illuminati-theme" style={{ padding: "0", paddingBottom: "4rem" }}>
           {/* <br />
           <br /> */}
 
-          <h2 data-aos="fade-up" style={{fontSize : "22px" , paddingTop : "-23rem"}}>For Login Details Contact <br/>
-          Shubham : 8452095193
+          <h2 data-aos="fade-up" style={{ fontSize: "22px", paddingTop: "-23rem" }}>For Login Details Contact <br />
+            Shubham : 8452095193
           </h2>
         </div>
       </div>

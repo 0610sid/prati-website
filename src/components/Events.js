@@ -29,7 +29,7 @@ const EventListPast = () => {
   const justify2 = useMediaQuery("(min-width:600px)");
 
   return (
-    
+
     <ImageList
       sx={{ width: "100%" }}
       cols={justify2 ? (justify1 ? 6 : 4) : 2}
@@ -93,60 +93,60 @@ const EventListUpcoming = () => {
 
   const localData = [
     {
-        "desc": "Mono Acting",
-        "poster": MonoAct,
-        "name": "Lights Camera Abhinay",
-        "url": "/MonoAct"
+      "desc": "Mono Acting",
+      "poster": MonoAct,
+      "name": "Lights Camera Abhinay",
+      "url": "/MonoAct"
     },
     {
-        "name": "OnlyPuns",
-        "desc": "StandUp",
-        "poster": StandUp,
-        "url": "/StandUp"
+      "name": "OnlyPuns",
+      "desc": "StandUp",
+      "poster": StandUp,
+      "url": "/StandUp"
     },
     {
-        "poster": SoloClassical,
-        "desc": "Solo Semi-Classical",
-        "name": "Natarang",
-        "url": "/SemiClassical"
+      "poster": SoloClassical,
+      "desc": "Solo Semi-Classical",
+      "name": "Natarang",
+      "url": "/SemiClassical"
     },
     {
-        "poster": Duet,
-        "desc": "Western Duet",
-        "name": "Rabne bana-di Jodi",
-        "url": "/WesternDuet"
+      "poster": Duet,
+      "desc": "Western Duet",
+      "name": "Rabne bana-di Jodi",
+      "url": "/WesternDuet"
     },
     {
-        "poster": GroupDance,
-        "name": "Nachne de Saare",
-        "desc": "Group Dance",
-        "url": "/GroupDance"
+      "poster": GroupDance,
+      "name": "Nachne de Saare",
+      "desc": "Group Dance",
+      "url": "/GroupDance"
     },
     {
-        "desc": "Solo Singing",
-        "name": "Mehfil-E-Prati",
-        "poster": SoloSinging,
-        "url": "/SoloSinging"
+      "desc": "Solo Singing",
+      "name": "Mehfil-E-Prati",
+      "poster": SoloSinging,
+      "url": "/SoloSinging"
     },
     {
-        "name": "Rythm Rebels",
-        "poster": Band,
-        "desc": "Band",
-        "url": "/Band"
+      "name": "Rythm Rebels",
+      "poster": Band,
+      "desc": "Band",
+      "url": "/Band"
     },
     {
-        "desc": "Fashion Show",
-        "name": "Mr. & Ms. Prati",
-        "poster": MrMs,
-        "url": "/Mr&Ms"
+      "desc": "Fashion Show",
+      "name": "Mr. & Ms. Prati",
+      "poster": MrMs,
+      "url": "/Mr&Ms"
     },
     {
-        "name": "Mumbai's Got Talent",
-        "poster": MGT,
-        "desc": "Talent Show",
-        "url": "/MGT"
+      "name": "Mumbai's Got Talent",
+      "poster": MGT,
+      "desc": "Talent Show",
+      "url": "/MGT"
     }
-]
+  ]
 
 
   useEffect(() => {
@@ -155,7 +155,7 @@ const EventListUpcoming = () => {
   }, []);
 
   return (
-    
+
     <div style={{ margin: "6rem 0 0 0" }}>
       <Grid container spacing={5} justifyContent={justify ? "start" : "center"}>
         {info.map((il, index) => {
@@ -190,7 +190,7 @@ const Events = () => {
   return (
     <div>
       <div style={{ background: "black" }}>
-      <Navbar />
+        <Navbar />
         <div className="illuminati-theme">
           <h2 data-aos="fade-up">Upcoming Events of 2024</h2>
           <EventListUpcoming />
