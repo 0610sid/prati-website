@@ -9,12 +9,12 @@ import MemberCard from "./MemberCard";
 import { Grid } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
-import ADITYA_MHATRE from "../assets/Team/ADITYA_MHATRE.jpg";
-import SAHIL_THAKKAR from "../assets/Team/SAHIL_THAKKAR.jpeg";
-import RADHA_NAYSE from "../assets/Team/RADHA_NAYSE.jpg";
-import ANANDITA_BUMMERKAR from "../assets/Team/ANANDITA_BUMMERKAR.jpg";
-import NANDINI_BHOSALE from "../assets/Team/NANDINI_BHOSLE.jpg";
-import MIHIR_GHANEKAR from "../assets/Team/MIHIR_GHANEKAR.JPG";
+import SHAILEY_LOHAR from "../assets/Team/SHAILEY_LOHAR.JPG";
+import AYUSH_DEORE from "../assets/Team/AYUSH_DEORE.jpg"
+import DARSHAN_GUPTA from "../assets/Team/DARSHAN_GUPTA.jpg"
+import OM_KEDAR from "../assets/Team/OM_KEDAR.PNG"
+import GAURAVI_PATIL from "../assets/Team/GAURAVI_PATIL.jpg"
+import SOHEL_TADVI from "../assets/Team/SOHEL_TADVI.HEIC"
 
 const useTabStyles = makeStyles({
   root: {
@@ -87,49 +87,49 @@ export default function Team1() {
           >
             <Grid item md>
               <MemberCard
-                img={NANDINI_BHOSALE}
+                img={OM_KEDAR}
                 post="Secretary"
-                name="Nandini Bhosale"
+                name="Om Kedar"
                 color="purple"
               />
             </Grid>
             <Grid item md>
               <MemberCard
-                img={MIHIR_GHANEKAR}
+                img={GAURAVI_PATIL}
                 post="Secretary"
-                name="Mihir Ghanekar"
+                name="Gauravi Patil"
                 color="purple"
               />
             </Grid>
             <Grid item md>
               <MemberCard
-                img={ANANDITA_BUMMERKAR}
+                img={SOHEL_TADVI}
                 post="Secretary"
-                name="Anandita Bummerkar"
+                name="Sohel Tadvi"
                 color="purple"
               />
             </Grid>
             <Grid item md>
               <MemberCard
-                img={SAHIL_THAKKAR}
+                img={SHAILEY_LOHAR}
                 post="Treasurer"
-                name="Sahil Thakkar"
+                name="Sahiley Lohar"
                 color="green"
               />
             </Grid>
             <Grid item md>
               <MemberCard
-                img={RADHA_NAYSE}
+                img={AYUSH_DEORE}
                 post="Treasurer"
-                name="Radha Nayse"
+                name="Ayush Deore"
                 color="green"
               />
             </Grid>
             <Grid item md>
               <MemberCard
-                img={ADITYA_MHATRE}
+                img={DARSHAN_GUPTA}
                 post="Treasurer"
-                name="Aditya Mhatre"
+                name="Darshan Gupta"
                 color="green"
               />
             </Grid>
