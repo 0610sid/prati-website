@@ -6,6 +6,8 @@
 // import CHIRAG_SHELAR from "../assets/Team/CHIRAG_SHELAR.jpeg";
 // import AMANPREET_BAINS from "../assets/Team/AMANPREET_BAINS.jpg";
 // //SID was here ig:sid_0610
+// //ARDRA was here ig:ardra2603
+// //GAURAVI was here ig:gauravi2410
 
 // export default function WebDevTeam() {
 //   return (
