@@ -31,11 +31,11 @@ const SponsContent = () => {
   return (
     <>
       <div className="past-spons">
-      <h2 data-aos="fade-up">PRESENT SPONSORS</h2>
+      {/* <h2 data-aos="fade-up">PRESENT SPONSORS</h2>
         <SponsList />
         <br />
-        <br />
-        <h2 data-aos="fade-up">PAST SPONSORS</h2>
+        <br /> */}
+        <h2 data-aos="fade-up">SPONSORS</h2>
         {vert ? (
           <img
             src={sponsgrid1}

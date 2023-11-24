@@ -56,11 +56,11 @@ const Navbar = () => {
               <p>Hall of Fame</p>
             </Link>
           </Box>
-          <Box p={3}>
+          {/* <Box p={3}>
             <Link underline="none" href="/gallery" color="inherit">
               <p>Gallery</p>
             </Link>
-          </Box>
+          </Box> */}
           {user ? (
             <Box p={3}>
               <Link underline="none" href="/signout" color="inherit">
