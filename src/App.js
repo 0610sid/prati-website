@@ -93,15 +93,6 @@ function App() {
     { path: "/Band", element: <UserRoutes><VerificationCheck> <Band /></VerificationCheck> </UserRoutes> },
     { path: "/MGT", element: <UserRoutes><VerificationCheck> <MGT /></VerificationCheck> </UserRoutes> },
 
-    // { path: "/GroupDance", element: <EventForm/> },
-    // { path: "/StandUp", element:  <Standup/>   },
-    // { path: "/WesternDuet", element: <WesternDuet/>  },
-    // { path: "/SemiClassical", element:  <SemiClassical/>  },
-    // { path: "/SoloSinging", element: <Solo_Singing/> },
-    // { path: "/MonoAct", element:  <MonoAct />},
-    // { path: "/Mr&Ms", element: <MrandMs /> },
-    // { path: "/Band", element:  <Band /> },
-    // { path: "/MGT", element: <MGT /> },
     // ...
   ]);
   return routes;

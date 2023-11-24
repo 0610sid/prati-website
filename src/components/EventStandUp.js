@@ -11,7 +11,7 @@ export default function EventForm() {
     const [performanceLink, setPerformanceLink] = useState('');
     const [mobile, setmobile] = useState('');
     const [error, setError] = useState('');
-    const [countdown, setCountdown] = useState(5);
+    const [countdown, setCountdown] = useState(3);
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
     const navigate = useNavigate();
@@ -133,14 +133,14 @@ export default function EventForm() {
                             />
                             <label htmlFor="mobile-no" className='l4'>Mobile No.</label>
                         </div>
-                        {error && <b><p style={{ color: 'red' }} className="error-message">{error}</p></b>}
+                        {error && <div className='success-div'><b><p style={{ color: 'red' }} className="error-message">{error}</p></b></div>}
                     {showSuccessMessage && (
-                      <>
+                      <div className='success-div'>
                       <p style={{ color: 'green' }}>Form Submitted Successfully</p>
                       <p>Redirecting in {countdown} seconds</p>
-                      </>
+                      </div>
                     )}
-                        <button type="submit" className='Sub'>Submit</button>
+                      <div className='sub-btn-div'><button type="submit" className='Sub'>Submit</button></div>
                 </form>
                 </div>
             </section>

@@ -11,7 +11,7 @@ function Singing() {
 
     const [mobile, setmobile] = useState('');
     const [error, setError] = useState('');
-    const [countdown, setCountdown] = useState(5);
+    const [countdown, setCountdown] = useState(3);
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
     const navigate = useNavigate();
@@ -121,15 +121,15 @@ function Singing() {
               />
               <label htmlFor="contact-number" className='l5'>Contact Number</label>
             </div>
-                    {error && <b><p style={{ color: 'red' }} className="error-message">{error}</p></b>}
+                    {error && <div className='success-div'><b><p style={{ color: 'red' }} className="error-message">{error}</p></b></div>}
                     {showSuccessMessage && (
-                      <>
+                      <div className='success-div'>
                       <p style={{ color: 'green' }}>Form Submitted Successfully</p>
                       <p>Redirecting in {countdown} seconds</p>
-                      </>
+                      </div>
                     )}
 
-                    <button type="submit" className='Sub'>Submit</button>
+                    <div className='sub-btn-div'><button type="submit" className='Sub' >Submit</button></div>
                 </form>
                 </div>
             </section>
