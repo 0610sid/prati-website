@@ -63,8 +63,9 @@ function Band() {
 
         if (error.response && error.response.status === 400) {
           setError('Your college has already reached maximum registration limit');
-        } else {
-          setError('Internal Server Error');
+        } 
+        else {
+          setError(error.response.data);
         }
       }
     };
