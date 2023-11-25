@@ -41,11 +41,11 @@ export default function EventForm() {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.post('http://51.20.66.1:9000/events/MGT/addTeam', {
+      const response = await axios.post('https://backend-j6ar.onrender.com/events/MGT/addTeam', {
         teamName, participantNumber, leader, alternate, performanceLink, token
       });
 
-      console.log('Response:', response.data);
+      // console.log('Response:', response.data);
       setleader({ name: '', mobile: '', collegeId: '' });
       setalternate({ name: '', mobile: '', collegeId: '' });
       if (response.data === 'Participant added successfully') {
@@ -53,7 +53,7 @@ export default function EventForm() {
         setShowSuccessMessage(true);
       }
     } catch (error) {
-      console.error('Error:', error);
+      // console.error('Error:', error);
       if (error.response && error.response.status === 400) {
         setError('Your college has already registered');
       } else {

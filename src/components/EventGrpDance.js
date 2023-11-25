@@ -39,14 +39,14 @@ export default function EventForm() {
     }, [countdown, navigate]);
 
     const handleSubmit = async (e) => {
-        console.log("clicked");
+        // console.log("clicked");
         e.preventDefault();
         try {
           const token = localStorage.getItem("token");
-        const response = await axios.post('http://51.20.66.1:9000/events/groupdance/addTeam', {
+        const response = await axios.post('https://backend-j6ar.onrender.com/events/groupdance/addTeam', {
           teamName, participantNumber, leader, alternate, token });
     
-          console.log('Response:', response.data);
+          // console.log('Response:', response.data);
           setleader({ name: '', mobile: '', collegeId: '' });
           setalternate({ name: '', mobile: '', collegeId: '' });
         
@@ -56,7 +56,7 @@ export default function EventForm() {
           }
         
         } catch (error) {
-          console.error('Error:', error);
+          // console.error('Error:', error);
 
           if (error.response && error.response.status === 400) {
             setError('Your college has already registered');

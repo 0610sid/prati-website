@@ -40,7 +40,7 @@ export default function SemiClassical() {
 
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.post('http://51.20.66.1:9000/events/semiclassical/addParticipant', {
+      const response = await axios.post('https://backend-j6ar.onrender.com/events/semiclassical/addParticipant', {
         participantName,
         collegeId,
         mobile,
@@ -55,7 +55,7 @@ export default function SemiClassical() {
         setShowSuccessMessage(true);
       }
     } catch (error) {
-      console.error('Error:', error);
+      // console.error('Error:', error);
 
       if (error.response && error.response.status === 400) {
         setError('Your college has already registered');

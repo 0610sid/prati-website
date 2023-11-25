@@ -16,23 +16,23 @@ const Team = () => {
         <br />
         <br />
         <div className="team-sec1">
-          <h3 data-aos="fade-up">The Pillars</h3>
+          {/* <h3 data-aos="fade-up">The Pillars</h3> */}
           {/* <Team2 /> */}
         </div>
         <br />
         <br />
         <div className="team-sec1">
-          <h3 data-aos="fade-up">The Creatives</h3>
+          {/* <h3 data-aos="fade-up">The Creatives</h3> */}
           {/* <Team3 /> */}
         </div>
       </div>
-      <div className="web-dev">
+      {/* <div className="web-dev">
         <div className="team-sec1">
           <h3 data-aos="fade-up">The Web Dev Team</h3>
           <br />
-          {/* <WebDevTeam /> */}
+          <WebDevTeam />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -9,23 +9,23 @@ const Verify = () => {
       useEffect(() => {
         const getData = async () => {
             try {
-                const res = await fetch("http://51.20.66.1:9000/admin/verify");
+                const res = await fetch("https://backend-j6ar.onrender.com/admin/verify");
                 const fetchedData = await res.json();
                 setValues(fetchedData)
             } catch (error) {
-                console.error("Error fetching data:", error);
+                // console.error("Error fetching data:", error);
             }
         };
         getData();
     }, []);
 
     const handleSubmit = async (ccCode) => {
-        axios.put(`http://51.20.66.1:9000/admin/verify/${ccCode}`)
+        axios.put(`https://backend-j6ar.onrender.com/admin/verify/${ccCode}`)
             .then((response) => {
                 if (!response.data.success) {
-                    console.log(response.data.message);
+                    // console.log(response.data.message);
                 } else {
-                    console.log(response.data);
+                    // console.log(response.data);
                 }
                 // Move navigate inside the else block to avoid navigating on error
                 navigate("/admin/verify");

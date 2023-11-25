@@ -6,7 +6,7 @@ const UserRoutes = ({ children }) => {
     const returnRole = (reqToken) => {
         if (reqToken) {
             let decodedToken = jwtDecode(reqToken);
-            console.log(decodedToken.role);
+            // console.log(decodedToken.role);
             return (decodedToken.role);
         } else return (null);
     }

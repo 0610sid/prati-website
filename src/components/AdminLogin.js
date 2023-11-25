@@ -30,12 +30,12 @@ const AdminLogin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    axios.post("http://51.20.66.1:9000/admin/login", { username, password })
+    axios.post("https://backend-j6ar.onrender.com/admin/login", { username, password })
     .then((response) => {
         if (!response.data.auth) {
           setError(response.data.message);
         } else {
-          console.log(response.data);
+          // console.log(response.data);
           localStorage.setItem("token", response.data.token)
           navigate("/admin/verify"); }
       });

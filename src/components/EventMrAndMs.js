@@ -52,7 +52,7 @@ function MrandMs() {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "http://51.20.66.1:9000/events/mrandms/addDuo",
+        "https://backend-j6ar.onrender.com/events/mrandms/addDuo",
         {
           participant1,
           participant2,
@@ -61,7 +61,7 @@ function MrandMs() {
         }
       );
 
-      console.log("Response:", response.data);
+      // console.log("Response:", response.data);
 
       setParticipant1({
         name: "",
@@ -82,7 +82,7 @@ function MrandMs() {
         setShowSuccessMessage(true);
       }
     } catch (error) {
-      console.error("Error:", error);
+      // console.error("Error:", error);
 
       if (error.response && error.response.status === 400) {
         setError("Your college has already registered");

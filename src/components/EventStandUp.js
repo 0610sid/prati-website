@@ -41,7 +41,7 @@ export default function EventForm() {
 
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.post('http://51.20.66.1:9000/events/standup/addParticipant', {
+      const response = await axios.post('https://backend-j6ar.onrender.com/events/standup/addParticipant', {
         participantName,
         collegeId,
         performanceLink,
@@ -59,7 +59,7 @@ export default function EventForm() {
         setShowSuccessMessage(true);
       }
     } catch (error) {
-      console.error('Error:', error);
+      // console.error('Error:', error);
       if (error.response && error.response.status === 400) {
         setError('Your college has already registered');
       } else {

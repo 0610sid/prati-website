@@ -29,7 +29,7 @@ const IlluminatiList = () => {
 
   useEffect(() => {
     getEvents(fire);
-    console.log(info);
+    // console.log(info);
     // eslint-disable-next-line
   }, []);
 

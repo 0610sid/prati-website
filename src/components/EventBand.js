@@ -42,7 +42,7 @@ function Band() {
       e.preventDefault();
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.post('http://51.20.66.1:9000/events/band/addTeam', {
+        const response = await axios.post('https://backend-j6ar.onrender.com/events/band/addTeam', {
           teamName,
           participantNumber,
           leader,
@@ -50,7 +50,7 @@ function Band() {
           token
         });
   
-        console.log('Response:', response.data);
+        // console.log('Response:', response.data);
         setleader({ name: '', mobile: '', collegeId: '' });
         setalternate({ name: '', mobile: '', collegeId: '' });
 
@@ -59,7 +59,7 @@ function Band() {
           setShowSuccessMessage(true);
         }
       } catch (error) {
-        console.error('Error:', error);
+        // console.error('Error:', error);
 
         if (error.response && error.response.status === 400) {
           setError('Your college has already reached maximum registration limit');

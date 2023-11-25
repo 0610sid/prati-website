@@ -6,7 +6,7 @@ const VerificationCheck = ({ children }) => {
     const returnVerificationStatus = (reqToken) => {
         if (reqToken) {
             let decodedToken = jwtDecode(reqToken);
-            console.log(decodedToken.isverified);
+            // console.log(decodedToken.isverified);
             return (decodedToken.isverified);
         } else return (null);
     }

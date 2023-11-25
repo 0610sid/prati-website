@@ -51,17 +51,17 @@ const Verification = () => {
     const token = localStorage.getItem("token");
   
     try {
-      const response = await axios.post("http://51.20.66.1:9000/verification", { name, mobile, collegeName, collegeId, token });
+      const response = await axios.post("https://backend-j6ar.onrender.com/verification", { name, mobile, collegeName, collegeId, token });
   
       if (response.data.auth) {
-        console.log(response.data.result);
+        // console.log(response.data.result);
         navigate("/verificationRedirect");
       } else {
         setLoginStatus(false);
         setError(response.data.message);
       }
     } catch (error) {
-      console.error("Error during verification:", error);
+      // console.error("Error during verification:", error);
       setError("Error during submitting form");
     }
   };

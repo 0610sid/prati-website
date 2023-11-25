@@ -24,12 +24,12 @@ const LoginForm = () => {
   };
 
   const userAuthenticated = () => {
-    axios.get("http://51.20.66.1:9000/isUserAuth", {
+    axios.get("https://backend-j6ar.onrender.com/isUserAuth", {
       headers: {
         "x-access-token": localStorage.getItem("token"),
       },
     }).then((response) => {
-      console.log(response);
+      // console.log(response);
     });
   };
 
@@ -45,13 +45,13 @@ const LoginForm = () => {
     e.preventDefault();
 
     try {
-        const loginResponse = await axios.post("http://51.20.66.1:9000/login", {
+        const loginResponse = await axios.post("https://backend-j6ar.onrender.com/login", {
             username,
             password
         });
 
         if (loginResponse.data.auth) {
-          console.log(loginResponse.data);
+          // console.log(loginResponse.data);
           localStorage.setItem("token", loginResponse.data.token);
           setLoginStatus(true);
           if (loginResponse.data.result[0].isfirst && !loginResponse.data.result[0].isverified) 
@@ -65,7 +65,7 @@ const LoginForm = () => {
             setError(loginResponse.data.message);
         }
     } catch (error) {
-        console.error("Error during login:", error);
+        // console.error("Error during login:", error);
     }
 };
 

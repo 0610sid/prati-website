@@ -38,13 +38,13 @@ function WesternDuet() {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.post('http://51.20.66.1:9000/events/westernduet/addDuo', {
+      const response = await axios.post('https://backend-j6ar.onrender.com/events/westernduet/addDuo', {
         participant1,
         participant2,
         token
       });
 
-      console.log('Response:', response.data);
+      // console.log('Response:', response.data);
       setParticipant1({ name: '', contactNumber: '', collegeId: '' });
       setParticipant2({ name: '', contactNumber: '', collegeId: '' });
 
