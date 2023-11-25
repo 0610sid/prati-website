@@ -87,7 +87,7 @@ function MrandMs() {
       if (error.response && error.response.status === 400) {
         setError("Your college has already registered");
       } else {
-        setError("Internal Server Error");
+        setError(error.response.data);
       }
     }
   };
