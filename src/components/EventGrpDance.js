@@ -1,123 +1,127 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import image from "../images/groupdance.jpg"; 
+import image from "../images/groupdance.jpg";
 import axios from 'axios';
 import "../sass/events.css"
 import Navbar from "./Navbar";
-
+import { HashLoader } from 'react-spinners';
 
 export default function EventForm() {
   const [teamName, setTeamName] = useState('');
   const [participantNumber, setParticipantNumber] = useState('');
   const [leader, setleader] = useState({ name: '', mobile: '', collegeId: '' });
-  const [alternate, setalternate] = useState({ name: '', mobile: '', collegeId: ''});
+  const [alternate, setalternate] = useState({ name: '', mobile: '', collegeId: '' });
   const [error, setError] = useState('');
   const [countdown, setCountdown] = useState(3);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-    let fields;
+  const [loader, isLoading] = useState(false)
 
-    const navigate = useNavigate();
+  let fields;
 
-    useEffect(() => {
-      let countdownInterval;
-  
-      if (showSuccessMessage) {
-        countdownInterval = setInterval(() => {
-          setCountdown((prevCountdown) => prevCountdown - 1);
-        }, 1000);
-      }
-  
-      return () => {
-        clearInterval(countdownInterval);
-      };
-    }, [showSuccessMessage]);
-  
-    useEffect(() => {
-      if (countdown === 0) {
-        navigate('/events');
-      }
-    }, [countdown, navigate]);
+  const navigate = useNavigate();
 
-    const handleSubmit = async (e) => {
-        // console.log("clicked");
-        e.preventDefault();
-        try {
-          const token = localStorage.getItem("token");
-        const response = await axios.post('https://backend-j6ar.onrender.com/events/groupdance/addTeam', {
-          teamName, participantNumber, leader, alternate, token });
-    
-          // console.log('Response:', response.data);
-          setleader({ name: '', mobile: '', collegeId: '' });
-          setalternate({ name: '', mobile: '', collegeId: '' });
-        
-          if (response.data === 'Participant added successfully') {
-            setError(''); 
-            setShowSuccessMessage(true);
-          }
-        
-        } catch (error) {
-          // console.error('Error:', error);
+  useEffect(() => {
+    let countdownInterval;
 
-          if (error.response && error.response.status === 400) {
-            setError('Your college has already registered');
-          } else {
-            setError(error.response.data);
-          }
-        }
+    if (showSuccessMessage) {
+      countdownInterval = setInterval(() => {
+        setCountdown((prevCountdown) => prevCountdown - 1);
+      }, 1000);
+    }
+
+    return () => {
+      clearInterval(countdownInterval);
     };
+  }, [showSuccessMessage]);
 
-    return (
-        <div style={{backgroundColor:"black"}}>
-          <Navbar/>
+  useEffect(() => {
+    if (countdown === 0) {
+      navigate('/events');
+    }
+  }, [countdown, navigate]);
 
-            <section className="registration-form">
-                <div className='main'>
-                <div className='img' style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${image})` }}>
-                    <h2 className='info-title' >A quick go through before you register</h2>
-                      <ul className='ulimg'>
-                      <li className=''>January 5 , 2024 @ 5:00 pm</li>
-                      <li className=''>Single entry per college</li>
-                      <li className=''>Please ensure safety in your performance.</li>
-                      <li className=''>For detailed rules please visit <a href='https://drive.google.com/file/d/12ADjgD9CZMaOUB5QMZG-19gIMWQEp19t/view?usp=drive_link'>here</a>.</li>
-                      <li className=''><strong>Yashvi Gala : 9930336236</strong></li>
-                        </ul> 
-                </div>
-               
-                <form onSubmit={handleSubmit} className="translucent-form">
-                  <div id="titleform">
-                <p id='heading'>Nachne De Sare</p>
-                <h3 id='title2'>~Burn the stage together</h3>
-                </div>
-                <div className='input-label'>
-                    <input
-                        type="text"
-                        id="participant-name"
-                        name="participant-name"
-                        value={teamName}
-                        onChange={(e) => setTeamName(e.target.value)}
-                        required
-                    />
-                    <label className='l1' htmlFor="participant-name">Team Name</label>
-                    </div>
-                    <div className='input-label'>
-                    <select
-                      id="participant-number"
-                      name="participant-number"
-                      value={participantNumber}
-                      onChange={(e) => setParticipantNumber(e.target.value)}
-                      required
-                    >
-                      <option  value="0">0</option>
-                      {[...Array(11).keys()].map((num) => (
-                        <option key={num + 5} value={(num + 5).toString()}>
-                          {num + 5}
-                        </option>
-                      ))}
-                    </select>
-                      <label id="grpNo" htmlFor="participant-number" className='l2'>Number of participants</label>
-                    </div>
-                 
-                    {/* Participant 1 */}
+  const handleSubmit = async (e) => {
+    // console.log("clicked");
+    e.preventDefault();
+    try {
+      isLoading(true)
+      const token = localStorage.getItem("token");
+      const response = await axios.post('https://backend-j6ar.onrender.com/events/groupdance/addTeam', {
+        teamName, participantNumber, leader, alternate, token
+      });
+
+      // console.log('Response:', response.data);
+      setleader({ name: '', mobile: '', collegeId: '' });
+      setalternate({ name: '', mobile: '', collegeId: '' });
+      isLoading(false)
+      if (response.data === 'Participant added successfully') {
+        setError('');
+        setShowSuccessMessage(true);
+      }
+
+    } catch (error) {
+      // console.error('Error:', error);
+      isLoading(false)
+      if (error.response && error.response.status === 400) {
+        setError('Your college has already registered');
+      } else {
+        setError(error.response.data);
+      }
+    }
+  };
+
+  return (
+    <div style={{ backgroundColor: "black" }}>
+      <Navbar />
+
+      <section className="registration-form">
+        <div className='main'>
+          <div className='img' style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${image})` }}>
+            <h2 className='info-title' >A quick go through before you register</h2>
+            <ul className='ulimg'>
+              <li className=''>January 5 , 2024 @ 5:00 pm</li>
+              <li className=''>Single entry per college</li>
+              <li className=''>Please ensure safety in your performance.</li>
+              <li className=''>For detailed rules please visit <a href='https://drive.google.com/file/d/12ADjgD9CZMaOUB5QMZG-19gIMWQEp19t/view?usp=drive_link'>here</a>.</li>
+              <li className=''><strong>Parthvi Paunikar : 8668248946</strong></li>
+            </ul>
+          </div>
+
+          <form onSubmit={handleSubmit} className="translucent-form">
+            <div id="titleform">
+              <p id='heading'>Nachne De Sare</p>
+              <h3 id='title2'>~Burn the stage together</h3>
+            </div>
+            <div className='input-label'>
+              <input
+                type="text"
+                id="participant-name"
+                name="participant-name"
+                value={teamName}
+                onChange={(e) => setTeamName(e.target.value)}
+                required
+              />
+              <label className='l1' htmlFor="participant-name">Team Name</label>
+            </div>
+            <div className='input-label'>
+              <select
+                id="participant-number"
+                name="participant-number"
+                value={participantNumber}
+                onChange={(e) => setParticipantNumber(e.target.value)}
+                required
+              >
+                <option value="0">0</option>
+                {[...Array(11).keys()].map((num) => (
+                  <option key={num + 5} value={(num + 5).toString()}>
+                    {num + 5}
+                  </option>
+                ))}
+              </select>
+              <label id="grpNo" htmlFor="participant-number" className='l2'>Number of participants</label>
+            </div>
+
+            {/* Participant 1 */}
             <div className='input-label'>
               <input
                 type="text"
@@ -187,18 +191,20 @@ export default function EventForm() {
               <label htmlFor="college-id-2" className='l3'>Alternate Leader: College ID (Drive Link)</label>
             </div>
             {error && <div className='success-div'><b><p style={{ color: 'red' }} className="error-message">{error}</p></b></div>}
-                    {showSuccessMessage && (
-                      <div className='success-div'>
-                      <p style={{ color: 'green' }}>Form Submitted Successfully</p>
-                      <p>Redirecting in {countdown} seconds</p>
-                      </div>
-                    )}
-                    <div className='sub-btn-div'>
-                        <button type="submit" className='Sub'>Submit</button>
-                    </div>
-                </form>
-                </div>
-            </section>
+            {showSuccessMessage && (
+              <div className='success-div'>
+                <p style={{ color: 'green' }}>Form Submitted Successfully</p>
+                <p>Redirecting in {countdown} seconds</p>
+              </div>
+            )}
+            <div className='sub-btn-div'>
+              {!loader ? <button type="submit" className='Sub'>Submit</button>
+                :
+                <HashLoader color="#692869" loader />}
+            </div>
+          </form>
         </div>
-    );
+      </section>
+    </div>
+  );
 }

@@ -4,6 +4,7 @@ import axios from "axios";
 import Navbar from "./Navbar";
 import image from "../images/mr&msprati.png";
 import "../sass/events.css";
+import { HashLoader } from 'react-spinners';
 
 function MrandMs() {
   const [participant1, setParticipant1] = useState({
@@ -24,7 +25,7 @@ function MrandMs() {
   const [error, setError] = useState("");
   const [countdown, setCountdown] = useState(3);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-
+  const [loader, isLoading] = useState(false)
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -51,6 +52,7 @@ function MrandMs() {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
+      isLoading(true)
       const response = await axios.post(
         "https://backend-j6ar.onrender.com/events/mrandms/addDuo",
         {
@@ -76,14 +78,14 @@ function MrandMs() {
         mobile: "",
       });
       setPerformanceLink("");
-
+      isLoading(false)
       if (response.data === "Participants added successfully") {
         setError("");
         setShowSuccessMessage(true);
       }
     } catch (error) {
       // console.error("Error:", error);
-
+      isLoading(false)
       if (error.response && error.response.status === 400) {
         setError("Your college has already registered");
       } else {
@@ -107,7 +109,7 @@ function MrandMs() {
             <h2 id="info-title">A quick go through before you register</h2>
             <ul className="ulimg">
               <li className="">January 5 , 2024 @ 12:00 pm</li>
-              <li className="">Single entry per college</li>
+              <li className="">Maximum two people per college allowed.</li>
               <li className="">Please maintain decency in outfit choice.</li>
               <li className="">
                 For detailed rules please visit{" "}
@@ -116,6 +118,7 @@ function MrandMs() {
                 </a>
                 .
               </li>
+              <li className="">If two participants , kindly upload two space seperated links.</li>
               <li className="">
                 <strong>Shubhangi Bagul : 8766816040</strong>
               </li>
@@ -124,7 +127,7 @@ function MrandMs() {
 
           <form onSubmit={handleSubmit} className="translucent-form">
             <p id="heading">Mr and Ms. Prati</p>
-            <h3 id="title2">~Show your inner beauty</h3>
+            <h3 id="title2">~Flaunt your inner beauty</h3>
 
             <div className="input-label">
               <input
@@ -204,7 +207,6 @@ function MrandMs() {
                 onChange={(e) =>
                   setParticipant2({ ...participant2, name: e.target.value })
                 }
-                required
               />
               <label htmlFor="participant-name-2" className="l1">
                 Participant Name
@@ -223,7 +225,6 @@ function MrandMs() {
                     collegeId: e.target.value,
                   })
                 }
-                required
               />
               <label htmlFor="college-id-2" className="l3">
                 College ID
@@ -238,7 +239,6 @@ function MrandMs() {
                 onChange={(e) =>
                   setParticipant2({ ...participant2, mobile: e.target.value })
                 }
-                required
               />
               <label htmlFor="mobile-2" className="l4">
                 Mobile
@@ -252,7 +252,6 @@ function MrandMs() {
                 onChange={(e) =>
                   setParticipant2({ ...participant2, gender: e.target.value })
                 }
-                required
               >
                 <option value="" disabled>
                   Select Gender
@@ -292,10 +291,10 @@ function MrandMs() {
                 <p>Redirecting in {countdown} seconds</p>
               </div>
             )}
-            <div className="sub-btn-div">
-              <button type="submit" className="Sub">
-                Submit
-              </button>
+            <div className='sub-btn-div'>
+              {!loader ? <button type="submit" className='Sub'>Submit</button>
+                :
+                <HashLoader color="#692869" loader />}
             </div>
           </form>
         </div>

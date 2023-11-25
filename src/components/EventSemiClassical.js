@@ -4,6 +4,7 @@ import axios from 'axios';
 import image from "../images/solosemiclassical.png";
 import "../sass/events.css";
 import Navbar from "./Navbar";
+import { HashLoader } from 'react-spinners';
 
 export default function SemiClassical() {
   const [participantName, setParticipantName] = useState('');
@@ -12,6 +13,7 @@ export default function SemiClassical() {
   const [error, setError] = useState('');
   const [countdown, setCountdown] = useState(3);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [loader, isLoading] = useState(false)
 
   const navigate = useNavigate();
 
@@ -39,6 +41,7 @@ export default function SemiClassical() {
     e.preventDefault();
 
     try {
+      isLoading(true)
       const token = localStorage.getItem("token");
       const response = await axios.post('https://backend-j6ar.onrender.com/events/semiclassical/addParticipant', {
         participantName,
@@ -49,14 +52,14 @@ export default function SemiClassical() {
 
       setParticipantName('');
       setCollegeId('');
-
+      isLoading(false)
       if (response.data === 'Participant added successfully') {
+        
         setError('');
         setShowSuccessMessage(true);
       }
     } catch (error) {
-      // console.error('Error:', error);
-
+      isLoading(false)
       if (error.response && error.response.status === 400) {
         setError('Your college has already registered');
       } else {
@@ -128,7 +131,9 @@ export default function SemiClassical() {
             )}
 
             <div className='sub-btn-div'>
-              <button type="submit" className='Sub'>Submit</button>
+              {!loader ? <button type="submit" className='Sub'>Submit</button>
+                :
+                <HashLoader color="#692869" loader />}
             </div>
           </form>
         </div>

@@ -105,7 +105,7 @@ body {
   top: -5.125rem;
   color: whitesmoke;
   font-size: 0.85rem;
-  transition: all 1s ease;
+  transition: all 0.2s ease;
 }
 
 .form-label{
@@ -311,7 +311,7 @@ justify-content: space-around;
   border: none;
   outline: none;
   color: white;
-  background-color: rgb(105, 40, 105);
+  background-color: #692869;
   padding: 0.9rem 0.9rem;
   cursor: pointer;
   border-radius: 0.325rem;

@@ -113,7 +113,7 @@ const EventListUpcoming = () => {
     {
       "poster": Duet,
       "desc": "Western Duet",
-      "name": "Rabne bana-di Jodi",
+      "name": "Rab ne bana-di Jodi",
       "url": "/WesternDuet"
     },
     {

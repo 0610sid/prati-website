@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import image from "../images/standupimg.jpg";
 import axios from 'axios';
-
+import { HashLoader } from 'react-spinners';
 import Navbar from "./Navbar";
 
 export default function EventForm() {
@@ -13,6 +13,7 @@ export default function EventForm() {
   const [error, setError] = useState('');
   const [countdown, setCountdown] = useState(3);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [loader, isLoading] = useState(false)
 
   const navigate = useNavigate();
 
@@ -41,6 +42,7 @@ export default function EventForm() {
 
     try {
       const token = localStorage.getItem("token");
+      isLoading(true)
       const response = await axios.post('https://backend-j6ar.onrender.com/events/standup/addParticipant', {
         participantName,
         collegeId,
@@ -53,13 +55,14 @@ export default function EventForm() {
       setCollegeId('');
       setPerformanceLink('');
       setmobile('');
-
+      isLoading(false)
       if (response.data === 'Participant added successfully') {
         setError('');
         setShowSuccessMessage(true);
       }
     } catch (error) {
       // console.error('Error:', error);
+      isLoading(false)
       if (error.response && error.response.status === 400) {
         setError('Your college has already registered');
       } else {
@@ -140,7 +143,12 @@ export default function EventForm() {
                 <p>Redirecting in {countdown} seconds</p>
               </div>
             )}
-            <div className='sub-btn-div'><button type="submit" className='Sub'>Submit</button></div>
+
+            <div className='sub-btn-div'>
+              {!loader ? <button type="submit" className='Sub'>Submit</button>
+                :
+                <HashLoader color="#692869" loader />}
+            </div>
           </form>
         </div>
       </section>

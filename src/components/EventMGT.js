@@ -4,6 +4,7 @@ import image from "../images/grpdance2.jpg";
 import axios from 'axios';
 import "../sass/events.css"
 import Navbar from './Navbar';
+import { HashLoader } from 'react-spinners';
 
 export default function EventForm() {
   const [teamName, setTeamName] = useState('');
@@ -14,6 +15,7 @@ export default function EventForm() {
   const [error, setError] = useState('');
   const [countdown, setCountdown] = useState(3);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [loader, isLoading] = useState(false)
 
   const navigate = useNavigate();
 
@@ -40,6 +42,7 @@ export default function EventForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      isLoading(true)
       const token = localStorage.getItem("token");
       const response = await axios.post('https://backend-j6ar.onrender.com/events/MGT/addTeam', {
         teamName, participantNumber, leader, alternate, performanceLink, token
@@ -48,12 +51,14 @@ export default function EventForm() {
       // console.log('Response:', response.data);
       setleader({ name: '', mobile: '', collegeId: '' });
       setalternate({ name: '', mobile: '', collegeId: '' });
+      isLoading(false)
       if (response.data === 'Participant added successfully') {
         setError('');
         setShowSuccessMessage(true);
       }
     } catch (error) {
       // console.error('Error:', error);
+      isLoading(false)
       if (error.response && error.response.status === 400) {
         setError('Your college has already registered');
       } else {
@@ -156,7 +161,6 @@ export default function EventForm() {
                 name="participant-name-2"
                 value={alternate.name}
                 onChange={(e) => setalternate({ ...alternate, name: e.target.value })}
-                required
               />
               <label className='l1' htmlFor="participant-name-2">Alternate Leader: Name </label>
             </div>
@@ -167,7 +171,6 @@ export default function EventForm() {
                 name="contact-number-2"
                 value={alternate.mobile}
                 onChange={(e) => setalternate({ ...alternate, mobile: e.target.value })}
-                required
               />
               <label htmlFor="contact-number-2" className='l2'>Alternate Leader: Contact Number </label>
             </div>
@@ -178,7 +181,6 @@ export default function EventForm() {
                 name="college-id-2"
                 value={alternate.collegeId}
                 onChange={(e) => setalternate({ ...alternate, collegeId: e.target.value })}
-                required
               />
               <label htmlFor="college-id-2" className='l3'>Alternate Leader: College ID (Drive Link)</label>
             </div>
@@ -202,8 +204,11 @@ export default function EventForm() {
                 <p>Redirecting in {countdown} seconds</p>
               </div>
             )}
+
             <div className='sub-btn-div'>
-              <button type="submit" className='Sub'>Submit</button>
+              {!loader ? <button type="submit" className='Sub'>Submit</button>
+                :
+                <HashLoader color="#692869" loader />}
             </div>
           </form>
         </div>

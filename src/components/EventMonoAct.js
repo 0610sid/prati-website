@@ -4,11 +4,12 @@ import image from "../images/monoact.jpg";
 import "../sass/events.css"
 import axios from 'axios';
 import Navbar from "./Navbar";
+import { HashLoader } from 'react-spinners';
 
 function MonoAct() {
   const [participantName, setParticipantName] = useState('');
   const [collegeId, setCollegeId] = useState('');
-
+  const [loader, isLoading] = useState(false)
   const [mobile, setmobile] = useState('');
   const [error, setError] = useState('');
   const [countdown, setCountdown] = useState(3);
@@ -41,6 +42,7 @@ function MonoAct() {
 
     try {
       const token = localStorage.getItem("token");
+      isLoading(true)
       const response = await axios.post('https://backend-j6ar.onrender.com/events/monoact/addParticipant', {
         participantName,
         collegeId,
@@ -51,14 +53,14 @@ function MonoAct() {
       setParticipantName('');
       setCollegeId('');
       setmobile('');
-
+      isLoading(false)
       if (response.data === 'Participant added successfully') {
         setError('');
         setShowSuccessMessage(true);
       }
     } catch (error) {
       // console.error('Error:', error);
-
+      isLoading(false)
       if (error.response && error.response.status === 400) {
         setError('Your college has already registered');
       } else {
@@ -80,7 +82,7 @@ function MonoAct() {
                 <li className=''>Single entry per college</li>
                 <li className=''>The language of the performance should be only Hindi.</li>
                 <li className=''>For detailed rules please visit <a href='https://drive.google.com/file/d/12ADjgD9CZMaOUB5QMZG-19gIMWQEp19t/view?usp=drive_link'>here</a></li>
-                <li className=''><strong>Tejas Shinde : 8788201844</strong></li>
+                <li className=''><strong>Tejas Shinde : 8788201884</strong></li>
               </ul>
             </div>
 
@@ -129,7 +131,11 @@ function MonoAct() {
                 </div>
               )}
 
-              <div className='sub-btn-div'><button type="submit" className='Sub'>Submit</button></div>
+              <div className='sub-btn-div'>
+                {!loader ? <button type="submit" className='Sub'>Submit</button>
+                  :
+                  <HashLoader color="#692869" loader />}
+              </div>
             </form>
           </div>
         </section>

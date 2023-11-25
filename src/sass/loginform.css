@@ -6,9 +6,10 @@
 
 .box {
   /* position: relative; */
-  top: 45%;
+  /* top: 45%;
   left: 50%;
-  transform: translate(-50%, -1%);
+  transform: translate(-50%, -1%); */
+  margin-top: 3vw;
   width: 25rem;
   padding: 2.5rem;
   box-sizing: border-box;
@@ -22,6 +23,11 @@
   width: 100%;  
 }
 
+.contact{
+  margin-top: 2rem;
+  text-align: center;
+  padding-bottom: 1rem;
+}
 
 .box h2 {
   margin: 0 0 1.875rem;

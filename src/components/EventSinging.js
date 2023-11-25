@@ -4,11 +4,12 @@ import image from "../images/sing.jpg";
 // import "../sass/events.css"
 import axios from 'axios';
 import Navbar from "./Navbar";
+import { HashLoader } from 'react-spinners';
 
 function Singing() {
   const [participantName, setParticipantName] = useState('');
   const [collegeId, setCollegeId] = useState('');
-
+  const [loader, isLoading] = useState(false)
   const [mobile, setmobile] = useState('');
   const [error, setError] = useState('');
   const [countdown, setCountdown] = useState(3);
@@ -40,6 +41,7 @@ function Singing() {
     e.preventDefault();
 
     try {
+      isLoading(true)
       const token = localStorage.getItem("token");
       const response = await axios.post('https://backend-j6ar.onrender.com/events/solosinging/addParticipant', {
         participantName,
@@ -51,14 +53,14 @@ function Singing() {
       setParticipantName('');
       setCollegeId('');
       setmobile('');
-
+      isLoading(false)
       if (response.data === 'Participant added successfully') {
         setError('');
         setShowSuccessMessage(true);
       }
     } catch (error) {
       // console.error('Error:', error);
-
+      isLoading(false)
       if (error.response && error.response.status === 400) {
         setError('Your college has already registered');
       } else {
@@ -85,7 +87,7 @@ function Singing() {
           </div>
 
           <form onSubmit={handleSubmit} className="translucent-form">
-            <p id='heading'>Mehefile-e-prati</p>
+            <p id='heading'>Mehfil-E-Prati</p>
             <h3 id='title2'>~Ek shaam pratibimb ke naam</h3>
             <div className='input-label'>
               <input
@@ -129,7 +131,11 @@ function Singing() {
               </div>
             )}
 
-            <div className='sub-btn-div'><button type="submit" className='Sub' >Submit</button></div>
+            <div className='sub-btn-div'>
+              {!loader ? <button type="submit" className='Sub'>Submit</button>
+                :
+                <HashLoader color="#692869" loader />}
+            </div>
           </form>
         </div>
       </section>

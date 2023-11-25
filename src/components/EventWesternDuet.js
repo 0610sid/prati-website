@@ -4,6 +4,7 @@ import image from "../images/DuetDance.jpg";
 import "../sass/events.css"
 import axios from 'axios';
 import Navbar from "./Navbar";
+import { HashLoader } from 'react-spinners';
 
 function WesternDuet() {
   const [participant1, setParticipant1] = useState({ name: '', contactNumber: '', collegeId: '' });
@@ -11,6 +12,7 @@ function WesternDuet() {
   const [error, setError] = useState('');
   const [countdown, setCountdown] = useState(3);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [loader, isLoading] = useState(false)
 
   const navigate = useNavigate();
 
@@ -37,6 +39,7 @@ function WesternDuet() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      isLoading(true)
       const token = localStorage.getItem("token");
       const response = await axios.post('https://backend-j6ar.onrender.com/events/westernduet/addDuo', {
         participant1,
@@ -47,12 +50,13 @@ function WesternDuet() {
       // console.log('Response:', response.data);
       setParticipant1({ name: '', contactNumber: '', collegeId: '' });
       setParticipant2({ name: '', contactNumber: '', collegeId: '' });
-
+      isLoading(false)
       if (response.data === 'Participants added successfully') {
         setError('');
         setShowSuccessMessage(true);
       }
     } catch (error) {
+      isLoading(false)
       if (error.response && error.response.status === 400) {
         setError('Your college has already registered');
       } else {
@@ -74,7 +78,7 @@ function WesternDuet() {
               <li className=''>Single entry per college</li>
               <li className=''>Any kind of profanity will lead to direct elimination of the whole contigent.</li>
               <li className=''>For detailed rules please visit <a href='https://drive.google.com/file/d/12ADjgD9CZMaOUB5QMZG-19gIMWQEp19t/view?usp=drive_link'>here</a>.</li>
-              <li className=''><strong>Yashvi Gala : 9930336236</strong></li>
+              <li className=''><strong>Ayush Patil : 7021797052</strong></li>
             </ul>
           </div>
 
@@ -163,7 +167,9 @@ function WesternDuet() {
             )}
 
             <div className='sub-btn-div'>
-              <button type="submit" className='Sub'>Submit</button>
+              {!loader ? <button type="submit" className='Sub'>Submit</button>
+                :
+                <HashLoader color="#692869" loader />}
             </div>
           </form>
         </div>
