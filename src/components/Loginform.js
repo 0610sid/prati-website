@@ -52,11 +52,11 @@ const LoginForm = () => {
         password
       });
 
+      isLoading(false)
       if (loginResponse.data.auth) {
         // console.log(loginResponse.data);
         localStorage.setItem("token", loginResponse.data.token);
         setLoginStatus(true);
-        isLoading(false)
         if (loginResponse.data.result[0].isfirst && !loginResponse.data.result[0].isverified) { navigate('/verification'); }
         else if (!loginResponse.data.result[0].isfirst && !loginResponse.data.result[0].isverified) { navigate('/verificationRedirect'); }
         else if (loginResponse.data.result[0].isverified) { navigate('/events'); }
@@ -65,7 +65,6 @@ const LoginForm = () => {
         setError(loginResponse.data.message);
       }
     } catch (error) {
-      isLoading(false)
       setError(error)
       // console.error("Error during login:", error);
     }
